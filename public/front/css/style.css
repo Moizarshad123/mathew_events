@@ -1,0 +1,138 @@
+/* default */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+a.btn.bluebtn {
+    background: #006ae1;
+    color: #fff;
+    border-radius: 10px;
+}
+
+/* default */
+
+/* nav bar header */
+header nav.navbar a.btn.navbarbtntop { border: 1px solid #006ae1; color: #006ae1; padding: 3px 15px; border-radius: 10px; font-size: 14px;}
+header nav.navbar { padding: 0; background-color: #e9edef;}
+header nav.navbar .navbar-right-content { display: flex; align-items: center;}
+header nav.navbar .navbar-right-content i.settingsiconnavbar { margin: 0px 15px; color: #006ae1; }
+header nav.navbar .navbar-right-content a.headerlinkslogin { font-size: 14px; text-decoration: none; margin: 0 10px 0 0px; }
+header nav.navbar a.nav-link { display: block; padding: 10px 20px 10px 20px !important; margin-top: 16px; color: #1a2026; font-weight: 400; font-size: 14px; text-align: center;}
+header nav.navbar a.nav-link.active { background: #fff; color: #1a2026; font-weight: 700; border-top: 3px solid #006ae1; border-left: 1px solid #cad0d3; border-right: 1px solid #cad0d3; margin-bottom: -1px;}
+header .bottom-bar { text-align: center; background: #fff; margin-top: 60px;}
+header .bottom-bar .content { padding: 10px 0px; }
+header .bottom-bar .content h1 { margin: 0; font-size: 21px; color: #1a2026;}
+header .bottom-bar .content p { color: #69717a; margin-bottom: 0; font-size: 14px; }
+/* nav bar header */
+
+
+/* banner with filter */
+
+section.banner-with-search { height: 540px; background: url(../img/bann.webp); background-repeat: no-repeat; position: relative;}
+section.banner-with-search .filter-bar { padding-top: 5%;}
+section.banner-with-search .filter-bar ul {background: rgba(34, 40, 42, .8);padding: 25px 20px;border-radius: 10px;list-style: none;display: flex;align-items: center;}
+section.banner-with-search .filter-bar button.btn.search-btn { background: #006ae1; color: #fff; }
+section.banner-with-search .banner-bottom-box { position: absolute; bottom: 0; background: rgba(34, 40, 42, .8); padding: 20px; left: 0; right: 0; margin: 0 auto; }
+section.banner-with-search .banner-bottom-box p { color: #fff; margin-bottom: 10px; font-size: 14px; }
+section.banner-with-search .banner-bottom-box a { color: #fff; margin-bottom: 0; font-size: 14px;}
+section.banner-with-search .banner-bottom-box a.btn.bluebtn { float: right; }
+section.banner-with-search .filter-bar button.dropbtn {background: transparent;border: none;margin-top: 5px;color: #6c7589;width: 100%;text-align: left;}
+section.banner-with-search .filter-bar .conboxcstelm ul {background: #fff;display: block;text-align: left;}
+section.banner-with-search .filter-bar .dropdown { position: relative; display: inline-block;}
+section.banner-with-search .filter-bar .dropdown-content { display: none; position: absolute; background-color: #f1f1f1; min-width: 160px; overflow: auto; box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); z-index: 1;}
+section.banner-with-search .filter-bar .dropdown-content a { color: black; padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; }
+section.banner-with-search .filter-bar .dropdown a:hover { background-color: #ddd; }
+section.banner-with-search .filter-bar .show { display: block; }
+section.banner-with-search .filter-bar li.filterone { width: 30%; }
+section.banner-with-search .filter-bar li.filtertwo { width: 20%; position: relative; }
+section.banner-with-search .filter-bar li.filtertwo span { position: absolute; color: #fff; font-size: 10px; transform: translate(0px, 5px);}
+section.banner-with-search .filter-bar li.filterthree { width: 20%; position: relative;}
+section.banner-with-search .filter-bar li.filterthree span { position: absolute; color: #fff; font-size: 10px; transform: translate(0px, 5px);}
+section.banner-with-search .filter-bar li.filterfour { width: 15%; position: relative; }
+section.banner-with-search .filter-bar li.filterfour span { position: absolute; color: #fff; font-size: 10px; transform: translate(0px, 5px); display: block;}
+section.banner-with-search .filter-bar li.filterfour .dropdown { background: #fff; height: 100%; width: 100%; text-align: center;}
+section.banner-with-search .filter-bar li.filterfive { width: 15%; }
+section.banner-with-search .filter-bar li.filterfive button.btn.search-btn { float: right; width: 90%;}
+section.banner-with-search .filter-bar input.form-control.event_filters { height: auto; padding: 10px; border-radius: 0; border: none; border-right: 1px solid #ddd; border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
+section.banner-with-search .filter-bar input.form-control.startdate_filters { padding: 10px; border: none; border-radius: 0px; border-right: 1px solid #ddd; }
+section.banner-with-search .filter-bar input.form-control.enddate_filters { padding: 10px; border: none; border-radius: 0px; border-right: 1px solid #ddd; }
+section.banner-with-search .filter-bar li.filterfour .dropdown { background: #fff; height: auto; width: 100%; padding: 8px; border: none; font-size: 14px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
+/* banner with filter */
+
+/* discover section */
+section.discover-section { margin: 50px 0; }
+section.discover-section .content_section { margin: 0 0 50px 0; }
+section.discover-section .content_section h2 { font-weight: 400; color: #1a2026; font-size: 1.5em; text-align: center; }
+section.discover-section .content_section p { font-weight: 400; color: #1a2026; font-size: 14px; text-align: center;}
+section.discover-section .discover-left-box img { border-radius: 20px; }
+section.discover-section .discover-left-box { position: relative; }
+section.discover-section .discover-left-box img { border-radius: 20px; }
+section.discover-section .abs-content-box a { text-decoration: none; font-size: 14px; }
+/* discover section */
+
+
+
+/* news section */
+section.whats-new-section .newscard { margin-bottom: 40px; text-align: center; }
+section.whats-new-section .content_section h2{font-size: 1.5em; font-weight: 400; line-height: 2.125em; text-align: center; margin-bottom: 1.625em;}
+section.whats-new-section .newscard .newsheading { margin-top: 10px; }
+section.whats-new-section .newscard .newsheading a { font-size: 14px; text-decoration: none; color: #006ae1; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+section.whats-new-section .newscard .newscardimagebox { position: relative; }
+section.whats-new-section .newscard .newscardimagebox img { border-radius: 10px; }
+section.whats-new-section .newscard .newsdate { margin: 0 auto; background: #fff; width: 50%; border-top-left-radius: 60px; border-top-right-radius: 60px; text-align: center; position: absolute; left: 0; right: 0; bottom: 0; }
+section.whats-new-section .newscard .newsdate p { margin-bottom: 0px; padding: 5px 0; font-size: 14px; color: #69717a; }
+section.whats-new-section a.showmoreblueoutlinebtn { margin: 0 auto; display: table; background: #fff; border: 1px solid #006ae1; padding: 5px 10px; border-radius: 10px; text-decoration: none; color: #006ae1; }
+/* news section */
+
+
+/* discover section */
+.discover-section .abs-content-box {width: 45%;background: #fff;position: absolute;top: 15%;right: 0;border: 1px solid #efefef;padding: 30px;border-radius: 20px;}
+.discover-section .abs-content-box h3 {font-size: 20px;text-align: left; }
+.discover-section .abs-content-box p { color: #69717a; font-size: 14px; font-weight: 400; line-height: normal; padding-top: 1em; padding-bottom: 3em; word-break: break-word; text-overflow: ellipsis; overflow: hidden; display: -webkit-box !important; -webkit-line-clamp: 6; -webkit-box-orient: vertical; white-space: normal; text-align: left; }
+.discover-section .custcard { display: flex; align-items: center; box-shadow: 0 4px 16px -4px rgba(0,0,0,.1); padding: 10px 20px; margin-bottom: 10px; border-radius: 10px; }
+.discover-section .custcardcontent { margin-left: 10px; }
+.discover-section .custcard h3 { font-size: 18px; font-weight: 400; }
+.discover-section .discover-section .custcard p { text-align: left; font-size: 12px; margin-bottom: 30px;}
+.discover-section .custcardcontent a { text-decoration: none; font-size: 14px; }
+.discover-section .custcard img {height: auto; width: 200px; object-fit: cover; border-radius: 10px;}
+/* discover section */
+
+/* browse section */
+section.browse-events-section a.showmoreblueoutlinebtn { background: #fff; padding: 5px 10px; border-radius: 10px; margin: 40px auto 0 auto; display: table; border: 1px solid #006ae1; color: #006ae1; text-decoration: none; }
+section.browse-events-section { background: #1a2026; padding: 50px 0; margin: 50px 0 0 0px; }
+section.browse-events-section ul { list-style: none; padding: 0px;}
+section.browse-events-section ul li { color: #fff; font-size: 13px; font-style: normal; font-weight: 400; line-height: normal; margin-bottom: 20px; }
+section.browse-events-section .content_section h2 { color: #fff; font-size: 1.5em; font-weight: 400; line-height: 2.125em; text-align: center; margin-bottom: 1.625em; }
+/* browse section */
+
+/* footer */
+footer { background: #f7f8f9; padding: 30px 0px; }
+footer ul { padding: 0; list-style: none; }
+footer ul li a { color: #94969f; font-size: 14px; font-weight: 400; text-decoration: none; }
+.footer-bottom-text .footerbottom-text p { text-align: center; font-size: 14px; line-height: 1.42857143; color: #94969f; }
+/* footer */
+
+/* media query */
+@media screen and (max-width: 991px) {
+    section.banner-with-search .filter-bar ul{ padding: 25px 10px; }
+    section.banner-with-search .filter-bar li.filterfour { width: 20%; }
+    section.banner-with-search .filter-bar button.btn.search-btn { font-size: 12px; padding: 10px 0; }
+    section.discover-section .discover-left-box { margin-bottom: 50px; }
+    section.banner-with-search .filter-bar ul { display: block; }
+    section.banner-with-search .filter-bar li.filterone { width: 100%; margin-bottom:20px; }
+    section.banner-with-search .filter-bar li.filtertwo { width: 100%; margin-bottom:20px; }
+    section.banner-with-search .filter-bar li.filterthree { width: 100%; margin-bottom:20px; }
+    section.banner-with-search .filter-bar li.filterfour { width: 100%; margin-bottom:20px; }
+    section.banner-with-search .filter-bar li.filterfour .dropdown{border-radius: 0px;}
+    section.banner-with-search .filter-bar input.form-control.event_filters{border-radius: 0px;}
+    section.banner-with-search .filter-bar li.filterfive button.btn.search-btn { float: none; width: 100%; }
+    section.banner-with-search .filter-bar li.filterfive { width: 100%; margin-top: 30px; }
+    section.banner-with-search { height: 750px;}
+    section.browse-events-section ul { text-align: center; }
+    header nav.navbar .navbar-right-content { place-content: center; padding-bottom: 20px; }
+    section.discover-section { margin: 50px 0; text-align: center; }
+    .discover-section .abs-content-box {position: relative; width: 100%; }
+}
+/* media query */
