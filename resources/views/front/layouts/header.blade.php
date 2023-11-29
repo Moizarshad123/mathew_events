@@ -28,8 +28,8 @@
                 <div class="navbar-right-content">
                     <a class="btn navbarbtntop" href="javascript:;"><i class="fa fa-building"></i> Venue list</a>
                     <i class="settingsiconnavbar fa fa-cog"></i>
-                    <a href="javascript:;" class="headerlinkslogin">Sign up</a>
-                    <a href="javascript:;" class="headerlinkslogin">Login</a>
+                    <a href="javascript:;." class="headerlinkslogin">Sign up</a>
+                    <a href="{{ url('login') }}" class="headerlinkslogin">Login</a>
                 </div>
             </div>
         </div>
