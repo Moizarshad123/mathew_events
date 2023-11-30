@@ -9,7 +9,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
@@ -23,13 +23,13 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Luxury</a>
-                    </li>
+                    </li> --}}
                 </ul>
                 <div class="navbar-right-content">
                     <a class="btn navbarbtntop" href="javascript:;"><i class="fa fa-building"></i> Venue list</a>
                     <i class="settingsiconnavbar fa fa-cog"></i>
-                    <a href="javascript:;" class="headerlinkslogin">Sign up</a>
-                    <a href="javascript:;" class="headerlinkslogin">Login</a>
+                    <a href="javascript:;." class="headerlinkslogin">Sign up</a>
+                    <a href="{{ url('login') }}" class="headerlinkslogin">Login</a>
                 </div>
             </div>
         </div>

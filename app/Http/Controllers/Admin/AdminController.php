@@ -41,6 +41,7 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
+
     // public function setting(Request $request) {
 
     //     $content = Setting::firstOrFail();
