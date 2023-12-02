@@ -59,14 +59,14 @@
 
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
-          <li class="menu-item active">
+          <li class="menu-item {{ str_contains(url()->current(), 'admin/dashboard') ? 'active' : '' }}">
             <a href="{{ route('admin.dashboard') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
             </a>
           </li>
 
-          <li class="menu-item active">
+          <li class="menu-item {{ str_contains(url()->current(), 'admin/upload-image') ? 'active' : '' }}">
             <a href="{{ route('admin.uploadImages') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Upload Images</div>

@@ -3,10 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\HomeController;
 
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('search-result', [HomeController::class, 'search_result']);
+
 
 Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
 

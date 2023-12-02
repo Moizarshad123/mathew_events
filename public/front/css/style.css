@@ -10,21 +10,50 @@ a.btn.bluebtn {
     color: #fff;
     border-radius: 10px;
 }
+a.btn.whitebtn {
+    background: #fff;
+    color: #006ae1;
+    border-radius: 10px;
+}
+a.btn.greenbtn {
+    background: #008600;
+    color: #fff;
+    border-radius: 10px;
+}
 
 /* default */
 
 /* nav bar header */
-header nav.navbar a.btn.navbarbtntop { border: 1px solid #006ae1; color: #006ae1; padding: 3px 15px; border-radius: 10px; font-size: 14px;}
+header nav.navbar .navbarbtntop { border: 1px solid #006ae1; color: #006ae1; padding: 3px 15px; border-radius: 10px; font-size: 14px;}
+header nav.navbar .navbarbtntop span.venuecount { background: #1daa42; color: #fff; position: absolute; top: -10px; right: 0px; height: 20px; width: 20px; font-size: 12px; border-radius: 100px; line-height: 20px;}
 header nav.navbar { padding: 0; background-color: #e9edef;}
 header nav.navbar .navbar-right-content { display: flex; align-items: center;}
 header nav.navbar .navbar-right-content i.settingsiconnavbar { margin: 0px 15px; color: #006ae1; }
 header nav.navbar .navbar-right-content a.headerlinkslogin { font-size: 14px; text-decoration: none; margin: 0 10px 0 0px; }
-header nav.navbar a.nav-link { display: block; padding: 10px 20px 10px 20px !important; margin-top: 16px; color: #1a2026; font-weight: 400; font-size: 14px; text-align: center;}
+header nav.navbar a.nav-link { display: block; padding: 10px !important; margin-top: 16px; color: #1a2026; font-weight: 400; font-size: 14px; text-align: center;}
 header nav.navbar a.nav-link.active { background: #fff; color: #1a2026; font-weight: 700; border-top: 3px solid #006ae1; border-left: 1px solid #cad0d3; border-right: 1px solid #cad0d3; margin-bottom: -1px;}
 header .bottom-bar { text-align: center; background: #fff; margin-top: 60px;}
 header .bottom-bar .content { padding: 10px 0px; }
 header .bottom-bar .content h1 { margin: 0; font-size: 21px; color: #1a2026;}
 header .bottom-bar .content p { color: #69717a; margin-bottom: 0; font-size: 14px; }
+
+header nav.navbar .venuelistdropdownparent { width: 300px; left: -50%; top: 40px; padding: 0; }
+header nav.navbar .venuelistdropdownparent .venuelistdropdown h3 { font-size: 15px; }
+header nav.navbar .venuelistdropdownparent .venuelistdropdown p { font-size: 12px; margin-bottom: 10px; }
+
+header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card { display: flex; align-items: center;}
+header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card img { width: 80px; height: 80px; border-radius: 10px;}
+header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card  .cont-box { margin-left: 10px; }
+header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card .cont-box p.hotel-name { margin-bottom: 0; }
+header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card .cont-box p.hotel-location { margin-bottom: 0; }
+header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card .cont-box a { font-size: 12px; text-decoration: none; }
+header nav.navbar .venuelistdropdownparent .venuelistdropdown { padding: 20px;}
+header nav.navbar .venuelistdropdownparent .venuelistdropdownfooter { background: #efefef; margin-top: 10px; text-align: center; padding: 10px; }
+header nav.navbar .venuelistdropdownparent .venuelistdropdownfooter p { font-size: 12px; }
+header nav.navbar .venuelistdropdownparent .venuelistdropdownfooter a.btn { font-size:12px; width: 100%; background: #006ae1; color: #fff; border-radius: 10px; margin-bottom: 10px;}
+header nav.navbar .navbar-toggler-icon { line-height: normal; border: 1px solid #000;}
+
+header.mobilenav { display: none;}
 /* nav bar header */
 
 
@@ -54,7 +83,7 @@ section.banner-with-search .filter-bar li.filterfour { width: 15%; position: rel
 section.banner-with-search .filter-bar li.filterfour span { position: absolute; color: #fff; font-size: 10px; transform: translate(0px, 5px); display: block;}
 section.banner-with-search .filter-bar li.filterfour .dropdown { background: #fff; height: 100%; width: 100%; text-align: center;}
 section.banner-with-search .filter-bar li.filterfive { width: 15%; }
-section.banner-with-search .filter-bar li.filterfive button.btn.search-btn { float: right; width: 90%;}
+section.banner-with-search .filter-bar li.filterfive button.btn.search-btn { float: right; width: 90%; border-radius: 10px; }
 section.banner-with-search .filter-bar input.form-control.event_filters { height: auto; padding: 10px; border-radius: 0; border: none; border-right: 1px solid #ddd; border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
 section.banner-with-search .filter-bar input.form-control.startdate_filters { padding: 10px; border: none; border-radius: 0px; border-right: 1px solid #ddd; }
 section.banner-with-search .filter-bar input.form-control.enddate_filters { padding: 10px; border: none; border-radius: 0px; border-right: 1px solid #ddd; }
@@ -108,16 +137,154 @@ section.browse-events-section .content_section h2 { color: #fff; font-size: 1.5e
 /* browse section */
 
 /* footer */
-footer { background: #f7f8f9; padding: 30px 0px; }
+footer { background: #f7f8f9; padding: 30px 0px; border-top: 1px solid #ddd; }
 footer ul { padding: 0; list-style: none; }
 footer ul li a { color: #94969f; font-size: 14px; font-weight: 400; text-decoration: none; }
 .footer-bottom-text .footerbottom-text p { text-align: center; font-size: 14px; line-height: 1.42857143; color: #94969f; }
 /* footer */
 
+
+/* inner result page */
+
+header.desktopnav.header-inner .bottom-bar {padding: 10px;box-shadow: 0 2px 4px rgba(0,0,0,.2); z-index: 1;}
+header.desktopnav.header-inner .bottom-bar .input-group { border: 1px solid #006ae1; border-radius: 10px;padding: 5px;}
+header.desktopnav.header-inner .bottom-bar .input-group input { border: none; border-radius: 10px; }
+header.desktopnav.header-inner .bottom-bar .input-group .btn { border: none; color: #006ae1; }
+header.desktopnav.header-inner .bottom-bar .bottombar-venues-count { text-align: right; }
+header.desktopnav.header-inner .bottom-bar .bottombar-venues-count p { margin: 0; }
+header.desktopnav.header-inner .bottom-bar ul.bottombar-venues-count-list { padding: 0; list-style: none; display: flex; align-items: center; margin: 0; justify-content: end;}
+header.desktopnav.header-inner .bottom-bar ul.bottombar-venues-count-list li { margin-right: 10px; }
+
+section.results-page-main-section{ background: #f7f8f9; }
+
+
+.left-side-bar {padding: 10px 0px;background: #f7f8f9;padding-top: 150px;padding-bottom: 100px;}
+.left-side-bar p.address { font-size: 14px; padding:0px 10px; }
+.left-side-bar .map-box { position: relative; margin-bottom: 20px; padding: 0 10px;}
+.left-side-bar .map-box a.btn.bluebtn { position: absolute; left: 0; right: 0; width: 50%; top: 30%; margin: 0 auto; }
+
+.left-side-bar .accordion_cstelem_oneclss button.accordion-button {padding: 5px 10px;background: transparent;color: #212529;}
+
+.left-side-bar .accordion-button:not(.collapsed) { box-shadow: none; }
+
+.left-side-bar .accordion_cstelem_oneclss label { width: 100%; }
+.left-side-bar .accordion_cstelem_oneclss label span.unti_CHSYB13_w324 { text-align: right; float: right;}
+.left-side-bar .accordion_cstelem_oneclss h4 { font-size: 14px; font-weight: 400; }
+.left-side-bar .accordion_cstelem_oneclss a.btn.bluebtn { width:100%; margin-top: 10px; }
+.left-side-bar .accordion_cstelem_oneclss .accordion-item {background-color:transparent;border-radius: 0;padding: 5px 0 5px 0;border: none;border-bottom: 1px solid #cad0d3;}
+.left-side-bar .form-check label.form-check-label { font-size: 14px; }
+.left-side-bar .resetfiltests_cstelms_wrapper a.restallfilters_cst_elms { text-decoration: none; color: #006ae1; margin: 0 0 50px 0; }
+
+.accordion_cstelem_oneclss ul.filters__start__date__end__date { padding: 0; list-style: none; display: flex; align-items: center; }
+.accordion_cstelem_oneclss ul.filters__start__date__end__date li input {border: 1px solid #ddd;width: 100%;}
+.accordion_cstelem_oneclss ul.filters__start__date__end__date li {margin: 0 10px 0 0px;}
+.accordion_cstelem_oneclss ul.Promotionsorneeddates_wrapper {padding: 0;list-style: none;display: flex;margin: 0;align-items: center;border-bottom: 1px solid #ddd;margin-bottom: 10px;}
+.accordion_cstelem_oneclss ul.Promotionsorneeddates_wrapper p {font-size: 12px; margin: 0; line-height: normal;}
+.accordion_cstelem_oneclss ul.Promotionsorneeddates_wrapper h4 {font-size: 12px;margin-bottom: 0;line-height: normal;}
+.accordion_cstelem_oneclss ul.Promotionsorneeddates_wrapper a {font-size: 12px; text-decoration: none; line-height: normal; }
+.accordion_cstelem_oneclss ul.Promotionsorneeddates_wrapper li.first { width: 50%; }
+.accordion_cstelem_oneclss ul.Promotionsorneeddates_wrapper li.second { width: 15%; text-align: center; }
+
+.accordion_cstelem_oneclss ul.cancelandapplybtns { padding: 0; list-style: none; display: flex; align-items: center; }
+.accordion_cstelem_oneclss ul.cancelandapplybtns li { width: 50%; }
+.accordion_cstelem_oneclss .chainbox-wrapper { border: 1px solid #efefef; padding: 5px; }
+
+.ratingfilter_wrapper { padding:0px 10px; }
+.ratingfilter_wrapper .filter-rating-box h4 { font-size: 16px; font-weight: 400; }
+
+.venue-capabilities-box { padding: 0 10px; }
+.resetfiltests_cstelms_wrapper {padding: 10px 10px;border-bottom: 1px solid #cad0d3;}
+
+.accordion_cstelem_oneclss ul.minmax___input___list { padding: 0; list-style: none; display: flex; }
+.accordion_cstelem_oneclss ul.minmax___input___list li { width: 100%; }
+.accordion_cstelem_oneclss ul.minmax___input___list li input { width: 90%; }
+
+.capactity_calculator_box { padding: 0 10px; }
+.capactity_calculator_box a.capclaculator { width: 100%; background: #fff; display: block; text-align: center; margin: 20px 0; border: 1px solid #006ae1; border-radius: 10px; padding: 10px; text-decoration: none;}
+.capactity_calculator_box a.capclaculator:hover { background: #006ae1; color: #fff;}
+
+.cstemlfilterrangeslider .slider-box {width: 90%; margin: 25px auto}
+.cstemlfilterrangeslider label, input {border: none; display: inline-block; margin-right: -4px; vertical-align: top; width: 30%}
+.cstemlfilterrangeslider input {width: 70%; background-color: transparent;}
+.cstemlfilterrangeslider .slider {margin: 15px 0;height: 50%;}
+.cstemlfilterrangeslider span.ui-slider-handle.ui-corner-all.ui-state-default { border-radius: 100%; top: -10px; box-shadow: 1px 1px 1px 1px #ddd; }
+
+
+
+/* center bar */
+.center-bar { padding-top: 150px; }
+
+.center-bar:after { content: ''; height: 100%; width: 1px; background: #ddd; display: block; position: absolute; right: 0; top: 0; }
+.center-bar {position: relative;}
+
+.center-bar:before { content: ''; height: 100%; width: 1px; background: #ddd; display: block; position: absolute; left: 0; top: 0; }
+.center-bar {position: relative;}
+
+.center-bar {padding: 10px 20px;background: #f7f8f9;padding-top: 150px;padding-bottom: 100px;height: 100%;}
+.center-bar .venues_card {background: #fff;padding: 10px;border-radius: 10px;box-shadow: 0px 0px 5px 2px #ddd;cursor: pointer;margin-bottom: 10px;}
+.center-bar .venues_card:hover { background: #e9edef; }
+.center-bar .venues_card:hover .image-front-btn { display: block; }
+.center-bar .venues_card:hover .venue-selected-wrapper { display: none; }
+
+.center-bar ul.card-content-box-list { padding: 0; list-style: none; display: flex; margin: 10px 0 0 0; }
+.center-bar ul.card-content-box-list li { width: 50%; }
+.center-bar .card-content-box a { text-decoration: none; }
+.center-bar .venues_card ul.card-content-box-list-item-left { padding: 0; list-style: none; }
+.center-bar .venues_card ul.card-content-box-list-item-left li p { margin: 0; font-size: 12px; }
+.center-bar .venues_card ul.card-content-box-list-item-left li p.greytext__cstelm0187 { color: #69717a; }
+.center-bar .venues_card ul.card-content-box-list-item-right li p.greytext__cstelm0187 { color: #69717a; }
+.center-bar .venues_card ul.card-content-box-list-item-right { padding: 0; list-style: none; }
+.center-bar .venues_card ul.card-content-box-list-item-right li p { margin: 0; font-size: 12px; }
+
+.center-bar .pagination__venues_cards .pagination { place-content: center; }
+
+.center-bar .venues_card .card-img-box { position: relative; }
+.center-bar .venues_card ul.image-front-btn {padding: 0;list-style: none;position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: 0 auto;text-align: -webkit-center;width: 100%;height: 100%;background: #00000069;padding-top: 10%;display: none;border-radius: 10px;}
+.center-bar .venues_card ul.image-front-btn .btn { width: 90%; margin-bottom: 10px; }
+.center-bar .venues_card .card-img-box img { border-radius: 10px; }
+.center-bar .venues_card .venue-selected-wrapper {color: #fff;position: absolute;bottom: 0;text-align: center;width: 100%;background: #008600;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;z-index: 1;}
+.center-bar .pagination-bottom-text { text-align: center; }
+.center-bar .pagination-bottom-text p { margin: 0; font-size: 13px; }
+.center-bar .pagination-bottom-text p a { text-decoration: none; }
+
+
+.capacity____calculator____wrapper a.btn.bluebtn {
+  width: 100%;
+  display: block;
+  margin: 20px 0;
+}
+
+/* center bar */
+
+
+/* right bar */
+.right-side-bar{ padding: 150px 10px 0px 10px; }
+.right-side-bar img.card-img-top { border-radius: 10px; }
+.right-side-bar a.card__cst__right__elem-title { text-decoration: none; }
+.right-side-bar p.card__cst__right__elem-text { font-size: 13px; margin: 10px 0 30px 0; }
+.right-side-bar a.btn.bluebtn { width: 100%; }
+/* right bar */
+
+#quickviewmodal .quick__card__venue__abs__box { position: absolute; bottom: 0; left: 5%; }
+#quickviewmodal .quick-view-card-image {position: relative;margin-bottom: 20px;}
+#quickviewmodal .quick__card__venue__abs__box h3 { color: #fff; }
+#quickviewmodal .quick__card__venue__abs__box p { color: #fff; }
+
+#quickviewmodal a.btn.whitebtn { border: 1px solid; width: 100%; }
+#quickviewmodal a.btn.greenbtn { border: 1px solid; width: 100%; }
+
+#quickviewmodal ul.venue__specs__list { list-style: none; padding: 0; margin-top: 20px; }
+#quickviewmodal ul.venue__specs__list li { font-size: 14px; }
+#quickviewmodal p.venue__conten___cst___elms { font-size: 14px; margin: 20px 0; }
+#quickviewmodal h5 { font-size: 16px; }
+
+/* inner result page */
+
+
 /* media query */
 @media screen and (max-width: 991px) {
-    section.banner-with-search .filter-bar ul{ padding: 25px 10px; }
-    section.banner-with-search .filter-bar li.filterfour { width: 20%; }
+  section.banner-with-search .filter-bar ul{ padding: 25px 10px; }
+  section.banner-with-search .filter-bar li.filterfour { width: 20%; }
     section.banner-with-search .filter-bar button.btn.search-btn { font-size: 12px; padding: 10px 0; }
     section.discover-section .discover-left-box { margin-bottom: 50px; }
     section.banner-with-search .filter-bar ul { display: block; }
@@ -134,5 +301,24 @@ footer ul li a { color: #94969f; font-size: 14px; font-weight: 400; text-decorat
     header nav.navbar .navbar-right-content { place-content: center; padding-bottom: 20px; }
     section.discover-section { margin: 50px 0; text-align: center; }
     .discover-section .abs-content-box {position: relative; width: 100%; }
-}
+    header.mobilenav { display: block; } 
+    header.desktopnav { display: none; }
+    header.mobilenav .bottom-bar { margin-top: 20px; }
+
+    .left-side-bar{ padding:30px 10px; }
+    .center-bar{ padding: 30px 10px; }
+    .right-side-bar{ padding: 30px 10px; }
+    ul.bottombar-venues-count-list { padding: 0; list-style: none; margin: 0; }
+  }
+  @media screen and (max-width: 767px) {
+    .left-side-bar .map-box img { width: 100%;}
+    .center-bar .venues_card .card-img-box img { border-radius: 10px; width: 100%;}
+  }
+  @media screen and (max-width: 425px) {
+    ul.bottombar-venues-count-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  }
 /* media query */

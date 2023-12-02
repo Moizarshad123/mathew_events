@@ -3,6 +3,9 @@
 @endsection
 
 @section('content')
+@if(str_contains(url()->current(), '/'))
+    @include('front.layouts.header')
+@endif
 <section class="banner-with-search">
     <div class="container">
         <div class="filter-bar">

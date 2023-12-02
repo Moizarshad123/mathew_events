@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('front.index');
     }
+
+    public function search_result(Request $request) {
+        return view('front.search_result');
+
+    }
 }
