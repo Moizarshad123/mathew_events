@@ -9,19 +9,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Promotions</a>
+                <a class="nav-link" href="{{ url('search-result') }}">Search Result</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Destinations</a>
+                <a class="nav-link" href="{{ url('single-venue') }}">Single Venue</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Discover</a>
+                <a class="nav-link" href="{{ url('checkout') }}">Checkout</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Luxury</a>
+              <a class="nav-link" href="{{ url('submit-request') }}">Submit Request</a>
             </li>
           </ul>
           <div class="navbar-right-content">
@@ -86,19 +86,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
+                <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Promotions</a>
+                <a class="nav-link" href="{{ url('search-result') }}">Search Result</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Destinations</a>
+                <a class="nav-link" href="{{ url('single-venue') }}">Single Venue</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Discover</a>
+                <a class="nav-link" href="{{ url('checkout') }}">Checkout</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Luxury</a>
+              <a class="nav-link" href="{{ url('submit-request') }}">Submit Request</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url('login')}}">Login</a>

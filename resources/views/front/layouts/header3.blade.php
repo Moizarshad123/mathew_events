@@ -40,7 +40,7 @@
                                 <p>Add up to 10 venues, then submit your request.</p>
                                 <div class="venue-card">
                                     <div class="img-box">
-                                        <img src="{{ asset('front/img/ven1.jpg')}}" class="img-fluid" alt="">
+                                        <img src="assets/img/ven1.jpg" class="img-fluid" alt="">
                                     </div>
                                     <div class="cont-box">
                                         <p class="hotel-name">Movenpick Hotel Karachi</p>
@@ -67,48 +67,27 @@
             </div>
         </div>
     </nav>
-    <div class="bottom-bar fixed-top">
-        <div class="container-fluid">
-            <div class="row row align-items-center">
+    <div class="single-venue-fix-bottom-bar fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="javascript:;" class="svfbb_link">Back to Karachi Cantt Railway Station, Doctor Daud Pota Road, Karachi Cantonment Karachi venues</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="svfbb_heading">Beach Luxury Hotel</h1>
+                    <p class="svfbb_text">Moulvi Tamizuddin Khan Road Karachi 74000</p>
+                </div>
                 <div class="col-lg-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Where is your event?"
-                            aria-label="Where is your event?" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
-                                class="fa fa-search" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-                <div class="col-lg-3"></div>
-                <div class="col-lg-2">
-                    <div class="bottombar-venues-count">
-                        <p>1-3 of 3 venues</p>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="bottombar-venues-count">
-                        <ul class="bottombar-venues-count-list">
-                            <li>Sort by:</li>
-                            <li>
-                                <div class="dropdown">
-                                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Cvent picks
-                                    </a>
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Cvent picks</a></li>
-                                        <li><a class="dropdown-item" href="#">Alphabetical</a></li>
-                                        <li><a class="dropdown-item" href="#">Distance</a></li>
-                                        <li><a class="dropdown-item" href="#">Rating</a></li>
-                                        <li><a class="dropdown-item" href="#">Total meeting space</a></li>
-                                        <li><a class="dropdown-item" href="#">Guest Rooms</a></li>
-                                        <hr>
-                                        <li><a class="dropdown-item" href="#">About Sorting</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li>
+                            <a href="javascript:;" class="btn bluebtn">Select Venue</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="svfbb_link_right">Learn how the Cvent Supplier Network works</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -141,7 +120,7 @@
                         <a class="nav-link" href="{{ url('submit-request') }}">Submit Request</a>
                       </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login') }}">Login</a>
+                        <a href="{{ url('login') }}" class="headerlinkslogin">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sign up</a>

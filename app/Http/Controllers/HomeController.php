@@ -6,21 +6,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+   
     public function index()
     {
         return view('front.index');
@@ -30,4 +16,20 @@ class HomeController extends Controller
         return view('front.search_result');
 
     }
+    public function single_venue(Request $request) {
+        return view('front.events.single-venue');
+    }
+
+    public function checkout(Request $request) {
+        return view('front.events.checkout');
+    }
+
+
+    public function submit_request(Request $request) {
+        return view('front.events.submit_request');
+    }
+
+    
+
+    
 }

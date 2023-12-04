@@ -19,8 +19,27 @@ a.btn.greenbtn {
     background: #008600;
     color: #fff;
     border-radius: 10px;
-}
-
+  }
+  .btn.greenbtn {
+    background: #008600;
+    color: #fff;
+    border-radius: 10px;
+  }
+a.btn.greybtn {
+    color: #515257;
+    background: #dcdee1;
+    border-radius: 10px;
+  }
+  .btn.greybtn {
+    color: #515257;
+    background: #dcdee1;
+    border-radius: 10px;
+  }
+a.btn.lightbluebtn {
+    color: #fff;
+    background: #1a99d2;
+    border-radius: 10px;
+  }
 /* default */
 
 /* nav bar header */
@@ -36,6 +55,17 @@ header .bottom-bar { text-align: center; background: #fff; margin-top: 60px;}
 header .bottom-bar .content { padding: 10px 0px; }
 header .bottom-bar .content h1 { margin: 0; font-size: 21px; color: #1a2026;}
 header .bottom-bar .content p { color: #69717a; margin-bottom: 0; font-size: 14px; }
+
+
+header .single-venue-fix-bottom-bar { text-align: left; background: #fff; margin-top: 60px; box-shadow: 0 2px 4px rgba(0,0,0,.2);}
+header .single-venue-fix-bottom-bar .content { padding: 10px 0px; }
+header .single-venue-fix-bottom-bar .content h1 { margin: 0; font-size: 21px; color: #1a2026;}
+header .single-venue-fix-bottom-bar .content p { color: #69717a; margin-bottom: 0; font-size: 14px; }
+header .single-venue-fix-bottom-bar h1.svfbb_heading { font-size: 22px; }
+header .single-venue-fix-bottom-bar p.svfbb_text { font-size: 14px; margin: 0; }
+header .single-venue-fix-bottom-bar ul { text-align: end; padding: 0; list-style: none; margin:0; }
+header .single-venue-fix-bottom-bar a.svfbb_link { font-size: 12px; text-decoration: none; }
+header .single-venue-fix-bottom-bar a.svfbb_link_right { font-size: 12px; text-decoration: none; color: #000; }
 
 header nav.navbar .venuelistdropdownparent { width: 300px; left: -50%; top: 40px; padding: 0; }
 header nav.navbar .venuelistdropdownparent .venuelistdropdown h3 { font-size: 15px; }
@@ -154,6 +184,7 @@ header.desktopnav.header-inner .bottom-bar .bottombar-venues-count { text-align:
 header.desktopnav.header-inner .bottom-bar .bottombar-venues-count p { margin: 0; }
 header.desktopnav.header-inner .bottom-bar ul.bottombar-venues-count-list { padding: 0; list-style: none; display: flex; align-items: center; margin: 0; justify-content: end;}
 header.desktopnav.header-inner .bottom-bar ul.bottombar-venues-count-list li { margin-right: 10px; }
+
 
 section.results-page-main-section{ background: #f7f8f9; }
 
@@ -281,6 +312,95 @@ section.results-page-main-section{ background: #f7f8f9; }
 /* inner result page */
 
 
+/* single venue page */
+section.single-venue-gallery-sec { margin-top: 150px; position:relative; }
+a.btn.btn-view-gallery { position: absolute; right: 2%; bottom: 5%; border: 1px solid #efefef; border-radius: 10px; color: #fff; }
+section.single-venue-gallery-sec .gallery-wrapper img { margin: 10px 0; }
+
+section.single-venue-details-nav { background-color: #fff; position: relative; top: 0; box-shadow: 0 2px 4px rgba(0,0,0,.2); padding: 10px 0px;}
+
+section.single-venue-details-nav ul { padding: 0; list-style: none; display: flex; margin:0px; flex-flow: wrap;}
+section.single-venue-details-nav ul li { width: auto; margin: 0 30px; }
+section.single-venue-details-nav ul li a { font-size: 14px; text-decoration: none; color: #1a2026; }
+
+a.naav-item.active { position: relative; }
+a.naav-item.active:after { content: ''; background: #1daa42; height: 3px; width: 100%; display: block; position: absolute; bottom: -10px; }
+
+
+section.venue-overview { padding: 50px 0; }
+section.venue-overview .content h2 { font-size: 20px; }
+section.venue-overview ul { padding: 0; list-style: none; }
+section.venue-overview ul li { font-size: 15px; color: #69717a; }
+section.venue-overview ul li a { color: #000; }
+section.venue-overview ul li p { color: #000; margin: 0; }
+
+section.near__by__section { padding-bottom: 40px; }
+section.near__by__section .content h2 { font-size: 20px; }
+section.near__by__section .nearby__venue__name { text-decoration: none; }
+section.near__by__section .nearby__venue__vimage { border-radius: 10px; margin: 20px 0; }
+section.near__by__section .btn.bluebtn{width: 100%;}
+section.near__by__section iframe { width: 100%; }
+
+.moredetails___content { padding: 0 0 50px 0; }
+.moredetails___content h4 { font-size: 20px; }
+.moredetails___content p { font-size: 13px; }
+.moredetails___content__right__box h4 { font-size: 20px; }
+.moredetails___content__right__box a.btn.whitebtn { border: 1px solid; }
+.moredetails___content__right__box p { font-size: 13px; margin: 20px 0 0 0; }
+.moredetails___content__right__box a { text-decoration: none; }
+
+
+
+.faqs-section h4.faq_heading_box { background: #efefef; padding: 5px 10px; font-size: 16px; }
+.faqs-section .faq__box__wrapper { padding: 20px 0; }
+.faqs-section .faq__box__wrapper p { margin: 30px 0 10px 0; font-size: 15px; color: #000; font-weight: 400; }
+.faqs-section .faq__answer { color: #565656; }
+/* single venue page */
+
+
+/* submit request page */
+section.request__info__section { background-color: #eee; padding: 20px; }
+section.request__info__section .venues-cards-wrapper { background: #fff; padding: 40px; }
+section.request__info__section .venues-cards-wrapper ul.card-content-box-list { padding: 0; list-style: none; display: flex; flex-flow: nowrap; }
+section.request__info__section .delete___venue__btn___wrapper { position: absolute; right: 0; top: 0; }
+section.request__info__section .venues_card { position: relative; }
+section.request__info__section ul.card-content-box-list-item-left { padding: 0; list-style: none; }
+section.request__info__section ul.card-content-box-list-item-left li p.greytext__cstelm0187 { margin: 0 0 10px 0; font-size: 14px; }
+section.request__info__section ul.card-content-box-list-item-right { padding: 0; list-style: none; margin-left: 20px;}
+section.request__info__section ul.card-content-box-list-item-right li p.greytext__cstelm0187 { margin: 0 0 10px 0; font-size: 14px; }
+.continue___searching___wrapper {background: #fff;padding: 20px 30px;}
+.continue___searching___wrapper__inner {background: #f2f2f2;padding: 20px;}
+.continue___searching___wrapper p { margin-bottom: 0px; }
+.bottom___btns___wrapper { margin-top: 50px; }
+/* submit request page */
+
+
+
+/* checkout page */
+
+section.checkout-form-section { background: #eee; padding: 50px 0 50px 0; }
+section.checkout-form-section .card { border: none; padding: 50px; }
+section.checkout-form-section .card-header { padding: 0; background: #fff; border: none; margin-bottom: 20px; }
+section.checkout-form-section a.nav-link.tab-pills.active { background: #318dba; color: #ddd; font-weight: 200; }
+section.checkout-form-section a.nav-link.tab-pills.active span { background-color: #fff; color: #318dba; }
+section.checkout-form-section a.nav-link.tab-pills span { border: 1px solid #ddd; padding: 5px; display: inline-block; height: 30px; width: 30px; line-height: normal; border-radius: 100%; margin-right: 10px; }
+section.checkout-form-section a.nav-link.tab-pills { border-radius: 0; position: relative; padding: 5px 0; color: #b0b2b4; }
+section.checkout-form-section a.nav-link.tab-pills.active:after { content: ''; height: 30px; width: 30px; background: #318dba; display: block; position: absolute; right: -5%; top: 13%; transform: rotate(45deg); border-top: 2px solid #fff; border-right: 2px solid #fff; z-index: 999; }
+section.checkout-form-section .left-label-cstelms { font-size: 16px; letter-spacing: 0.5px; text-transform: uppercase; color: #318dba; }
+section.checkout-form-section .radio-btn-wrapper { margin: 20px 0; }
+section.checkout-form-section .input-label-wrapper { margin: 10px 0; }
+section.checkout-form-section .radio-btn-wrapper input[type="radio"] { width: auto; margin: 0 5px 0 0px; vertical-align: baseline; }
+section.checkout-form-section label.radio-inline { margin: 0 30px 0 0px; }
+section.checkout-form-section .congratulations-message ul { padding: 0; list-style: none; column-count: 2; }
+section.checkout-form-section .congratulations-message ul li i { color: #264c69; }
+section.checkout-form-section .venue_card__cst___elms a { color: #264c69; font-size: 20px; text-decoration: none; }
+section.checkout-form-section .card-footer{ background-color: transparent; }
+section.checkout-form-section ul.details___privacypolicy__list { padding: 0; list-style: none; display: flex; }
+section.checkout-form-section ul.details___privacypolicy__list li { margin: 0 20px 0 0px; }
+section.checkout-form-section ul.details___privacypolicy__list li a { text-decoration: none; }
+/* checkout page */
+
+
 /* media query */
 @media screen and (max-width: 991px) {
   section.banner-with-search .filter-bar ul{ padding: 25px 10px; }
@@ -303,22 +423,40 @@ section.results-page-main-section{ background: #f7f8f9; }
     .discover-section .abs-content-box {position: relative; width: 100%; }
     header.mobilenav { display: block; } 
     header.desktopnav { display: none; }
-    header.mobilenav .bottom-bar { margin-top: 20px; }
+    header.mobilenav .bottom-bar { margin-top: 20px; box-shadow: -1px 6px 7px 1px #efefef; }
 
     .left-side-bar{ padding:30px 10px; }
     .center-bar{ padding: 30px 10px; }
     .right-side-bar{ padding: 30px 10px; }
-    ul.bottombar-venues-count-list { padding: 0; list-style: none; margin: 0; }
+    header.mobilenav .bottom-bar ul.bottombar-venues-count-list { margin: 0; padding: 0; list-style: none; }
+
+    section.single-venue-gallery-sec{ margin-top: 50px; }
+    .venue-overview img.gallery__photos { margin-bottom: 20px;}
+
+    section.single-venue-details-nav ul { justify-content: center; }
+    section.single-venue-details-nav ul li { width: auto; margin: 0 10px; }
+    section.near__by__section .btn.bluebtn { margin-bottom: 20px; }
+
+    section.request__info__section .venues-cards-wrapper .venues_card img { width: 100%; margin-bottom: 20px; }
+
+    section.checkout-form-section .card { padding: 20px; }
+    section.checkout-form-section a.nav-link.tab-pills{ width: 50%; }
+    section.checkout-form-section a.nav-link.tab-pills.active:after{display: none;}
+
   }
   @media screen and (max-width: 767px) {
     .left-side-bar .map-box img { width: 100%;}
     .center-bar .venues_card .card-img-box img { border-radius: 10px; width: 100%;}
+    .bottombar-venues-count p { margin: 10px 0 0 0; }
   }
   @media screen and (max-width: 425px) {
-    ul.bottombar-venues-count-list {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
+      ul.bottombar-venues-count-list { display: flex; justify-content: center; align-items: center; }
+      .single-venue-details-nav a.naav-item.active:after{ bottom: 0; }
+      .single-venue-gallery-sec a.btn.btn-view-gallery { right: 10%; }
+      section.request__info__section ul.card-content-box-list-item-right{margin-left: 0;}
+      .bottom___btns___wrapper { text-align: center; }
+      .bottom___btns___wrapper .btn { margin-bottom: 10px; margin-top: 10px; }
+      .continue___searching___wrapper p { margin-bottom: 20px; }
+      section.checkout-form-section a.nav-link.tab-pills { width: 100%; }
   }
 /* media query */
