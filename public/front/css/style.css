@@ -400,6 +400,42 @@ section.checkout-form-section ul.details___privacypolicy__list li { margin: 0 20
 section.checkout-form-section ul.details___privacypolicy__list li a { text-decoration: none; }
 /* checkout page */
 
+/* contact us page */
+section.contactus-main-section { margin: 40px 0; }
+section.contactus-main-section .contact-person-info-img { float: right; }
+section.contactus-main-section .content_section { padding: 50px 0px; text-align: center; }
+section.contactus-main-section ul.contact-person-info li {font-weight: bold;}
+section.contactus-main-section ul.contact-person-info { margin: 0; }
+section.contactus-main-section a.btn.playpricegamebtn { box-shadow: var(--shd,0 1px 4px rgba(0,0,0,.6)); border-radius: 0; background: #3d9be9; color: #fff; margin: 20px 0; width: 50%; padding: 10px; font-size: 30px; }
+
+section.social-media-custom-section { margin: 50px 0px; }
+section.social-media-custom-section p.smcs-content { text-align: center; }
+section.social-media-custom-section ul.os-cstelm4i12_socialmedia_list { padding: 0; list-style: none; display: flex; flex-wrap: wrap; }
+section.social-media-custom-section ul.os-cstelm4i12_socialmedia_list li { width: 25%; }
+section.social-media-custom-section ul.os-cstelm4i12_socialmedia_list li img { width: auto; height: 50px; margin: 0 auto; display: table; }
+section.social-media-custom-section .left-content-cus9327 p { margin: 0; }
+
+section.magicteamandstaff-section { margin: 50px 0; }
+section.magicteamandstaff-section p.text-8136 { color: #3d9be9; font-weight: 500; margin-bottom: 10px; }
+section.magicteamandstaff-section .content_section { margin-bottom: 50px; }
+
+.contact-team-sec ul.team-card-list { list-style: none; padding: 0 50px; }
+.contact-team-sec ul.team-card-list li .teamcard { display: flex; flex-wrap: wrap; align-items: center; }
+.contact-team-sec ul.team-card-list li .teamcard .tc___img-box { width: 40%; }
+.contact-team-sec ul.team-card-list li .teamcard .tc___content-box { width: 60%; }
+.contact-team-sec ul.team-card-list li .teamcard {margin-bottom: 50px;}
+.contact-team-sec ul.team-card-list li .teamcard .tc___img-box img { width: 300px; height: 100%; }
+
+.game-iframe iframe { height: 100vh; width: 100%; border: 1px solid; }
+.game-iframe { margin: 50px 0; }
+/* contact us page */
+
+
+/* special thanks */
+section.special-thanks-section .content_sec h6 {text-align: center;color: #fc0;}
+section.special-thanks-section .content_sec p { font-weight: bold; text-align: center; }
+/* special thanks */
+
 
 /* media query */
 @media screen and (max-width: 991px) {
@@ -443,11 +479,23 @@ section.checkout-form-section ul.details___privacypolicy__list li a { text-decor
     section.checkout-form-section a.nav-link.tab-pills{ width: 50%; }
     section.checkout-form-section a.nav-link.tab-pills.active:after{display: none;}
 
+    section.contactus-main-section a.btn.playpricegamebtn{width: 100%;}
+    .contact-team-sec ul.team-card-list li .teamcard .tc___img-box img { width: 200px; }
+
   }
   @media screen and (max-width: 767px) {
     .left-side-bar .map-box img { width: 100%;}
     .center-bar .venues_card .card-img-box img { border-radius: 10px; width: 100%;}
     .bottombar-venues-count p { margin: 10px 0 0 0; }
+
+    section.contactus-main-section .contact-person-info-img { float: none; margin: 0 auto 20px auto; display: table; }
+    section.social-media-custom-section ul.os-cstelm4i12_socialmedia_list { margin-top: 30px; }
+
+    .contact-team-sec ul.team-card-list li .teamcard { display: block; }
+    .contact-team-sec ul.team-card-list { list-style: none; padding: 0 0px; }
+    .contact-team-sec ul.team-card-list li .teamcard .tc___img-box img { width: auto; margin-bottom: 20px; }
+    .contact-team-sec ul.team-card-list li .teamcard .tc___img-box { width: 100%; }
+    .contact-team-sec ul.team-card-list li .teamcard .tc___content-box { width: 100%; }
   }
   @media screen and (max-width: 425px) {
       ul.bottombar-venues-count-list { display: flex; justify-content: center; align-items: center; }
