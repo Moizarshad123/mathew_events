@@ -17,6 +17,30 @@ class Venue extends Model
         "lng",
         "phone",
         "website",
-        "zip"
+        "zip",
+        "chain",
+        "built",
+        "venue_type",
+        "brand",
+        "rennovated",
+        "guest_rooms",
+        "ratings",
+
+        "distance_from_airport",
+        "parking",
+        "total_meeting_space",
+        "largest_room",
+        "second_largest_room",
+        "meeting_rooms",
+        "total_guest_rooms",
+        "suites",
+        "room_features",
+        "business_services",
+        "recreational_activities",
+        "venue_accessiblity",
+        "facilities",
+        "description",
+        "cancellation_policy",
+
     ];
 }

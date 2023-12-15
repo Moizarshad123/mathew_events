@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\VenueController;
 
+use App\Http\Controllers\HomeController;
 
 
 
@@ -32,7 +33,7 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::match(['get','post'],'upload-image', [EventController::class, 'upload_images'])->name('uploadImages');
 
-
+    Route::resource('venues', VenueController::class);
     // Route::match(['get', 'post'], '/setting', [AdminController::class, 'setting'])->name('setting');
     // Route::get('/change-password', [AdminController::class, 'changePassword'])->name('changePassword');
     // Route::post('/update-admin-password', [AdminController::class, 'updateAdminPassword'])->name('updateAdminPassword');

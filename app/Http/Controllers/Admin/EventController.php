@@ -55,7 +55,7 @@ class EventController extends Controller
 
         } 
         else {
-            return view('front.events.upload_images', compact('venues'));
+            return view('admin.venues.upload_images', compact('venues'));
         }
     }
 }

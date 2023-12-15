@@ -66,6 +66,13 @@
             </a>
           </li>
 
+          <li class="menu-item {{ str_contains(url()->current(), 'admin/venues') ? 'active' : '' }}">
+            <a href="{{ route('admin.venues.index') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Analytics">Venues</div>
+            </a>
+          </li>
+
           <li class="menu-item {{ str_contains(url()->current(), 'admin/upload-image') ? 'active' : '' }}">
             <a href="{{ route('admin.uploadImages') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
