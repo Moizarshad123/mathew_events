@@ -10,8 +10,8 @@ use App\Http\Controllers\HomeController;
 
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('search-result', [HomeController::class, 'search_result']);
-Route::get('single-venue', [HomeController::class, 'single_venue'])->name('singleVenue');
+Route::get('search-venue', [HomeController::class, 'search_venue']);
+Route::get('venue-detail/{id}', [HomeController::class, 'venue_detail']);
 Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('submit-request', [HomeController::class, 'submit_request'])->name('submitRequest');
 

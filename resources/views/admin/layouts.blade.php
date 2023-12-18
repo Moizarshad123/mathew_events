@@ -8,7 +8,8 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard - Events</title>
+    <title>Events</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="description" content="" />
 
@@ -32,6 +33,9 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{URL::asset('admin/plugins/toastr/toastr.min.css')}}">
+
 
     <!-- Page CSS -->
     @yield('css')
@@ -50,17 +54,7 @@
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
-                    @if(session()->has('success'))
-                        <div class="alert alert-success">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
-
-                    @if(session()->has('error'))
-                        <div class="alert alert-danger">
-                            {{ session()->get('error') }}
-                        </div>
-                    @endif
+                  
                     @yield('content')
                     <div class="content-backdrop fade"></div>
                 </div>
@@ -98,6 +92,13 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="{{URL:: asset('admin/plugins/toastr/toastr.min.js')}}"></script>
+    @if(session()->has('success'))
+        <script type="text/javascript">  toastr.success('{{ session('success')}}');</script>
+    @endif
+    @if(session()->has('error'))
+        <script type="text/javascript"> toastr.error('{{ session('error')}}');</script>
+    @endif
     @yield('js')
 
 </body>

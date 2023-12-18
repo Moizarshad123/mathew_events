@@ -1,48 +1,63 @@
 @extends('front.layouts.app')
 @section('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 @endsection
 
 @section('content')
 @if(str_contains(url()->current(), '/'))
-    @include('front.layouts.header')
+@include('front.layouts.header')
 @endif
 <section class="banner-with-search">
     <div class="container">
         <div class="filter-bar">
-            <ul>
-                <li class="filterone">
-                    <input type="text" class="form-control event_filters" placeholder="Where is your event?"></li>
-                <li class="filtertwo">
-                    <input type="date" class="form-control startdate_filters" placeholder="Start Date" />
-                    <span>Start Date (Optional)</span>
-                </li>
-                <li class="filterthree">
-                    <input type="date" class="form-control enddate_filters" placeholder="End Date" />
-                    <span>End Date (Optional)</span>
-                </li>
-                <li class="filterfour">
-                    <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn">Event Size <i
-                                class="fa fa-angle-down"></i></button>
-                        <div id="myDropdown" class="dropdown-content">
-                            <div class="conboxcstelm">
-                                <ul>
-                                    <li>attendees per day <input type="text" placeholder="100"></li>
-                                    <hr>
-                                    <li>Guest rooms per night <input type="text" placeholder="100"></li>
-                                </ul>
+            <form action="{{ url('search-venue') }}" method="GET">
+                @csrf
+                <ul>
+                    <li class="filterone">
+                        <select name="venue_id" class="form-control event_filters" id="searchVenue" required>
+                            <option value="">Select Venue</option>
+                            @foreach ($venues as $item)
+                            <option value="{{ $item->id }}">{{ $item->company }}</option>
+                            @endforeach
+                        </select>
+                    </li>
+                    <li class="filtertwo">
+                        <input type="date" name="start_date" class="form-control startdate_filters"
+                            placeholder="Start Date" />
+                        <span>Start Date (Optional)</span>
+                    </li>
+                    <li class="filterthree">
+                        <input type="date" name="end_date" class="form-control enddate_filters"
+                            placeholder="End Date" />
+                        <span>End Date (Optional)</span>
+                    </li>
+                    <li class="filterfour">
+                        <div class="dropdown">
+                            <a onclick="myFunction()" href="javascript:;" class="dropbtn">Event Size <i
+                                    class="fa fa-angle-down"></i></a>
+                            <div id="myDropdown" class="dropdown-content">
+                                <div class="conboxcstelm">
+                                    <ul>
+                                        <li>attendees per day <input type="text" placeholder="100"
+                                                name="attendees_per_day"></li>
+                                        <hr>
+                                        <li>Guest rooms per night <input type="text" placeholder="100"
+                                                name="guest_rooms"></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <span>Optional</span>
-                </li>
-                <li class="filterfive">
-                    <button class="btn search-btn">Find venues</button>
-                </li>
-            </ul>
+                        <span>Optional</span>
+                    </li>
+                    <li class="filterfive">
+                        <button class="btn search-btn" type="submit">Find venue</button>
+                    </li>
+                </ul>
+            </form>
         </div>
     </div>
-    <div class="banner-bottom-box">
+    {{-- <div class="banner-bottom-box">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-10">
@@ -50,7 +65,7 @@
                         <p>BREAKOUT Meetings at Hard Rock: Expect the Unexpected! </p>
                         <p>Every success story can trace its way back to an experience. One that changed those bold
                             enough to be a part of it. These are our BREAKOUT moments. So when you are ready to take
-                            care of business, we’re ready to make it happen. This is Hard Rock and this is an event
+                            care of business, we're ready to make it happen. This is Hard Rock and this is an event
                             performance like no other. </p>
                         <a href="javascript:;">Show More</a>
                     </div>
@@ -62,7 +77,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </section>
 
 <section class="discover-section">
@@ -303,5 +318,12 @@
 @endsection
 
 @section('js')
-@endsection
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    var $disabledResults = $(".event_filters");
+    $disabledResults.select2();
 
+    
+
+</script>
+@endsection
