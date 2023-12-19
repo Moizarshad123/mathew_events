@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\VenueController;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
+
 
 
 
@@ -15,6 +17,11 @@ Route::get('venue-detail/{id}', [HomeController::class, 'venue_detail']);
 Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('submit-request', [HomeController::class, 'submit_request'])->name('submitRequest');
 
+Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
+Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
+Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 
 
 

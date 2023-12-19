@@ -30,24 +30,30 @@
                         <button class="btn navbarbtntop dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-building"></i> Venue list
-                            <span class="venuecount">1</span>
+                            <span class="venuecount">{{ Cart::getTotalQuantity() }}</span>
                         </button>
+                        @php $cartItems = \Cart::getContent();  @endphp
                         <div class="dropdown-menu venuelistdropdownparent" aria-labelledby="dropdownMenuButton1">
 
                             <div class="venuelistdropdown">
                                 <h3>Venue List</h3>
                                 <p>Add venues!</p>
                                 <p>Add up to 10 venues, then submit your request.</p>
-                                <div class="venue-card">
-                                    <div class="img-box">
-                                        <img src="{{ asset('front/img/ven1.jpg')}}" class="img-fluid" alt="">
+                                @forelse ($cartItems as $item)
+                                    <div class="venue-card">
+                                        <div class="img-box">
+                                            <img src="{{$item["attributes"]->image}}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="cont-box">
+                                            <p class="hotel-name">{{ $item->name }}</p>
+                                            <p class="hotel-location">Karachi, Pakistan</p>
+                                            <a href="javascript:;">Remove</a>
+                                        </div>
                                     </div>
-                                    <div class="cont-box">
-                                        <p class="hotel-name">Movenpick Hotel Karachi</p>
-                                        <p class="hotel-location">Karachi, Pakistan</p>
-                                        <a href="javascript:;">Remove</a>
-                                    </div>
-                                </div>
+                                    
+                                @empty
+                                    
+                                @endforelse
                             </div>
 
                             <div class="venuelistdropdownfooter">

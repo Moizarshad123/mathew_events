@@ -1443,7 +1443,17 @@
                                                     <a href="javascript:;" data-image="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}" data-company='{{$venue->company}}' data-city='{{$venue->city}}' data-guest_rooms={{$venue->total_guest_rooms}} data-rating="{{ $venue->rating}}" data-meeting_rooms="{{ $venue->meeting_rooms}}" data-meeting_space="{{ $venue->total_meeting_space}}" data-largest_room="{{ $venue->largest_room}}" data-chain="{{ $venue->chain}}" data-brand="{{ $venue->brand }}" data-built="{{ $venue->built}}" data-distance_from_airport="{{ $venue->distance_from_airport }}" data-description="{{ $venue->description }}" data-facilities="{{ $venue->facilities}}" data-id="{{ $venue->id }}" data-venue_detail_url="{{ url('venue-detail/'.$venue->id) }}" class="btn whitebtn" id="quickView">Quick View</a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:;" class="btn bluebtn">Select Venue</a>
+                                                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $venue->id }}" name="id">
+                                                        <input type="hidden" value="{{ $venue->company }}" name="name">
+                                                        <input type="hidden" value="{{ $venue->city }}" name="">
+
+                                                        <input type="hidden" value="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}"  name="image">
+                                                        <button class="btn bluebtn">Select Venue</button>
+                                                    </form>
+                                                    {{--                                                     
+                                                    <a href="javascript:;" id="selectVenue" data-id="{{ $venue->id }}" data-venue_detail_url="{{ url('venue-detail/'.$venue->id) }}" class="btn bluebtn">Select Venue</a> --}}
                                                 </li>
                                             </ul>
                                         </div>
