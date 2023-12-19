@@ -317,7 +317,7 @@ section.single-venue-gallery-sec { margin-top: 150px; position:relative; }
 a.btn.btn-view-gallery { position: absolute; right: 2%; bottom: 5%; border: 1px solid #efefef; border-radius: 10px; color: #fff; }
 section.single-venue-gallery-sec .gallery-wrapper img { margin: 10px 0; }
 
-section.single-venue-details-nav { background-color: #fff; position: relative; top: 0; box-shadow: 0 2px 4px rgba(0,0,0,.2); padding: 10px 0px;}
+section.single-venue-details-nav { background-color: #fff; position: sticky; top: 145px; box-shadow: 0 2px 4px rgba(0,0,0,.2); padding: 10px 0px;}
 
 section.single-venue-details-nav ul { padding: 0; list-style: none; display: flex; margin:0px; flex-flow: wrap;}
 section.single-venue-details-nav ul li { width: auto; margin: 0 30px; }
@@ -334,7 +334,7 @@ section.venue-overview ul li { font-size: 15px; color: #69717a; }
 section.venue-overview ul li a { color: #000; }
 section.venue-overview ul li p { color: #000; margin: 0; }
 
-section.near__by__section { padding-bottom: 40px; }
+section.near__by__section { padding-bottom: 40px; margin-top: 50px; }
 section.near__by__section .content h2 { font-size: 20px; }
 section.near__by__section .nearby__venue__name { text-decoration: none; }
 section.near__by__section .nearby__venue__vimage { border-radius: 10px; margin: 20px 0; }
@@ -481,6 +481,8 @@ section.special-thanks-section .content_sec p { font-weight: bold; text-align: c
 
     section.contactus-main-section a.btn.playpricegamebtn{width: 100%;}
     .contact-team-sec ul.team-card-list li .teamcard .tc___img-box img { width: 200px; }
+
+    section.single-venue-details-nav{top: 0;}
 
   }
   @media screen and (max-width: 767px) {

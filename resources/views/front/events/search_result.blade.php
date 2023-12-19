@@ -3,7 +3,7 @@
 @endsection
 
 @section('content')
-@if(str_contains(url()->current(), 'search-result'))
+@if(str_contains(url()->current(), 'search-venue'))
     @include('front.layouts.header2')
 @endif
 
@@ -1431,298 +1431,60 @@
                 <div class="center-bar">
                     <div class="venues-cards-wrapper">
                         <div class="venues_card">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                    <div class="card-img-box">
-                                        <img src="{{ asset('front/img/ven1.webp') }}" class="img-fluid" alt="">
-                                        <ul class="image-front-btn">
-                                            <li><a href="javascript:;" class="btn whitebtn" data-bs-toggle="modal"
-                                                    data-bs-target="#quickviewmodal">Quick View</a></li>
-                                            <li><a href="javascript:;" class="btn bluebtn">Select Venue</a></li>
-                                        </ul>
+                            @foreach ($venues as $venue)
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <div class="card-img-box">
+                                        
+                                            <img src="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}" class="img-fluid" alt="">
+                                            <ul class="image-front-btn">
+                                                {{-- <li><a href="javascript:;" class="btn whitebtn" data-bs-toggle="modal" data-bs-target="#quickviewmodal">Quick View</a></li> --}}
+                                                <li>
+                                                    <a href="javascript:;" data-image="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}" data-company='{{$venue->company}}' data-city='{{$venue->city}}' data-guest_rooms={{$venue->total_guest_rooms}} data-rating="{{ $venue->rating}}" data-meeting_rooms="{{ $venue->meeting_rooms}}" data-meeting_space="{{ $venue->total_meeting_space}}" data-largest_room="{{ $venue->largest_room}}" data-chain="{{ $venue->chain}}" data-brand="{{ $venue->brand }}" data-built="{{ $venue->built}}" data-distance_from_airport="{{ $venue->distance_from_airport }}" data-description="{{ $venue->description }}" data-facilities="{{ $venue->facilities}}" data-id="{{ $venue->id }}" data-venue_detail_url="{{ url('venue-detail/'.$venue->id) }}" class="btn whitebtn" id="quickView">Quick View</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" class="btn bluebtn">Select Venue</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                    <div class="card-content-box">
-                                        <a href="javascript:;">Regent Plaza Hotel & Convention Centre Karachi</a>
-                                        <ul class="card-content-box-list">
-                                            <li>
-                                                <ul class="card-content-box-list-item-left">
-                                                    <li>
-                                                        <p>Hotel In Karachi</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Guest rooms: 413</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Meeting rooms: 8</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Distance: 0.8 mi</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul class="card-content-box-list-item-right">
-                                                    <li>
-                                                        <p>Independent / Other</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Total meeting space: 65,000
-                                                            sq. ft.</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="venues_card">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                    <div class="card-img-box">
-                                        <img src="{{ asset('front/img/ven1.webp') }}" class="img-fluid" alt="">
-                                        <ul class="image-front-btn">
-                                            <li><a href="javascript:;" class="btn whitebtn" data-bs-toggle="modal"
-                                                    data-bs-target="#quickviewmodal">Quick View</a></li>
-                                            <li><a href="javascript:;" class="btn greenbtn"><i
-                                                        class="fa fa-check"></i> Venue Selected</a></li>
-                                        </ul>
-                                        <div class="venue-selected-wrapper">
-                                            <div class="venue-selected-wrapper_inner">
-                                                <i class="fa fa-check"></i> Venue Selected</a>
-                                            </div>
+                                    <div class="col-lg-8 col-md-12 col-sm-12">
+                                        <div class="card-content-box">
+                                            <a href="{{ url('venue-detail/'.$venue->id) }}">{{ $venue->company }}</a>
+                                            <ul class="card-content-box-list">
+                                                <li>
+                                                    <ul class="card-content-box-list-item-left">
+                                                        <li>
+                                                            <p>Hotel In {{ $venue->city ?? "" }}</p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="greytext__cstelm0187">Guest rooms: {{ $venue->total_guest_rooms ?? "0" }}</p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="greytext__cstelm0187">Meeting rooms: {{ $venue->meeting_rooms ?? "0" }}</p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="greytext__cstelm0187">Distance: {{ $venue->distance_from_airport ?? "0.0 km" }}</p>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <ul class="card-content-box-list-item-right">
+                                                        <li>
+                                                            <p>Independent / Other</p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="greytext__cstelm0187">Total meeting space: {{ $venue->total_meeting_space ?? "0.0 sq ft" }}</p>
+                                                            <p class="greytext__cstelm0187">Largest Room: {{ $venue->largest_room ?? "0.0 sq ft" }}</p>
+
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                    <div class="card-content-box">
-                                        <a href="javascript:;">Regent Plaza Hotel & Convention Centre Karachi</a>
-                                        <ul class="card-content-box-list">
-                                            <li>
-                                                <ul class="card-content-box-list-item-left">
-                                                    <li>
-                                                        <p>Hotel In Karachi</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Guest rooms: 413</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Meeting rooms: 8</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Distance: 0.8 mi</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul class="card-content-box-list-item-right">
-                                                    <li>
-                                                        <p>Independent / Other</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Total meeting space: 65,000
-                                                            sq. ft.</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="venues_card">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                    <div class="card-img-box">
-                                        <img src="{{ asset('front/img/ven1.webp') }}" class="img-fluid" alt="">
-                                        <ul class="image-front-btn">
-                                            <li><a href="javascript:;" class="btn whitebtn" data-bs-toggle="modal"
-                                                    data-bs-target="#quickviewmodal">Quick View</a></li>
-                                            <li><a href="javascript:;" class="btn bluebtn">Select Venue</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-md-8 col-sm-8">
-                                    <div class="card-content-box">
-                                        <a href="javascript:;">Regent Plaza Hotel & Convention Centre Karachi</a>
-                                        <ul class="card-content-box-list">
-                                            <li>
-                                                <ul class="card-content-box-list-item-left">
-                                                    <li>
-                                                        <p>Hotel In Karachi</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Guest rooms: 413</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Meeting rooms: 8</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Distance: 0.8 mi</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul class="card-content-box-list-item-right">
-                                                    <li>
-                                                        <p>Independent / Other</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Total meeting space: 65,000
-                                                            sq. ft.</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="venues_card">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                    <div class="card-img-box">
-                                        <img src="{{ asset('front/img/ven1.webp') }}" class="img-fluid" alt="">
-                                        <ul class="image-front-btn">
-                                            <li><a href="javascript:;" class="btn whitebtn" data-bs-toggle="modal"
-                                                    data-bs-target="#quickviewmodal">Quick View</a></li>
-                                            <li><a href="javascript:;" class="btn bluebtn">Select Venue</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-md-8 col-sm-8">
-                                    <div class="card-content-box">
-                                        <a href="javascript:;">Regent Plaza Hotel & Convention Centre Karachi</a>
-                                        <ul class="card-content-box-list">
-                                            <li>
-                                                <ul class="card-content-box-list-item-left">
-                                                    <li>
-                                                        <p>Hotel In Karachi</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Guest rooms: 413</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Meeting rooms: 8</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Distance: 0.8 mi</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul class="card-content-box-list-item-right">
-                                                    <li>
-                                                        <p>Independent / Other</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Total meeting space: 65,000
-                                                            sq. ft.</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="venues_card">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                    <div class="card-img-box">
-                                        <img src="{{ asset('front/img/ven1.webp') }}" class="img-fluid" alt="">
-                                        <ul class="image-front-btn">
-                                            <li><a href="javascript:;" class="btn whitebtn" data-bs-toggle="modal"
-                                                    data-bs-target="#quickviewmodal">Quick View</a></li>
-                                            <li><a href="javascript:;" class="btn bluebtn">Select Venue</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-md-8 col-sm-8">
-                                    <div class="card-content-box">
-                                        <a href="javascript:;">Regent Plaza Hotel & Convention Centre Karachi</a>
-                                        <ul class="card-content-box-list">
-                                            <li>
-                                                <ul class="card-content-box-list-item-left">
-                                                    <li>
-                                                        <p>Hotel In Karachi</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Guest rooms: 413</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Meeting rooms: 8</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Distance: 0.8 mi</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul class="card-content-box-list-item-right">
-                                                    <li>
-                                                        <p>Independent / Other</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Total meeting space: 65,000
-                                                            sq. ft.</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="venues_card">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                    <div class="card-img-box">
-                                        <img src="{{ asset('front/img/ven1.webp') }}" class="img-fluid" alt="">
-                                        <ul class="image-front-btn">
-                                            <li><a href="javascript:;" class="btn whitebtn" data-bs-toggle="modal"
-                                                    data-bs-target="#quickviewmodal">Quick View</a></li>
-                                            <li><a href="javascript:;" class="btn bluebtn">Select Venue</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-md-8 col-sm-8">
-                                    <div class="card-content-box">
-                                        <a href="javascript:;">Regent Plaza Hotel & Convention Centre Karachi</a>
-                                        <ul class="card-content-box-list">
-                                            <li>
-                                                <ul class="card-content-box-list-item-left">
-                                                    <li>
-                                                        <p>Hotel In Karachi</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Guest rooms: 413</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Meeting rooms: 8</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Distance: 0.8 mi</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul class="card-content-box-list-item-right">
-                                                    <li>
-                                                        <p>Independent / Other</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="greytext__cstelm0187">Total meeting space: 65,000
-                                                            sq. ft.</p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -1836,81 +1598,68 @@
                 <div class="modal-body">
                     <div class="quick___view___card">
                         <div class="quick-view-card-image">
-                            <img src="{{ asset('front/img/ven3.webp')}}" class="img-fluid" alt="">
+                            <img src="" class="img-fluid" alt="" id="venueImage">
                             <div class="quick__card__venue__abs__box">
-                                <h3>Movenpick Hotel Karachi</h3>
-                                <p>Hotel in Karachi</p>
+                                <h3 id="company"></h3>
+                                <p id="city"></p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-sm-6">
-                                <a href="javascript:;" class="btn whitebtn">View Details</a>
+                            <div class="col-lg-12 col-sm-12">
+                                <a href="" id="viewDetailURL" class="btn whitebtn">View Details</a>
                             </div>
-                            <div class="col-lg-6 col-sm-6">
+                            {{-- <div class="col-lg-6 col-sm-6">
                                 <a href="javascript:;" class="btn greenbtn"><i class="fa fa-check"></i> Venue
                                     Selected</a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-sm-6">
                                 <ul class="venue__specs__list">
                                     <li>
-                                        Guest rooms: 407
+                                        Guest rooms: <span id="guest_rooms"></span>
                                     </li>
                                     <li>
-                                        Meeting rooms: 19
+                                        Meeting rooms: <span id="meeting_rooms"></span>
                                     </li>
                                     <li>
-                                        Total meeting space: 32,660 sq. ft.
+                                        Total meeting space: <span id="total_meeting_space"></span>
                                     </li>
                                     <li>
-                                        Largest room: 9,782 sq. ft.
+                                        Largest room: <span id="largest_room"></span>
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <ul class="venue__specs__list">
                                     <li>
-                                        Guest rooms: 407
+                                        Chain: <span id="chain"></span>
                                     </li>
                                     <li>
-                                        Meeting rooms: 19
+                                        Brand: <span id="brand"></span>
                                     </li>
                                     <li>
-                                        Total meeting space: 32,660 sq. ft.
+                                        Built: <span id="built"></span>
                                     </li>
                                     <li>
-                                        Largest room: 9,782 sq. ft.
+                                        Distance From Airport: <span id="airport_distance"></span>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <span class="badge rounded-pill bg-primary">Safety information </span>
-                        <p class="venue__conten___cst___elms">
-                            Just 17 kilometres from Jinnah International Airport and situated in the centre of Karachi’s
-                            business district, the 407-room Movenpick Hotel Karachi is a five-star destination for
-                            business, dining and recreation.
+                        <p class="venue__conten___cst___elms" id="descripion">
+                            fadfa adfadf
                         </p>
                         <h5>Key Amenities</h5>
                         <div class="row">
-                            <div class="col-lg-4">
-                                <ul>
+                            <div class="col-lg-12">
+                                <span id="ameneties"></span>
+                                {{-- <ul>
                                     <li>Free airport shuttle</li>
                                     <li>Internet access</li>
                                     <li>Onsite catering</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-4">
-                                <ul>
-                                    <li>Onsite restaurant</li>
-                                    <li>Outdoor pool</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-4">
-                                <ul>
-                                    <li>Spa or salon</li>
-                                    <li>Wheelchair accessible</li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                     </div>
@@ -1924,4 +1673,49 @@
 @endsection
 
 @section('js')
+    <script>
+        $(document).ready(function(){
+            $(document).on('click','#quickView', function() {
+                let _this = $(this);
+
+                let id            = _this.data('id');
+                let image         = _this.data('image');
+                let company       = _this.data('company');
+                let city          = _this.data('city');
+                let guest_room    = _this.data('total_guest_rooms');
+                let rating        = _this.data('rating');
+                let meeting_rooms = _this.data('meeting_rooms');
+                let meeting_space = _this.data('total_meeting_space');
+                let largest_room  = _this.data('largest_room');
+                let chain         = _this.data('chain');
+                let brand         = _this.data('brand');
+                let built         = _this.data('built');
+                let distance_from_airport = _this.data('distance_from_airport');
+                let description = _this.data('description');
+                let facilities  = _this.data('facilities');
+                let venueDetailURL  = _this.data('venue_detail_url');
+
+                console.log("URL", venueDetailURL);
+
+                $('#venueImage').attr('src', image);
+                $('#company').text(company);
+                $('#city').text(city);
+                $('#guest_rooms').text(guest_room);
+                $('#total_meeting_space').text(meeting_space);
+                $('#meeting_rooms').text(meeting_rooms);
+                $('#largest_room').text(largest_room);
+                $('#airport_distance').text(distance_from_airport);
+                $('#chain').text(chain);
+                $('#brand').text(brand);
+                $('#built').text(built);
+
+                $('#descripion').text(descripion);
+                $('#facilities').text(facilities);
+                $('#viewDetailURL').attr('href', venueDetailURL);
+
+
+                $('#quickviewmodal').modal('show');
+            });
+        });
+    </script>
 @endsection

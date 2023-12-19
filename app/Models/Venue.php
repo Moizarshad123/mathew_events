@@ -25,7 +25,6 @@ class Venue extends Model
         "rennovated",
         "guest_rooms",
         "ratings",
-
         "distance_from_airport",
         "parking",
         "total_meeting_space",
@@ -43,4 +42,8 @@ class Venue extends Model
         "cancellation_policy",
 
     ];
+
+    public function venue_images() {
+        return $this->hasMany(VenueImage::class, 'venue_id');
+    }
 }
