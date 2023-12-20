@@ -1447,10 +1447,12 @@
                                                         @csrf
                                                         <input type="hidden" value="{{ $venue->id }}" name="id">
                                                         <input type="hidden" value="{{ $venue->company }}" name="name">
-                                                        <input type="hidden" value="{{ $venue->city }}" name="">
+                                                        <input type="hidden" value="{{ $venue->city }}" name="city">
+                                                        <input type="hidden" value="{{ $venue->state }}" name="state">
+
 
                                                         <input type="hidden" value="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}"  name="image">
-                                                        <button class="btn bluebtn">Select Venue</button>
+                                                        <button style="background: #006ae1;color: #fff;" class="btn bluebtn">Select Venue</button>
                                                     </form>
                                                     {{--                                                     
                                                     <a href="javascript:;" id="selectVenue" data-id="{{ $venue->id }}" data-venue_detail_url="{{ url('venue-detail/'.$venue->id) }}" class="btn bluebtn">Select Venue</a> --}}
@@ -1499,12 +1501,14 @@
                     </div>
 
                     <div class="Page navigation pagination__venues_cards">
-                        <ul class="pagination">
+
+                        {{ $venues->links('pagination::bootstrap-4') }}
+                        {{-- <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#">
                                     < </a> </li> <li class="page-item"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#"> > </a></li>
-                        </ul>
+                        </ul> --}}
                         <div class="pagination-bottom-text">
                             <p>Don't see a venue?</p>
                             <p><a href="javascript:;">Send request</a> to add it to the Cvent Supplier Network.</p>
@@ -1520,7 +1524,7 @@
                             <a href="javascript:;" class="card__cst__right__elem-title">Promote Your Venue</a>
                             <p class="card__cst__right__elem-text">Add your venue here to attract high value
                                 meetings and events.</p>
-                            <a href="#" class="btn bluebtn">Learn More</a>
+                            <a href="javascript:;" class="btn bluebtn">Learn More</a>
                         </div>
                     </div>
                 </div>

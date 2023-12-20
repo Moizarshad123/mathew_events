@@ -15,7 +15,7 @@ class HomeController extends Controller
     }
 
     public function search_venue(Request $request) {
-        $venues = Venue::with('venue_images')->where('id', $request->venue_id)->get();
+        $venues = Venue::with('venue_images')->where('id', $request->venue_id)->paginate(20);
         return view('front.events.search_result', compact('venues'));
         // return redirect('search-result')->with('venue',$venue);
         

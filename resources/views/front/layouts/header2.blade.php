@@ -40,14 +40,20 @@
                                 <p>Add venues!</p>
                                 <p>Add up to 10 venues, then submit your request.</p>
                                 @forelse ($cartItems as $item)
+                               
                                     <div class="venue-card">
                                         <div class="img-box">
                                             <img src="{{$item["attributes"]->image}}" class="img-fluid" alt="">
                                         </div>
                                         <div class="cont-box">
                                             <p class="hotel-name">{{ $item->name }}</p>
-                                            <p class="hotel-location">Karachi, Pakistan</p>
-                                            <a href="javascript:;">Remove</a>
+                                            <p class="hotel-location">{{$item["attributes"]->city}}, {{ $item["attributes"]->state }}</p>
+                                            <form action="{{ route('cart.remove') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                                <button type="submit">Remove</button>
+                                            </form>
+                                           
                                         </div>
                                     </div>
                                     
@@ -87,7 +93,7 @@
                 <div class="col-lg-3"></div>
                 <div class="col-lg-2">
                     <div class="bottombar-venues-count">
-                        <p>1-3 of 3 venues</p>
+                        {{-- <p>1-3 of 3 venues</p> --}}
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -173,7 +179,7 @@
                 <div class="col-lg-3 col-md-1 col-sm-1"></div>
                 <div class="col-lg-2 col-md-3 col-sm-3">
                     <div class="bottombar-venues-count">
-                        <p>1-3 of 3 venues</p>
+                        {{-- <p>1-3 of 3 venues</p> --}}
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-4">

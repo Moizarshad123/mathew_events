@@ -16,7 +16,6 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        dd($request);
         \Cart::add([
             'id' => $request->id,
             'name' => $request->name,
@@ -24,6 +23,8 @@ class CartController extends Controller
             'quantity' => 1,
             'attributes' => array(
                 'image' => $request->image,
+                "city" => $request->city,
+                "state" => $request->state,
             )
         ]);
         return redirect()->back()->with('success', 'Venue Added');
@@ -52,7 +53,8 @@ class CartController extends Controller
         \Cart::remove($request->id);
         session()->flash('success', 'Item Cart Remove Successfully !');
 
-        return redirect()->route('cart.list');
+        // return redirect()->route('cart.list');
+        return redirect()->back()->with('success', 'Venue Added');
     }
 
     public function clearAllCart()
