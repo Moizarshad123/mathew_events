@@ -14,7 +14,7 @@
                 </div>
                 <hr>
                 @forelse ($cartItems as $item)
-                @php $get_extra_detail = App\Models\Venue::find($item->id); @endphp
+                    @php $get_extra_detail = App\Models\Venue::find($item->id); @endphp
                     <div class="venues_card">
                         <div class="delete___venue__btn___wrapper">
                             <form action="{{ route('cart.remove') }}" method="POST">
@@ -118,7 +118,7 @@
                             <p>You can add {{ 10 - Cart::getTotalQuantity() }} more venues to your request.</p>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <a href="javascript:;" class="btn lightbluebtn">Continue searching > </a>
+                            <a href="{{ url('/') }}" class="btn lightbluebtn">Continue searching > </a>
                         </div>
                     </div>
                 </div>
@@ -129,10 +129,10 @@
                             <a href="javascript:;"> < Back to search results</a>
                         </div>
                         <div class="col-lg-1 col-sm-3">
-                            <a href="javascript:;" class="btn greybtn">Login</a>
+                            <a href="{{ url('login') }}" class="btn greybtn">Login</a>
                         </div>
                         <div class="col-lg-3 col-sm-3">
-                            <a href="javascript:;" class="btn greenbtn">Continue as guest > </a>
+                            <a href="{{  url('checkout') }}" class="btn greenbtn">Continue as guest > </a>
                         </div>
                     </div>
                 </div>

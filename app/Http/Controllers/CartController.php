@@ -66,7 +66,7 @@ class CartController extends Controller
         session()->flash('success', 'Item Cart Remove Successfully !');
 
         // return redirect()->route('cart.list');
-        return redirect()->back()->with('success', 'Venue Added');
+        return redirect()->back()->with('success', 'Venue Deleted');
     }
 
     public function clearAllCart()

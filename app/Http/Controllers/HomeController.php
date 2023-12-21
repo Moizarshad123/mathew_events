@@ -7,7 +7,6 @@ use App\Models\Venue;
 
 class HomeController extends Controller
 {
-   
     public function index()
     {
         $venues = Venue::all();
@@ -17,15 +16,8 @@ class HomeController extends Controller
     public function search_venue(Request $request) {
         $venues = Venue::with('venue_images')->where('id', $request->venue_id)->paginate(20);
         return view('front.events.search_result', compact('venues'));
-        // return redirect('search-result')->with('venue',$venue);
-        
+        // return redirect('search-result')->with('venue',$venue);        
     }
-    
-    // public function search_result(Request $request) {
-        
-    //     $venue = session()->get('venue'); 
-
-    // }
 
     public function venue_detail($id) {
         $venue = Venue::with('venue_images')->where('id', $id)->first();
@@ -35,11 +27,4 @@ class HomeController extends Controller
     public function checkout(Request $request) {
         return view('front.events.checkout');
     }
-
-
-   
-
-    
-
-    
 }
