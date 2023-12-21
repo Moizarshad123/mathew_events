@@ -13,21 +13,33 @@ class CartController extends Controller
         return view('cart', compact('cartItems'));
     }
 
+    public function submit_request(Request $request) {
+        $cartItems = \Cart::getContent();
+        return view('front.events.submit_request', compact('cartItems'));
+    }
+
 
     public function addToCart(Request $request)
     {
-        \Cart::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => 250,
-            'quantity' => 1,
-            'attributes' => array(
-                'image' => $request->image,
-                "city" => $request->city,
-                "state" => $request->state,
-            )
-        ]);
-        return redirect()->back()->with('success', 'Venue Added');
+       
+        if(\Cart::getTotalQuantity() < 10) {
+            \Cart::add([
+                'id' => $request->id,
+                'name' => $request->name,
+                'price' => 250,
+                'quantity' => 1,
+                'attributes' => array(
+                    'image' => $request->image,
+                    "city" => $request->city,
+                    "state" => $request->state,
+                )
+            ]);
+            return redirect()->back()->with('success', 'Venue Added');
+
+        } else {
+            return redirect()->back()->with('error', 'Your are not allowed to add more than 10 venues..!!');
+
+        }
 
     }
 

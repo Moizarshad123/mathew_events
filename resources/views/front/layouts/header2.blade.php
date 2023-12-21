@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="venuelistdropdownfooter">
-                                <a href="javascript:;" class="btn">Submit Request</a>
+                                <a href="{{ url('submit-request') }}" class="btn">Submit Request</a>
                                 <p>
                                     Tell us about your event. Venues will respond back with a personalized quote!
                                 </p>

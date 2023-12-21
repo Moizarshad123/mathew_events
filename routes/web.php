@@ -15,7 +15,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('search-venue', [HomeController::class, 'search_venue']);
 Route::get('venue-detail/{id}', [HomeController::class, 'venue_detail']);
 Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
-Route::get('submit-request', [HomeController::class, 'submit_request'])->name('submitRequest');
+Route::get('submit-request', [CartController::class, 'submit_request'])->name('submitRequest');
 
 Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
 Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');

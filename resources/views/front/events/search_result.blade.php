@@ -1517,7 +1517,7 @@
                 </div>
             </div>
             <div class="col-lg-2 col-md-3 p-0">
-                <div class="right-side-bar">
+                {{-- <div class="right-side-bar">
                     <div class="card__cst__right__elem">
                         <img class="card-img-top" src="{{ asset('front/img/v2.png') }}" class="img-fluid" alt="Card image cap">
                         <div class="card-body">
@@ -1527,7 +1527,7 @@
                             <a href="javascript:;" class="btn bluebtn">Learn More</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

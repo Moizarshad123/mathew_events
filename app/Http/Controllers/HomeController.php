@@ -37,9 +37,7 @@ class HomeController extends Controller
     }
 
 
-    public function submit_request(Request $request) {
-        return view('front.events.submit_request');
-    }
+   
 
     
 

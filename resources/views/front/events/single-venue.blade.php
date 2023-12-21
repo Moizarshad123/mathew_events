@@ -7,13 +7,51 @@
 @include('front.layouts.header3')
 @endif
 
+<div class="single-venue-fix-bottom-bar fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="javascript:;" class="svfbb_link">Back to Karachi Cantt Railway Station, Doctor Daud
+                    Pota Road, Karachi Cantonment Karachi venues</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-sm-6">
+                <h1 class="svfbb_heading">{{ $venue->company ?? ""}}</h1>
+                <p class="svfbb_text">{{ $venue->city ?? ""}},{{ $venue->state ?? ""}} {{ $venue->zip ?? ""}}</p>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <ul>
+                    <li>
+                        <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" value="{{ $venue->id }}" name="id">
+                            <input type="hidden" value="{{ $venue->company }}" name="name">
+                            <input type="hidden" value="{{ $venue->city }}" name="city">
+                            <input type="hidden" value="{{ $venue->state }}" name="state">
+
+
+                            <input type="hidden" value="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}"  name="image">
+                            <button style="background: #006ae1;color: #fff;" class="btn bluebtn">Select Venue</button>
+                        </form>
+                        {{-- <a href="javascript:;" class="btn bluebtn">Select Venue</a> --}}
+                    </li>
+                    <li>
+                        {{-- <a href="javascript:;" class="svfbb_link_right">Learn how the Cvent Supplier Network works</a> --}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <section class="single-venue-gallery-sec">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-6 col-sm-12">
                 <div class="gallery-wrapper">
-                    <a href="{{ asset('front/img/g2.webp')}}" data-fancybox="group" data-caption="Property Image 1">
-                        <img src="{{ asset('front/img/g2.webp')}}" class="img-fluid" alt="">
+                    <a href="assets/img/g2.webp" data-fancybox="group" data-caption="Property Image 1">
+                        <img src="assets/img/g2.webp" class="img-fluid" alt="">
                     </a>
                 </div>
             </div>
@@ -21,18 +59,18 @@
                 <div class="gallery-wrapper">
                     <div class="row">
                         <div class="col-lg-12 col-sm-4">
-                            <a href="{{ asset('front/img/g2.webp')}}" data-fancybox="group" data-caption="Property Image 1">
-                                <img src="{{ asset('front/img/g2.webp')}}" class="img-fluid" alt="">
+                            <a href="assets/img/g2.webp" data-fancybox="group" data-caption="Property Image 1">
+                                <img src="assets/img/g2.webp" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="col-lg-6 col-sm-4">
-                            <a href="{{ asset('front/img/g3.webp')}}" data-fancybox="group" data-caption="Property Image 1">
-                                <img src="{{ asset('front/img/g3.webp')}}" class="img-fluid" alt="">
+                            <a href="assets/img/g3.webp" data-fancybox="group" data-caption="Property Image 1">
+                                <img src="assets/img/g3.webp" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="col-lg-6 col-sm-4">
-                            <a href="{{ asset('front/img/g4.webp')}}" data-fancybox="group" data-caption="Property Image 1">
-                                <img src="{{ asset('front/img/g4.webp')}}" class="img-fluid" alt="">
+                            <a href="assets/img/g4.webp" data-fancybox="group" data-caption="Property Image 1">
+                                <img src="assets/img/g4.webp" class="img-fluid" alt="">
                             </a>
                         </div>
                     </div>
@@ -71,13 +109,13 @@
                         <ul>
                             <li>Chain</li>
                             <li>
-                                <p>Independent / Other</p>
+                                <p>{{ $venue->chain ?? ""}}</p>
                             </li>
                         </ul>
                         <ul>
                             <li>Brand</li>
                             <li>
-                                <p>Other Affiliation</p>
+                                <p>{{ $venue->brand ?? ""}}</p>
                             </li>
                         </ul>
                     </div>
@@ -85,13 +123,13 @@
                         <ul>
                             <li>Built</li>
                             <li>
-                                <p>--</p>
+                                <p>{{ $venue->built ?? ""}}</p>
                             </li>
                         </ul>
                         <ul>
                             <li>Renovated</li>
                             <li>
-                                <p>--</p>
+                                <p>{{ $venue->rennovated ?? ""}}</p>
                             </li>
                         </ul>
                     </div>
@@ -99,13 +137,13 @@
                         <ul>
                             <li>Total meeting space</li>
                             <li>
-                                <p>--</p>
+                                <p>{{ $venue->total_meeting_space ?? ""}}</p>
                             </li>
                         </ul>
                         <ul>
                             <li>Guest Rooms</li>
                             <li>
-                                <p>82</p>
+                                <p>{{ $venue->guest_rooms ?? ""}}</p>
                             </li>
                         </ul>
                     </div>
@@ -113,7 +151,7 @@
                         <ul>
                             <li>Venue type</li>
                             <li>
-                                <p>Hotel</p>
+                                <p>{{ $venue->venue_type ?? ""}}</p>
                             </li>
                         </ul>
                     </div>
@@ -127,7 +165,7 @@
                         <ul>
                             <li>Northstar</li>
                             <li>
-                                <p>3 <i class="fa fa-star"></i> </p>
+                                <p>{{ $venue->rating ?? ""}} <i class="fa fa-star"></i> </p>
                             </li>
                         </ul>
                     </div>
@@ -141,62 +179,33 @@
                     <div class="col-lg-3 col-sm-6">
                         <ul>
                             <li>Room features and guest services</li>
-                            <li>
-                                <p>Internet access</p>
-                            </li>
-                            <li>
-                                <p>Laundry service</p>
-                            </li>
-                            <li>
-                                <p>Room service</p>
-                            </li>
+                            {!! $venue->room_features !!}
                         </ul>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <ul>
                             <li>Business services</li>
-                            <li>
-                                <p>AV capabilities</p>
-                            </li>
-                            <li>
-                                <p>Business center</p>
-                            </li>
+                            {!! $venue->business_services !!}
                         </ul>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <ul>
                             <li>Recreational activities</li>
-                            <li>
-                                <p>Health club</p>
-                            </li>
-                            <li>
-                                <p>Outdoor pool</p>
-                            </li>
+                            {!! $venue->recreational_activities !!}
                         </ul>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <ul>
                             <li>Venue accessibility</li>
-                            <li>
-                                <p>Airport shuttle</p>
-                            </li>
+                            {!! $venue->venue_accessiblity !!}
                         </ul>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <ul>
                             <li>Facilities</li>
-                            <li>
-                                <p>Onsite catering</p>
-                            </li>
-                            <li>
-                                <p>Onsite restaurant</p>
-                            </li>
-                            <li>
-                                <p>Rental car service</p>
-                            </li>
+                            {!! $venue->facilities !!}
                         </ul>
                     </div>
-
                 </div>
 
                 <div class="content">
@@ -206,15 +215,13 @@
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
                         <ul>
-                            <li> <i class="fa fa-plane"></i> 13.7 mi. from venue</li>
+                            <li> <i class="fa fa-plane"></i> {{ $venue->distance_from_airport }} from venue</li>
                         </ul>
                     </div>
                 </div>
-
                 <div class="content">
                     <h2>Parking</h2>
                 </div>
-
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
                         <ul>
@@ -222,10 +229,7 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
-
-
         </div>
     </section>
 
@@ -441,23 +445,23 @@
             </div>
             <div class="row">
                 <div class="col-lg-3 col-sm-4">
-                    <a href="{{ asset('front/img/ven1.webp')}}" data-fancybox="group" data-caption="Property Image 1">
-                        <img src="{{ asset('front/img/ven1.webp')}}" class="img-fluid gallery__photos" alt="" />
+                    <a href="assets/img/ven1.webp" data-fancybox="group" data-caption="Property Image 1">
+                        <img src="assets/img/ven1.webp" class="img-fluid gallery__photos" alt="" />
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-4">
-                    <a href="{{ asset('front/img/ven1.webp')}}" data-fancybox="group" data-caption="Property Image 1">
-                        <img src="{{ asset('front/img/ven1.webp')}}" class="img-fluid gallery__photos" alt="" />
+                    <a href="assets/img/ven1.webp" data-fancybox="group" data-caption="Property Image 1">
+                        <img src="assets/img/ven1.webp" class="img-fluid gallery__photos" alt="" />
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-4">
-                    <a href="{{ asset('front/img/ven1.webp')}}" data-fancybox="group" data-caption="Property Image 1">
-                        <img src="{{ asset('front/img/ven1.webp')}}" class="img-fluid gallery__photos" alt="" />
+                    <a href="assets/img/ven1.webp" data-fancybox="group" data-caption="Property Image 1">
+                        <img src="assets/img/ven1.webp" class="img-fluid gallery__photos" alt="" />
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-4">
-                    <a href="{{ asset('front/img/ven1.webp')}}" data-fancybox="group" data-caption="Property Image 1">
-                        <img src="{{ asset('front/img/ven1.webp')}}" class="img-fluid gallery__photos" alt="" />
+                    <a href="assets/img/ven1.webp" data-fancybox="group" data-caption="Property Image 1">
+                        <img src="assets/img/ven1.webp" class="img-fluid gallery__photos" alt="" />
                     </a>
                 </div>
             </div>
@@ -472,7 +476,7 @@
             <div class="row align-items-center">
                 <div class="col-md-5">
                     <a class="nearby__venue__name">Beach Luxury Hotel</a>
-                    <img src="{{ asset('front/img/g3.webp')}}" class="img-fluid nearby__venue__vimage" alt="">
+                    <img src="assets/img/g3.webp" class="img-fluid nearby__venue__vimage" alt="">
                     <a href="javascript:;" class="btn bluebtn">Select Venue</a>
                 </div>
                 <div class="col-md-7">

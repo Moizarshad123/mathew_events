@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
     <link href="{{ asset('front/css/style.css')}}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     @yield('css')
 </head>
 <body>
@@ -25,6 +27,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @if(session()->has('success'))
+        <script type="text/javascript">  toastr.success('{{ session('success')}}');</script>
+    @endif
+    @if(session()->has('error'))
+        <script type="text/javascript"> toastr.error('{{ session('error')}}');</script>
+    @endif
 
     <script src="{{ asset('front/js/custom.js')}}"></script>
     @yield('js')

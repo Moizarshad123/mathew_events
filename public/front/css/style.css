@@ -67,6 +67,18 @@ header .single-venue-fix-bottom-bar ul { text-align: end; padding: 0; list-style
 header .single-venue-fix-bottom-bar a.svfbb_link { font-size: 12px; text-decoration: none; }
 header .single-venue-fix-bottom-bar a.svfbb_link_right { font-size: 12px; text-decoration: none; color: #000; }
 
+
+.single-venue-fix-bottom-bar { text-align: left; background: #fff; margin-top: 60px; box-shadow: 0 2px 4px rgba(0,0,0,.2);}
+.single-venue-fix-bottom-bar .content { padding: 10px 0px; }
+.single-venue-fix-bottom-bar .content h1 { margin: 0; font-size: 21px; color: #1a2026;}
+.single-venue-fix-bottom-bar .content p { color: #69717a; margin-bottom: 0; font-size: 14px; }
+.single-venue-fix-bottom-bar h1.svfbb_heading { font-size: 22px; }
+.single-venue-fix-bottom-bar p.svfbb_text { font-size: 14px; margin: 0; }
+.single-venue-fix-bottom-bar ul { text-align: end; padding: 0; list-style: none; margin:0; }
+.single-venue-fix-bottom-bar a.svfbb_link { font-size: 12px; text-decoration: none; }
+.single-venue-fix-bottom-bar a.svfbb_link_right { font-size: 12px; text-decoration: none; color: #000; }
+
+
 header nav.navbar .venuelistdropdownparent { width: 300px; left: -50%; top: 40px; padding: 0; }
 header nav.navbar .venuelistdropdownparent .venuelistdropdown h3 { font-size: 15px; }
 header nav.navbar .venuelistdropdownparent .venuelistdropdown p { font-size: 12px; margin-bottom: 10px; }
@@ -76,7 +88,7 @@ header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card img { 
 header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card  .cont-box { margin-left: 10px; }
 header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card .cont-box p.hotel-name { margin-bottom: 0; }
 header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card .cont-box p.hotel-location { margin-bottom: 0; }
-header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card .cont-box a { font-size: 12px; text-decoration: none; }
+header nav.navbar .venuelistdropdownparent .venuelistdropdown .venue-card .cont-box .cont-box-remove-btn { font-size: 12px; text-decoration: none; }
 header nav.navbar .venuelistdropdownparent .venuelistdropdown { padding: 20px;}
 header nav.navbar .venuelistdropdownparent .venuelistdropdownfooter { background: #efefef; margin-top: 10px; text-align: center; padding: 10px; }
 header nav.navbar .venuelistdropdownparent .venuelistdropdownfooter p { font-size: 12px; }
@@ -426,6 +438,8 @@ section.magicteamandstaff-section .content_section { margin-bottom: 50px; }
 .contact-team-sec ul.team-card-list li .teamcard {margin-bottom: 50px;}
 .contact-team-sec ul.team-card-list li .teamcard .tc___img-box img { width: 300px; height: 100%; }
 
+.errormessageclasscstm{display: none;}
+
 .game-iframe iframe { height: 100vh; width: 100%; border: 1px solid; }
 .game-iframe { margin: 50px 0; }
 /* contact us page */
@@ -436,6 +450,13 @@ section.special-thanks-section .content_sec h6 {text-align: center;color: #fc0;}
 section.special-thanks-section .content_sec p { font-weight: bold; text-align: center; }
 /* special thanks */
 
+
+/* request page */
+
+section.requestform-section__wrapper {
+  margin: 5% 0;
+}
+/* request page */
 
 /* media query */
 @media screen and (max-width: 991px) {
@@ -484,6 +505,8 @@ section.special-thanks-section .content_sec p { font-weight: bold; text-align: c
 
     section.single-venue-details-nav{top: 0;}
 
+    .single-venue-fix-bottom-bar{margin-top: 0;position: relative;}
+
   }
   @media screen and (max-width: 767px) {
     .left-side-bar .map-box img { width: 100%;}
@@ -510,3 +533,5 @@ section.special-thanks-section .content_sec p { font-weight: bold; text-align: c
       section.checkout-form-section a.nav-link.tab-pills { width: 100%; }
   }
 /* media query */
+
+

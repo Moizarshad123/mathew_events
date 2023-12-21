@@ -30,28 +30,40 @@
                         <button class="btn navbarbtntop dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-building"></i> Venue list
-                            <span class="venuecount">1</span>
+                            <span class="venuecount">{{ Cart::getTotalQuantity() }}</span>
                         </button>
+                        @php $cartItems = \Cart::getContent();  @endphp
                         <div class="dropdown-menu venuelistdropdownparent" aria-labelledby="dropdownMenuButton1">
 
                             <div class="venuelistdropdown">
                                 <h3>Venue List</h3>
                                 <p>Add venues!</p>
                                 <p>Add up to 10 venues, then submit your request.</p>
-                                <div class="venue-card">
-                                    <div class="img-box">
-                                        <img src="assets/img/ven1.jpg" class="img-fluid" alt="">
+                                @forelse ($cartItems as $item)
+                               
+                                    <div class="venue-card">
+                                        <div class="img-box">
+                                            <img src="{{$item["attributes"]->image}}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="cont-box">
+                                            <p class="hotel-name">{{ $item->name }}</p>
+                                            <p class="hotel-location">{{$item["attributes"]->city}}, {{ $item["attributes"]->state }}</p>
+                                            <form action="{{ route('cart.remove') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                                <button type="submit">Remove</button>
+                                            </form>
+                                           
+                                        </div>
                                     </div>
-                                    <div class="cont-box">
-                                        <p class="hotel-name">Movenpick Hotel Karachi</p>
-                                        <p class="hotel-location">Karachi, Pakistan</p>
-                                        <a href="javascript:;">Remove</a>
-                                    </div>
-                                </div>
+                                    
+                                @empty
+                                    
+                                @endforelse
                             </div>
 
                             <div class="venuelistdropdownfooter">
-                                <a href="javascript:;" class="btn">Submit Request</a>
+                                <a href="{{ url('submit-request') }}" class="btn">Submit Request</a>
                                 <p>
                                     Tell us about your event. Venues will respond back with a personalized quote!
                                 </p>
@@ -67,31 +79,6 @@
             </div>
         </div>
     </nav>
-    <div class="single-venue-fix-bottom-bar fixed-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="javascript:;" class="svfbb_link">Back to Karachi Cantt Railway Station, Doctor Daud Pota Road, Karachi Cantonment Karachi venues</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8">
-                    <h1 class="svfbb_heading">Beach Luxury Hotel</h1>
-                    <p class="svfbb_text">Moulvi Tamizuddin Khan Road Karachi 74000</p>
-                </div>
-                <div class="col-lg-4">
-                    <ul>
-                        <li>
-                            <a href="javascript:;" class="btn bluebtn">Select Venue</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="svfbb_link_right">Learn how the Cvent Supplier Network works</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 </header>
 
 <header class="mobilenav">
