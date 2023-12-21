@@ -11,8 +11,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="javascript:;" class="svfbb_link">Back to Karachi Cantt Railway Station, Doctor Daud
-                    Pota Road, Karachi Cantonment Karachi venues</a>
+                {{-- <a href="javascript:;" class="svfbb_link">Back to Karachi Cantt Railway Station, Doctor Daud
+                    Pota Road, Karachi Cantonment Karachi venues</a> --}}
             </div>
         </div>
         <div class="row">
@@ -34,7 +34,6 @@
                             <input type="hidden" value="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}"  name="image">
                             <button style="background: #006ae1;color: #fff;" class="btn bluebtn">Select Venue</button>
                         </form>
-                        {{-- <a href="javascript:;" class="btn bluebtn">Select Venue</a> --}}
                     </li>
                     <li>
                         {{-- <a href="javascript:;" class="svfbb_link_right">Learn how the Cvent Supplier Network works</a> --}}
@@ -48,34 +47,36 @@
 <section class="single-venue-gallery-sec">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-lg-6 col-sm-12">
-                <div class="gallery-wrapper">
-                    <a href="assets/img/g2.webp" data-fancybox="group" data-caption="Property Image 1">
-                        <img src="assets/img/g2.webp" class="img-fluid" alt="">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="gallery-wrapper">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-4">
-                            <a href="assets/img/g2.webp" data-fancybox="group" data-caption="Property Image 1">
-                                <img src="assets/img/g2.webp" class="img-fluid" alt="">
-                            </a>
+            @if(count($venue_images) > 0)
+                    {{-- @if($loop->iteration == 1) --}}
+                        <div class="col-lg-8 col-sm-12">
+                            <div class="gallery-wrapper">
+                                <a href="{{ asset($venue_images[0]->image) }}" data-fancybox="group" data-caption="Property Image 1">
+                                    <img src="{{ asset($venue_images[0]->image) }}" class="img-fluid" alt="">
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-lg-6 col-sm-4">
-                            <a href="assets/img/g3.webp" data-fancybox="group" data-caption="Property Image 1">
-                                <img src="assets/img/g3.webp" class="img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-sm-4">
-                            <a href="assets/img/g4.webp" data-fancybox="group" data-caption="Property Image 1">
-                                <img src="assets/img/g4.webp" class="img-fluid" alt="">
-                            </a>
+                    {{-- @endif --}}
+                    <div class="col-lg-4">
+                        <div class="gallery-wrapper">
+                            <div class="row">
+                                {{-- @if($loop->iteration == 2) --}}
+                                    <div class="col-lg-12 col-sm-4">
+                                        <a href="{{ asset($venue_images[1]->image) }}" data-fancybox="group" data-caption="Property Image 1">
+                                            <img src="{{ asset($venue_images[1]->image) }}" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                {{-- @else --}}
+                                    <div class="col-lg-12 col-sm-4">
+                                        <a href="{{ asset($venue_images[2]->image) }}" data-fancybox="group" data-caption="Property Image 1">
+                                            <img src="{{ asset($venue_images[2]->image) }}" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                {{-- @endif  --}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+            @endif
         </div>
     </div>
     {{-- <a href="javascript:;" class="btn btn-view-gallery">View Gallery (2)</a> --}}
@@ -225,7 +226,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
                         <ul>
-                            <li> Complimentary parking</li>
+                            <li> {{ $venue->parking ?? ""}} </li>
                         </ul>
                     </div>
                 </div>
@@ -238,99 +239,34 @@
 
             <div class="meetingspace_wrapper_section">
                 <div class="content">
-                    <h2>Beach Luxury Hotel Meeting Space</h2>
+                    <h2>{{ $venue->company }} Meeting Space</h2>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
                         <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
+                            <li> Total Meeting Space</li>
+                            <li> {{ $venue->total_meeting_space ?? ""}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <ul>
+                            <li> Largest rooms</li>
+                            <li> {{ $venue->largest_room }}</li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <ul>
                             <li> Meeting rooms</li>
-                            <li> 10</li>
+                            <li> {{ $venue->meeting_rooms }}</li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
+                            <li> Second Largest Room</li>
+                            <li> {{ $venue->second_largest_room }}</li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Meeting rooms</li>
-                            <li> 10</li>
-                        </ul>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -347,100 +283,20 @@
                     <div class="col-lg-3 col-sm-6">
                         <ul>
                             <li> Total guest rooms</li>
-                            <li> 82</li>
+                            <li> {{ $venue->guest_rooms ?? "" }} </li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
+                            <li> Suites</li>
+                            <li> {{ $venue->suites ?? "" }}</li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
+                    
                 </div>
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <ul>
-                            <li> Total guest rooms</li>
-                            <li> 82</li>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
-            <div class="content">
+            {{-- <div class="content">
                 <h2>Photos</h2>
             </div>
             <div class="row">
@@ -464,7 +320,7 @@
                         <img src="assets/img/ven1.webp" class="img-fluid gallery__photos" alt="" />
                     </a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
 
@@ -475,8 +331,8 @@
             </div>
             <div class="row align-items-center">
                 <div class="col-md-5">
-                    <a class="nearby__venue__name">Beach Luxury Hotel</a>
-                    <img src="assets/img/g3.webp" class="img-fluid nearby__venue__vimage" alt="">
+                    <a class="nearby__venue__name">{{ $venue->company ?? "" }}</a>
+                    <img src="{{ asset($venue_images[0]->image)}}" class="img-fluid nearby__venue__vimage" alt="">
                     <a href="javascript:;" class="btn bluebtn">Select Venue</a>
                 </div>
                 <div class="col-md-7">
@@ -495,26 +351,7 @@
                 <div class="col-md-9">
                     <div class="moredetails___content">
                         <h4>More</h4>
-                        <p>
-                            Beach Luxury Hotel is ideally located adjacent to the central banking & business
-                            district
-                            (I.I. Chundrigar Road) and close to the port and other commercial areas. It is still the
-                            only resort hotel in the port city of Karachi.
-                            <br>
-                            This creek side, 3-Star hotel offers a relaxed, old-charm atmosphere with 82 spacious
-                            Rooms
-                            (deluxe & executive) and Suites located over two wings and 24 hour room service. If you
-                            are
-                            looking for a venue to hold an important conference or wedding functions, we have the
-                            perfect spaces for you, with state of the art, technology and a team of professionals on
-                            hand to co-ordinate your event.
-                            <br>
-                            A venue of multiple dimensions with two banquet halls and lush green lawns that can
-                            accommodate up to 1000 plus guests and multiple additional 08 meeting rooms, what better
-                            place to host your important event? Whatever your preferences we have the perfect blend
-                            of
-                            facilities, be it business or pleasure, keeping comfort and connectivity in mind.
-                        </p>
+                        {!! $venue->description !!}
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -522,7 +359,7 @@
                         <h4>Contact Us</h4>
                         <a href="javascript:;" class="btn whitebtn">Signup for access</a>
                         <p>Already have an account?</p>
-                        <a href="javascript:;">Login</a>
+                        <a href="{{ url('login') }}">Login</a>
                     </div>
                 </div>
             </div>
@@ -533,14 +370,14 @@
         <div class="container">
             <div class="content">
                 <h3>Frequently Asked Questions</h3>
-                <p>Explore frequently asked questions from the Beach Luxury Hotel regarding Health and Safety,
+                <p>Explore frequently asked questions from the {{ $venue->company }} regarding Health and Safety,
                     Sustainability, and Diversity and Inclusion</p>
                 <div class="faq__box__wrapper">
                     <h4 class="faq_heading_box"> <i class="fa fa-tree"></i> SUSTAINABLE PRACTICES</h4>
-                    <p>Please provide comments or a link to any publicly communicated Beach Luxury Hotel's
+                    <p>Please provide comments or a link to any publicly communicated {{ $venue->company }}
                         sustainability or social impact goals/strategy.</p>
                     <div class="faq__answer">No response</div>
-                    <p>Does Beach Luxury Hotel have a strategy that focuses on the elimination and diversion of
+                    <p>Does {{ $venue->company }} have a strategy that focuses on the elimination and diversion of
                         waste
                         (i.e. plastics, papers, cardboard, etc.)? If yes, please elaborate on your strategy of
                         elimination and diversion of waste.</p>
@@ -548,10 +385,10 @@
                 </div>
                 <div class="faq__box__wrapper">
                     <h4 class="faq_heading_box"> <i class="fa fa-tree"></i> DIVERSITY AND INCLUSION</h4>
-                    <p>Please provide comments or a link to any publicly communicated Beach Luxury Hotel's
+                    <p>Please provide comments or a link to any publicly communicated {{ $venue->company }}
                         sustainability or social impact goals/strategy.</p>
                     <div class="faq__answer">No response</div>
-                    <p>Does Beach Luxury Hotel have a strategy that focuses on the elimination and diversion of
+                    <p>Does {{ $venue->company }} have a strategy that focuses on the elimination and diversion of
                         waste
                         (i.e. plastics, papers, cardboard, etc.)? If yes, please elaborate on your strategy of
                         elimination and diversion of waste.</p>
@@ -559,24 +396,24 @@
                 </div>
                 <div class="faq__box__wrapper">
                     <h4 class="faq_heading_box"> <i class="fa fa-tree"></i> SUSTAINABLE PRACTICES</h4>
-                    <p>For US hotels only, is Beach Luxury Hotel and/or parent company certified as a 51% diverse
+                    <p>For US hotels only, is {{ $venue->company }} and/or parent company certified as a 51% diverse
                         owned
                         business enterprise (BE)? If yes, please indicate which one of the following you are
                         certified
                         as:</p>
                     <div class="faq__answer">No response</div>
-                    <p>If applicable, could you please provide a link to Beach Luxury Hotel's public report on their
+                    <p>If applicable, could you please provide a link to {{ $venue->company }} public report on their
                         commitments and initiatives related to diversity, equity, and inclusion?</p>
                     <div class="faq__answer">No response</div>
                 </div>
                 <div class="faq__box__wrapper">
                     <h4 class="faq_heading_box"> <i class="fa fa-tree"></i> HEALTH AND SAFETY</h4>
-                    <p>Were practices at Beach Luxury Hotel developed based on health service recommendations from
+                    <p>Were practices at {{ $venue->company }} developed based on health service recommendations from
                         public governmental entities or private organizations? If Yes, please list which
                         organizations
                         were used to develop these practices.</p>
                     <div class="faq__answer">No response</div>
-                    <p>Does Beach Luxury Hotel clean and sanitize public areas and publicly accessible facilities
+                    <p>Does {{ $venue->company }} clean and sanitize public areas and publicly accessible facilities
                         (i.e.
                         meeting rooms, restaurants, elevator banks, etc.)? If yes, describe any new measures that
                         are
@@ -586,11 +423,11 @@
             </div>
         </div>
 
-        <div class="container">
+        {{-- <div class="container">
             <div class="faqs___footer__content">
                 <p>See a problem with this venue's profile? <a href="javascript:;">Submit an issue</a></p>
             </div>
-        </div>
+        </div> --}}
     </section>
 </div>
 

@@ -150,115 +150,47 @@
             <h2>What's New</h2>
         </div>
         <div class="row">
+            @forelse ($top3 as $item)
+                <div class="col-lg-4 col-sm-6">
+                    <div class="newscard">
 
-            <div class="col-lg-4 col-sm-6">
-                <div class="newscard">
+                        <div class="newscardimagebox">
+                            <img src="{{ asset($item->image)}}" class="img-fluid" alt="">
+                            <div class="newsdate">
+                                <p>{{ date('M, d Y',strtotime($item->date)) }}</p>
+                            </div>
+                        </div>
 
-                    <div class="newscardimagebox">
-                        <img src="{{ asset('front/img/n1.png')}}" class="img-fluid" alt="">
-                        <div class="newsdate">
-                            <p>Nov 21, 2023</p>
+                        <div class="newsheading"><a href="{{ url('blog-detail/'.$item->id) }}">{{ $item->title }}</a>
                         </div>
                     </div>
-
-                    <div class="newsheading"><a href="javascript:;">The Galt House Hotel: Elevate Your Event</a>
-                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="newscard">
-
-                    <div class="newscardimagebox">
-                        <img src="{{ asset('front/img/n1.png')}}" class="img-fluid" alt="">
-                        <div class="newsdate">
-                            <p>Nov 21, 2023</p>
-                        </div>
-                    </div>
-
-                    <div class="newsheading"><a href="javascript:;">The Galt House Hotel: Elevate Your Event</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="newscard">
-
-                    <div class="newscardimagebox">
-                        <img src="{{ asset('front/img/n1.png')}}" class="img-fluid" alt="">
-                        <div class="newsdate">
-                            <p>Nov 21, 2023</p>
-                        </div>
-                    </div>
-
-                    <div class="newsheading"><a href="javascript:;">The Galt House Hotel: Elevate Your Event</a>
-                    </div>
-                </div>
-            </div>
+            @empty
+                
+            @endforelse
 
         </div>
         <div class="row">
 
-            <div class="col-lg-3 col-sm-6">
-                <div class="newscard">
+            @forelse ($blogs as $item)
 
-                    <div class="newscardimagebox">
-                        <img src="{{ asset('front/img/n1.png')}}" class="img-fluid" alt="">
-                        <div class="newsdate">
-                            <p>Nov 21, 2023</p>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="newscard">
+
+                        <div class="newscardimagebox">
+                            <img src="{{ asset($item->image)}}" class="img-fluid" alt="">
+                            <div class="newsdate">
+                                <p>{{ date('M, d Y',strtotime($item->date)) }}</p>
+                            </div>
+                        </div>
+
+                        <div class="newsheading"><a href="{{ url('blog-detail/'.$item->id) }}">{{ $item->title }}</a>
                         </div>
                     </div>
-
-                    <div class="newsheading"><a href="javascript:;">The Galt House Hotel: Elevate Your Event</a>
-                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="newscard">
-
-                    <div class="newscardimagebox">
-                        <img src="{{ asset('front/img/n1.png')}}" class="img-fluid" alt="">
-                        <div class="newsdate">
-                            <p>Nov 21, 2023</p>
-                        </div>
-                    </div>
-
-                    <div class="newsheading"><a href="javascript:;">The Galt House Hotel: Elevate Your Event</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="newscard">
-
-                    <div class="newscardimagebox">
-                        <img src="{{ asset('front/img/n1.png')}}" class="img-fluid" alt="">
-                        <div class="newsdate">
-                            <p>Nov 21, 2023</p>
-                        </div>
-                    </div>
-
-                    <div class="newsheading"><a href="javascript:;">The Galt House Hotel: Elevate Your Event</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="newscard">
-
-                    <div class="newscardimagebox">
-                        <img src="{{ asset('front/img/n1.png')}}" class="img-fluid" alt="">
-                        <div class="newsdate">
-                            <p>Nov 21, 2023</p>
-                        </div>
-                    </div>
-
-                    <div class="newsheading"><a href="javascript:;">The Galt House Hotel: Elevate Your Event</a>
-                    </div>
-                </div>
-            </div>
-
+            @empty
+                
+            @endforelse
         </div>
 
         <div class="show-more-bbtn">

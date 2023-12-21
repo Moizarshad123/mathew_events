@@ -14,6 +14,7 @@ class AdminController extends Controller
     public function dashboard() {
         return view('admin.dashboard');
     }
+
     public function login(Request $request) {
 
         if ($request->method() == 'POST') {
@@ -29,7 +30,11 @@ class AdminController extends Controller
             if ($user != null){
                 if (Hash::check($request->input('password'), $user->password)) {
                     Auth::login($user);
-                    return redirect(route('admin.dashboard'));
+                    if($user->role_id == 1) {
+                        return redirect(route('admin.dashboard'));
+                    } else {
+                        
+                    }
                 } else {
                   
                     return back()->withErrors(['password' => 'invalid email or password']);
