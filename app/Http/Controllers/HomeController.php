@@ -15,7 +15,8 @@ class HomeController extends Controller
 
     public function search_venue(Request $request) {
         $venues = Venue::with('venue_images')->where('id', $request->venue_id)->paginate(20);
-        return view('front.events.search_result', compact('venues'));
+        $cartItems = \Cart::getContent();
+        return view('front.events.search_result', compact('venues', 'cartItems'));
         // return redirect('search-result')->with('venue',$venue);        
     }
 
@@ -26,5 +27,9 @@ class HomeController extends Controller
 
     public function checkout(Request $request) {
         return view('front.events.checkout');
+    }
+
+    public function supplier_request(Request $request){
+        return view('front.events.supplier_request');
     }
 }
