@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\VenueController;
+use App\Http\Controllers\Admin\BlogController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
@@ -16,6 +17,9 @@ Route::get('search-venue', [HomeController::class, 'search_venue']);
 Route::get('venue-detail/{id}', [HomeController::class, 'venue_detail']);
 Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('supplier-request', [HomeController::class, 'supplier_request']);
+
+Route::get('blog-detail/{id}', [HomeController::class, 'blog_detail']);
+
 Route::get('submit-request', [CartController::class, 'submit_request'])->name('submitRequest');
 
 
@@ -43,6 +47,8 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::match(['get','post'],'upload-image', [EventController::class, 'upload_images'])->name('uploadImages');
 
     Route::resource('venues', VenueController::class);
+    Route::resource('blogs', BlogController::class);
+
     // Route::match(['get', 'post'], '/setting', [AdminController::class, 'setting'])->name('setting');
     // Route::get('/change-password', [AdminController::class, 'changePassword'])->name('changePassword');
     // Route::post('/update-admin-password', [AdminController::class, 'updateAdminPassword'])->name('updateAdminPassword');

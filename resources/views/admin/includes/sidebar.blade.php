@@ -47,7 +47,7 @@
                 </g>
               </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">CVents</span>
           </a>
 
           <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -77,6 +77,13 @@
             <a href="{{ route('admin.uploadImages') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Upload Images</div>
+            </a>
+          </li>
+
+          <li class="menu-item {{ str_contains(url()->current(), 'admin/blogs') ? 'active' : '' }}">
+            <a href="{{ route('admin.blogs.index') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Analytics">Blogs</div>
             </a>
           </li>
 

@@ -1439,7 +1439,7 @@
                                     <div class="row">
                                         <div class="col-lg-4 col-md-12 col-sm-12">
                                             <div class="card-img-box">
-                                                <img src="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}" class="img-fluid" alt="">
+                                                <img style="height:180px; width:280px" src="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}" class="img-fluid" alt="">
                                               
                                                     <ul class="image-front-btn">
                                                         <li>
