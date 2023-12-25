@@ -44,7 +44,7 @@
             <div class="app-brand justify-content-center">
               <a href="{{ url('login') }}" class="app-brand-link gap-2">
                
-                <span class="app-brand-text demo text-body fw-bolder">Events</span>
+                <span class="app-brand-text demo text-body fw-bolder">Best Meeting Venues</span>
               </a>
             </div>
             <!-- /Logo -->
@@ -90,12 +90,12 @@
               </div>
             </form>
 
-            {{-- <p class="text-center">
+            <p class="text-center">
               <span>New on our platform?</span>
-              <a href="auth-register-basic.html">
+              <a href="{{ url('register') }}">
                 <span>Create an account</span>
               </a>
-            </p> --}}
+            </p>
           </div>
         </div>
         <!-- /Register -->
