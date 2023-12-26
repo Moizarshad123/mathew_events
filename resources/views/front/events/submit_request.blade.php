@@ -118,7 +118,7 @@
                             <p>You can add {{ 10 - Cart::getTotalQuantity() }} more venues to your request.</p>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <a href="{{ url('/') }}" class="btn lightbluebtn">Continue searching > </a>
+                            <a href="{{ url('/') }}" class="btn lightbluebtn">< Continue searching</a>
                         </div>
                     </div>
                 </div>
@@ -126,14 +126,17 @@
                 <div class="bottom___btns___wrapper">
                     <div class="row align-items-center">
                         <div class="col-lg-8 col-sm-6">
-                            <a href="javascript:;"> < Back to search results</a>
+                            {{-- <a href="javascript:;"> < Back to search results</a> --}}
                         </div>
-                        <div class="col-lg-1 col-sm-3">
-                            <a href="{{ url('login') }}" class="btn greybtn">Login</a>
-                        </div>
-                        <div class="col-lg-3 col-sm-3">
-                            <a href="{{  url('checkout') }}" class="btn greenbtn">Continue as guest > </a>
-                        </div>
+                        {{-- @if(!auth()->user()) --}}
+                            {{-- <div class="col-lg-1 col-sm-3">
+                                <a href="{{ url('login') }}" class="btn greybtn">Login</a>
+                            </div>
+                        @else  --}}
+                            <div class="col-lg-3 col-sm-3">
+                                <a href="{{  url('checkout') }}" class="btn greenbtn">Continue to Checkout > </a>
+                            </div>
+                        {{-- @endif --}}
                     </div>
                 </div>
             </div>

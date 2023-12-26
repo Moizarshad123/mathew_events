@@ -66,7 +66,7 @@
 
                             <div class="venuelistdropdownfooter">
                                 @if(Cart::getTotalQuantity() > 0)
-                                <a href="{{ url('submit-request') }}" class="btn">Submit Request</a>
+                                    <a href="{{ url('submit-request') }}" class="btn">Submit Request</a>
                                 @endif
                                 <p>
                                     Tell us about your event. Venues will respond back with a personalized quote!
@@ -75,8 +75,13 @@
 
                         </div>
                     </div>
-                    <a href="javascript:;" class="headerlinkslogin">Sign up</a>
-                    <a href="{{ url('login') }}" class="headerlinkslogin">Login</a>
+                    @if(!auth()->user())
+                        <a href="{{ url('register') }}" class="headerlinkslogin">Sign up</a>
+                        <a href="{{ url('login') }}" class="headerlinkslogin">Login</a>
+                    @else
+                        <a href="javascript:;" class="headerlinkslogin">{{ auth()->user()->name }}</a>
+                    @endif
+                    <a href="{{ url('contact') }}" class="headerlinkslogin" target="blank">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -111,7 +116,7 @@
                                     <img src="{{$item["attributes"]->image}}" style="height:50px; width:50px" class="img-fluid" alt="">
                                 </div>
                                 <div class="cont-box">
-                                    <p class="hotel-name">{{ $item->company }}</p>
+                                    <p class="hotel-name">{{ $item->name }}</p>
                                     <p class="hotel-location">{{$item["attributes"]->city}},
                                         {{ $item["attributes"]->state }}</p>
                                     <form action="{{ route('cart.remove') }}" method="POST">

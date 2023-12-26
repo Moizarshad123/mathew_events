@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Venue;
 use App\Models\VenueImage;
-
+use App\Models\SupplierRequest;
+use App\Models\VenueRequest;
+use App\Models\OrderVenue;
 use Auth;
 use File; 
 
@@ -58,4 +60,29 @@ class EventController extends Controller
             return view('admin.venues.upload_images', compact('venues'));
         }
     }
+
+    public function supplier_requests(Request $request) {
+        $supplier_requests = SupplierRequest::orderByDESC('id')->paginate(30);
+        return view('admin.supplier_requests', compact('supplier_requests'));
+    }
+
+    public function supplier_request_detail($id) {
+        $content = SupplierRequest::find($id);
+        return view('admin.supplier_request_detail', compact('content'));
+    }
+
+    public function venue_requests(Request $request) {
+        $requests = VenueRequest::orderByDESC('id')->paginate(30);
+        return view('admin.venues.venue_requests', compact('requests'));
+
+    }
+
+    public function venue_request_detail($id) {
+
+        $venue = VenueRequest::with('orders')->where('id', $id)->first();
+        return view('admin.venues.venue_request_detail', compact('venue'));
+
+    }
+
+    
 }

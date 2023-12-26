@@ -11,38 +11,39 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-5">
-                    <form>
+                    <form method="POST" action="{{ url('submit-supplier-request') }}" id="myForm">
+                        @csrf
                         <h5 class="card-header">New Supplier Information</h5>
                         <div class="card-body">
                             <div class="form-parent">
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword1" class="col-sm-2 col-form-label">* Supplier Name:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword1" placeholder="Supplier Name">
+                                            <input type="text" class="form-control" name="supplier_name" id="inputPassword1" placeholder="Supplier Name" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword2" class="col-sm-2 col-form-label">Phone Number:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword2" placeholder="Phone Number">
+                                            <input type="text" class="form-control" name="supplier_phone" id="inputPassword2" placeholder="Phone Number">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword3" class="col-sm-2 col-form-label">Address 1:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword3" placeholder="Address 1">
+                                            <input type="text" class="form-control" name="supplier_address1" id="inputPassword3" placeholder="Address 1">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword4" class="col-sm-2 col-form-label">Address 3:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword4" placeholder="Address 3">
+                                            <input type="text" class="form-control" name="supplier_address2" id="inputPassword4" placeholder="Address 3">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword5" class="col-sm-2 col-form-label">State:</label>
                                         <div class="col-sm-10">
-                                            <select name="ddlSupplierStateCode" class="form-select">
+                                            <select name="supplier_state" class="form-select">
                                                 <option selected="selected" value=""></option>
                                                 <optgroup label="-- United States --">
                                                 </optgroup><option value="AL">Alabama</option>
@@ -395,19 +396,19 @@
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword6" class="col-sm-2 col-form-label">* City:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword6" placeholder="City">
+                                            <input type="text" class="form-control" id="inputPassword6" placeholder="City" name="supplier_city" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword7" class="col-sm-2 col-form-label">ZIP/Postal Code:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword7" placeholder="ZIP/Postal Code">
+                                            <input type="text" class="form-control" id="inputPassword7" placeholder="ZIP/Postal Code" name="supplier_zip">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword8" class="col-sm-2 col-form-label">* Country:</label>
                                         <div class="col-sm-10">
-                                            <select name="ddlSupplierCountryCode" id="ddlSupplierCountryCode" class="form-select">
+                                            <select name="supplier_country" id="ddlSupplierCountryCode" class="form-select" required>
                                                 <option value=""></option>
                                                 <option value="US">USA</option>
                                                 <option value="CA">Canada</option>
@@ -671,7 +672,7 @@
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword9" class="col-sm-2 col-form-label">Additional Information:</label>
                                         <div class="col-sm-10">
-                                            <textarea name="" id="" cols="20" rows="5" class="form-control" placeholder="Additional Information"></textarea>
+                                            <textarea name="supplier_info" cols="20" rows="5" class="form-control" placeholder="Additional Information"></textarea>
                                         </div>
                                     </div>
                             </div>
@@ -682,53 +683,53 @@
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword11" class="col-sm-2 col-form-label">First Name:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword11" placeholder="First Name">
+                                            <input type="text" class="form-control" id="inputPassword11" placeholder="First Name" name="requestor_fname">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword112" class="col-sm-2 col-form-label">Last Name:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword112" placeholder="Last Name">
+                                            <input type="text" class="form-control" id="inputPassword112" placeholder="Last Name" name="requestor_lname">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword113" class="col-sm-2 col-form-label">Organization:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword113" placeholder="Organization">
+                                            <input type="text" class="form-control" id="inputPassword113" placeholder="Organization" name="requestor_organization">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword114" class="col-sm-2 col-form-label">Email Address:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword114" placeholder="Email Address">
+                                            <input type="text" class="form-control" id="inputPassword114" placeholder="Email Address" name="requestor_email">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword115" class="col-sm-2 col-form-label">Phone Number:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputPassword115" placeholder="Phone Number">
+                                            <input type="text" class="form-control" id="inputPassword115" placeholder="Phone Number" name="requestor_phone">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword115" class="col-sm-2 col-form-label">Additional Information:</label>
                                         <div class="col-sm-10">
-                                            <textarea name="" id="" cols="30" rows="5" class="form-control" placeholder="Additional Information"></textarea>
+                                            <textarea name="requestor_info" id="" cols="30" rows="5" class="form-control" placeholder="Additional Information"></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">
+                                    {{-- <div class="form-group row mb-3">
                                         <label for="inputPassword115" class="col-sm-2 col-form-label">* Sharing:</label>
                                         <div class="col-sm-10">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> 
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required> 
                                             <label class="form-check-label mx-2" for="defaultCheck1">
                                                 By checking this box, I agree to Cvent's <a href="javascript:;">Privacy Policy</a> and <a href="javascript:;">Terms of Use</a>.
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword115" class="col-sm-2 col-form-label"></label>
                                         <div class="col-sm-10">
                                             <input type="submit" class="btn btn-primary mx-2">
-                                            <button class="btn btn-warning">Reset</button>
+                                            <button class="btn btn-warning" id="resetBtn">Reset</button>
                                         </div>
                                     </div>
                             </div>
@@ -745,5 +746,10 @@
 @endsection
 
 @section('js')
+ <script>
+    $(document).on('click', '#resetBtn', function() {
+        document.getElementById("myForm").reset();
+    });
+ </script>
     
 @endsection

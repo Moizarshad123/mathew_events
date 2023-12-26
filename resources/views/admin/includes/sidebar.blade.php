@@ -87,6 +87,36 @@
             </a>
           </li>
 
+          <li class="menu-item {{ str_contains(url()->current(), 'admin/new-supplier-request') ? 'active' : '' }}">
+            <a href="{{ route('admin.supplierRequests') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Analytics">Supplier Requests</div>
+            </a>
+          </li>
+
+          <li class="menu-item {{ str_contains(url()->current(), 'admin/users') ? 'active' : '' }}">
+            <a href="{{ route('admin.users') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Analytics">Users</div>
+            </a>
+          </li>
+
+          <li class="menu-item {{ str_contains(url()->current(), 'admin/venue-requests') ? 'active' : '' }}">
+            <a href="{{ route('admin.venueRequests') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Analytics">Venue Requests</div>
+            </a>
+          </li>
+
+          <li class="menu-item {{ str_contains(url()->current(), 'admin/contacts') ? 'active' : '' }}">
+            <a href="{{ route('admin.contacts') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Analytics">Contacts</div>
+            </a>
+          </li>
+          
+          
+
           {{-- <!-- Layouts -->
           <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

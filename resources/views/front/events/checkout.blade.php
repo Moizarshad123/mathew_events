@@ -17,7 +17,8 @@
                     <a class="nav-link tab-pills" id="tab-pillsFREW4" href="#"> <span>4</span> Finish</a>
                 </nav>
             </div>
-            <form class="card">
+            <form action="{{ url('submit-venue-request') }}" class="card" method="POST">
+                @csrf
                 <div class="card-body">
 
                     <div class="tab" id="tab1FFREWR">
@@ -26,12 +27,11 @@
                         <hr>
                         <div class="row g-3 align-items-center">
                             <div class="col-md-4">
-                                <label for="inputPassword6" class="col-form-label left-label-cstelms">EVENT
-                                    TYPE</label>
+                                <label for="inputPassword6" class="col-form-label left-label-cstelms">EVENT TYPE</label>
                             </div>
                             <div class="col-md-8">
                                 <label for="">EVENT TYPE</label>
-                                <select class="form-select form-select-sm " id="type" name="type">
+                                <select class="form-select form-select-sm " id="eventType" name="event_type">
                                     <option value=""></option>
                                     <option value="Anniversary or birthday">Anniversary or birthday</option>
                                     <option value="Bachelor or bachelorette party">Bachelor or bachelorette party
@@ -70,11 +70,11 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="">Arriving on</label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="arriving_date" id="arrivingDate">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="">Departing on</label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="departing_date" id="departingDate">
                                     </div>
                                     <div class="col-md-12">
                                         <div class="radio-btn-wrapper">
@@ -96,29 +96,38 @@
 
                         <div class="row g-3 align-items-center">
                             <div class="col-md-4">
-                                <label for="inputPassword6" class="col-form-label left-label-cstelms">GUEST
-                                    ROOMS</label>
+                                <label for="inputPassword6" class="col-form-label left-label-cstelms">GUEST ROOMS</label>
                             </div>
                             <div class="col-md-8">
                                 <div class="radio-btn-wrapper">
                                     <label for="">Does your event needs guest rooms?</label>
                                     <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="guestrooms" value="Yes" checked>Yes
+                                        <input type="radio" name="guestrooms" class="IsNeedGuestRoom" value="yes" checked>Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="guestrooms" value="No">No
+                                        <input type="radio" name="guestrooms" class="IsNeedGuestRoom" value="no">No
                                     </label>
+                                </div>
+                                <div class="row"  id="guestAttendees">
+                                    <div class="col-md-6">
+                                        <label>Guest Rooms per Night</label>
+                                        <input type="text" class="form-control" name="guest_room_per_night" id="guest_room_per_night">
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <label>People per guest room</label>
+                                        <input type="text" class="form-control" name="people_per_guest_room" id="people_per_guest_room">
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                 
 
                         <hr>
 
                         <div class="row g-3 align-items-center">
                             <div class="col-md-4">
-                                <label for="inputPassword6" class="col-form-label left-label-cstelms">MEETING
-                                    SPACE</label>
+                                <label for="inputPassword6" class="col-form-label left-label-cstelms">MEETING SPACE</label>
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
@@ -127,17 +136,17 @@
                                             <label for="">Does your event need meeting rooms?</label>
                                             <br>
                                             <label class="radio-inline">
-                                                <input type="radio" name="meetingrooms" value="Yes" checked>Yes
+                                                <input type="radio" name="need_meetingrooms" class="IsNeedMeetingRoom" value="yes" checked>Yes
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="meetingrooms" value="No">No
+                                                <input type="radio" name="need_meetingrooms" class="IsNeedMeetingRoom" value="no">No
                                             </label>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-12" id="meetingAttendees">
                                         <label>Attendees per day</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="attendees_per_day" id="attendees_per_day">
                                     </div>
                                     {{-- <div class="col-md-12">
                                         <div class="radio-btn-wrapper">
@@ -155,8 +164,7 @@
 
                         <div class="row g-3 align-items-center">
                             <div class="col-md-4">
-                                <label for="inputPassword6" class="col-form-label left-label-cstelms">TELL US MORE ABOUT
-                                    YOUR EVENT</label>
+                                <label for="inputPassword6" class="col-form-label left-label-cstelms">TELL US MORE ABOUT YOUR EVENT</label>
                             </div>
                             <div class="col-md-8">
                                 <textarea name="moreaboutevents" cols="20" rows="10" class="form-control"></textarea>
@@ -178,57 +186,56 @@
                         <hr>
                         <div class="row g-3 align-items-center">
                             <div class="col-md-4">
-                                <label for="inputPassword6" class="col-form-label left-label-cstelms">PLANNER
-                                    INFORMATION</label>
+                                <label for="inputPassword6" class="col-form-label left-label-cstelms">PLANNER INFORMATION</label>
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
                                     <div class="radio-btn-wrapper">
                                         <div class="col-md-12">
-                                            <label for="">Does your event need meeting rooms?</label>
+                                            <label for="">Are you planning this event for another organization?</label>
                                             <br>
                                             <label class="radio-inline">
-                                                <input type="radio" name="meetingrooms" value="Yes" checked>Yes
+                                                <input type="radio" name="eventForOtherOrganization" class="eventForOtherOrganization" value="yes" >Yes
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="meetingrooms" value="No">No
+                                                <input type="radio" name="eventForOtherOrganization" class="eventForOtherOrganization" checked value="no">No
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-label-wrapper">
                                             <label for="">First name</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="first_name" id="first_name">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-label-wrapper">
                                             <label for="">Last name</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="last_name" id="last_name">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-label-wrapper">
                                             <label for="">Email</label>
-                                            <input type="text" class="form-control">
+                                            <input type="email" class="form-control" name="email" id="email">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-label-wrapper">
                                             <label for="">Phone</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="phone" id="phone">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-label-wrapper">
                                             <label for="">City</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" id="city" name="city">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-label-wrapper">
                                             <label for="">Country/Region</label>
-                                            <select class="form-select" id="country" name="country">
+                                            <select class="form-select" id="country" name="country" id="country">
                                                 <option data-cvent-id="option-0" value="0"></option>
                                                 <option data-cvent-id="option-1" value="1">USA</option>
                                                 <option data-cvent-id="option-2" value="2">Canada</option>
@@ -520,13 +527,85 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    {{-- <div class="col-md-12">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="check1" name="option1"
                                                 value="something" checked>
-                                            <label class="form-check-label">Create my free Cvent account using these
-                                                details</label>
+                                            <label class="form-check-label">Create my free Cvent account using these details</label>
                                         </div>
+                                    </div> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hrClass">
+                        <div class="row g-3 align-items-center" id="organizationDetail">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="">Organization </label>
+                                        <input type="text" name="organization" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Commission Rate</label>
+                                        <input type="text" name="commission_rate" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr class="hrClass">
+                        <div class="row" id="clientOrganizationDetail">
+                            <div class="col-md-4">
+                                <label for="inputPassword6" class="col-form-label left-label-cstelms">CLIENT ORGANIZATION</label>
+
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="">Client Organization Name</label>
+                                        <input type="text" name="client_organization_name" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Client Organization</label>
+                                        <select name="client_organization" class="form-control" id="">
+                                            <option data-cvent-id="option-0" value=""></option>
+                                            <option data-cvent-id="option-1" value="Association">Association</option>
+                                            <option data-cvent-id="option-2" value="Corporate">Corporate</option>
+                                            <option data-cvent-id="option-3" value="Education">Education</option>
+                                            <option data-cvent-id="option-4" value="Government">Government</option>
+                                            <option data-cvent-id="option-5" value="Military">Military</option>
+                                            <option data-cvent-id="option-6" value="Non-profit">Non-profit</option>
+                                            <option data-cvent-id="option-7" value="Other">Other</option>
+                                            <option data-cvent-id="option-8" value="Religious">Religious</option>
+                                            <option data-cvent-id="option-9" value="Social">Social</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Industry</label>
+                                        <select name="industry" id="industry" class="form-control">
+                                            <option data-cvent-id="option-0" value="">Select Industry</option>
+                                            <option data-cvent-id="option-1" value="Agriculture and mining">Agriculture and mining</option>
+                                            <option data-cvent-id="option-2" value="Business services">Business services</option>
+                                            <option data-cvent-id="option-3" value="Computers and electronics">Computers and electronics</option>
+                                            <option data-cvent-id="option-4" value="Consumer services">Consumer services</option>
+                                            <option data-cvent-id="option-5" value="Education">Education</option>
+                                            <option data-cvent-id="option-6" value="Energy and utilities">Energy and utilities</option>
+                                            <option data-cvent-id="option-7" value="Financial services">Financial services</option>
+                                            <option data-cvent-id="option-8" value="Government">Government</option>
+                                            <option data-cvent-id="option-9" value="Healthcare, pharmaceuticals, and biotech">Healthcare, pharmaceuticals, and biotech</option>
+                                            <option data-cvent-id="option-10" value="Manufacturing">Manufacturing</option>
+                                            <option data-cvent-id="option-11" value="Media and entertainment">Media and entertainment</option>
+                                            <option data-cvent-id="option-12" value="Other">Other</option>
+                                            <option data-cvent-id="option-13" value="Real estate and construction">Real estate and construction</option>
+                                            <option data-cvent-id="option-14" value="Retail">Retail</option>
+                                            <option data-cvent-id="option-15" value="Software and Internet">Software and Internet</option>
+                                            <option data-cvent-id="option-16" value="Telecommunications">Telecommunications</option>
+                                            <option data-cvent-id="option-17" value="Transportation and storage">Transportation and storage</option>
+                                            <option data-cvent-id="option-18" value="Travel, recreation, and leisure">Travel, recreation, and leisure</option>
+                                            <option data-cvent-id="option-19" value="Wholesale and distribution">Wholesale and distribution</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -541,16 +620,15 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label for="">When do you need to hear from venues by?</label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="hear_venue_date" id="hear_venue_date">
                                     </div>
                                     <div class="col-md-12">
                                         <div class="radio-btn-wrapper">
                                             <label for="">How do you prefer to be contacted?</label>
-                                            <select class="form-select" id="preferredContactMethods"
-                                                name="preferredContactMethods">
-                                                <option data-cvent-id="option-0" value="0">Phone</option>
-                                                <option data-cvent-id="option-1" value="1">Email</option>
-                                                <option data-cvent-id="option-2" value="2">Phone or email</option>
+                                            <select class="form-select" id="preferredContactMethods" name="preferredContactMethods">
+                                                <option data-cvent-id="option-0" value="Phone">Phone</option>
+                                                <option data-cvent-id="option-1" value="Email">Email</option>
+                                                <option data-cvent-id="option-2" value="Phone or Email">Phone or email</option>
                                             </select>
                                         </div>
                                     </div>
@@ -587,7 +665,6 @@
                                 <button type="button" id="gotoslide3" class="btn greenbtn ms-auto">Next</button>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="tab d-none" id="tab3FFREWR">
@@ -604,10 +681,14 @@
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="confirmation_content_wrapper">
-                                            <p class="content_one____CSTELMS1">Bar or bat mitzvah</p>
-                                            <p class="content_one____CSTELMS2">12/20/2023 — 12/20/2023</p>
+                                            <p class="content_one____CSTELMS1" id="showEventType"></p>
+                                            <p class="content_one____CSTELMS2" id="showArrivingandDeparting"></p>
                                             <p class="content_one____CSTELMS3">Event dates are flexible.</p>
-                                            <p class="content_one____CSTELMS4">2 attendees per day</p>
+                                            <p class="content_one____CSTELMS4" id="showGuestRoomsPerNight"></p>
+                                            <p class="content_one____CSTELMS3" id="showNoOfPersonPerNight"></p>
+                                            <p class="content_one____CSTELMS4" id="showAttendeesPerDay"></p>
+                                            
+
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -619,21 +700,19 @@
                         <hr>
                         <div class="row g-3 align-items-center">
                             <div class="col-md-4">
-                                <label for="inputPassword6" class="col-form-label left-label-cstelms">CONTACT
-                                    DETAILS</label>
+                                <label for="inputPassword6" class="col-form-label left-label-cstelms">CONTACT DETAILS</label>
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="confirmation_content_wrapper">
-                                            <p class="content_one____CSTELMS_name">Lorem Ipsum</p>
-                                            <p class="content_one____CSTELMS_email">testmail@gmail.com</p>
-                                            <p class="content_one____CSTELMS_phone">+923 123 456 789</p>
-                                            <p class="content_one____CSTELMS_location">Karachi, Pakistan</p>
-                                            <p class="content_one____CSTELMS_message">Contact by email before Friday,
-                                                December 15, 2023</p>
-                                            <p class="content_one____CSTELMS_message">Creating Cvent account using
-                                                contact details.</p>
+                                            <p class="content_one____CSTELMS_name" id="showName"></p>
+                                            <p class="content_one____CSTELMS_email" id="showEmail"></p>
+                                            <p class="content_one____CSTELMS_phone" id="showPhone"></p>
+                                            <p class="content_one____CSTELMS_location" id="showCity"></p>
+                                            <p class="content_one____CSTELMS_message" id="contactType"></p>
+                                            {{-- <p class="content_one____CSTELMS_message">Creating Cvent account using
+                                                contact details.</p> --}}
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -667,34 +746,27 @@
 
                     <div class="tab d-none" id="tab4FFREWR">
                         <h2>
-                            Congratulations! You sent your request to 2 venues. Don’t forget to check your email for
-                            responses.
+                            Congratulations! You sent your request to {{ Cart::getTotalQuantity() }} venues. 
+                            {{-- Don't forget to check your email for
+                            responses. --}}
                         </h2>
                         <hr>
-                        <div class="venue_card__cst___elms">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="assets/img/ven1.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="col-md-9">
-                                    <a href="javascript:;">Regent Plaza Hotel & Convention Centre Karachi</a>
-                                    <p><i class="fa fa-map-pin"></i> Karachi, PK</p>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="venue_card__cst___elms">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="assets/img/ven1.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="col-md-9">
-                                    <a href="javascript:;">Regent Plaza Hotel & Convention Centre Karachi</a>
-                                    <p><i class="fa fa-map-pin"></i> Karachi, PK</p>
+                        @foreach ($cartItems as $item)
+                            <div class="venue_card__cst___elms">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <img src="{{$item["attributes"]->image}}" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a href="javascript:;">{{ $item->name}}</a>
+                                        <p><i class="fa fa-map-pin"></i> {{ $item["attributes"]->city.', '.$item["attributes"]->state }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <hr>
+                            <hr>
+                            
+                        @endforeach
+                      
                         <div class="congratulations-message">
                             <h3>Want to make your next request even easier?</h3>
                             <p>Your account has been created. Please check your email to activate your Cvent account.
@@ -711,14 +783,12 @@
                         <div class="card-footer text-end">
                             <div class="d-flex">
                                 <button type="button" id="gotoslide3prev" class="btn greybtn">Back</button>
-                                <button type="button" class="btn greenbtn ms-auto">Submit</button>
+                                <button type="submit" class="btn greenbtn ms-auto">Submit</button>
                             </div>
                         </div>
 
                     </div>
-
                 </div>
-
             </form>
         </div>
     </section>
@@ -1423,6 +1493,7 @@
 @section('js')
 
 <script>
+    
     $('#agendascreenfixedID').on('click', function () {
         $('#agendascreenwarpperid').css('display', 'block');
         $('body').css('overflow-y','hidden');
@@ -1473,6 +1544,37 @@
     });
 
     $('#gotoslide3').on('click', function () {
+
+        let f_name  = $('#first_name').val();
+        let l_name  = $('#last_name').val();
+        let email   = $('#email').val();
+        let phone   = $('#phone').val();
+        let city    = $('#city').val();
+        let country = $('#country').val();
+        let datee   = $('#hear_venue_date').val();
+        let type    = $('#preferredContactMethods').val();
+        let eventType = $('#eventType').val();
+
+        let arrivingDate  = $('#arrivingDate').val();
+        let departingDate = $('#departingDate').val();
+        let guest_room_per_night  = $('#guest_room_per_night').val();
+        let people_per_guest_room = $('#people_per_guest_room').val();
+        let attendees_per_day     = $('#attendees_per_day').val();
+
+        $('#showName').text(f_name+' '+l_name);
+        $('#showEmail').text(email);
+        $('#showPhone').text(phone);
+        $('#showCity').text(city);
+        $('#contactType').text('Contact By '+type+' before '+datee);
+
+        $('#showEventType').text(eventType);
+        $('#showArrivingandDeparting').text(arrivingDate+' - '+departingDate);
+        $('#showGuestRoomsPerNight').text(guest_room_per_night+' guest rooms per night');
+        $('#showNoOfPersonPerNight').text(people_per_guest_room+' people per guest room');
+        $('#showAttendeesPerDay').text(attendees_per_day+' attendees per day');
+
+         
+
         $('#tab-pillsFREW1').addClass('active');
         $('#tab-pillsFREW2').addClass('active');
         $('#tab-pillsFREW3').addClass('active');
@@ -1537,5 +1639,61 @@
         $('#tab3FFREWR').removeClass('d-none');
 
     });
+
+    $(document).on('click', '.IsNeedMeetingRoom', function(){
+
+        console.log("check", $(this).val());
+        if($(this).val() == "yes") {
+            $('#meetingAttendees').show();
+        } else {
+            $('#meetingAttendees').hide();
+        }
+    });
+
+    $(document).on('click', '.IsNeedGuestRoom', function(){
+
+        if($(this).val() == "yes") {
+            $('#guestAttendees').show();
+        } else {
+            $('#guestAttendees').hide();
+        }
+    });
+    $(document).ready(function() {
+
+        let getVal = $('.eventForOtherOrganization').val();
+        if($(this).val() == "yes") {
+            $('#organizationDetail').show();
+            $('#clientOrganizationDetail').show();
+            $('.hrClass').show();
+        } else {
+            $('#organizationDetail').hide();
+            $('#clientOrganizationDetail').hide();
+            $('.hrClass').hide();
+
+        }
+    });
+
+    $(document).on('click', '.eventForOtherOrganization', function(){
+
+        if($(this).val() == "yes") {
+            $('#organizationDetail').show();
+            $('#clientOrganizationDetail').show();
+            $('.hrClass').show();
+
+            
+
+        } else {
+            $('#organizationDetail').hide();
+            $('#clientOrganizationDetail').hide();
+            $('.hrClass').hide();
+
+
+        }
+    });
+
+    
+
+
+    
 </script>
 @endsection
