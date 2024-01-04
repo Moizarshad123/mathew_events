@@ -1,5 +1,11 @@
 @extends('front.layouts.app')
 @section('css')
+<style>
+      #map {
+            height: 400px;
+            width: 100%;
+        }
+</style>
 @endsection
 
 @section('content')
@@ -36,7 +42,7 @@
                         </form>
                     </li>
                     <li>
-                        {{-- <a href="javascript:;" class="svfbb_link_right">Learn how the Cvent Supplier Network works</a> --}}
+                        {{-- <a href="javascript:;" class="svfbb_link_right">Learn how the BestMeetingVenues Supplier Network works</a> --}}
                     </li>
                 </ul>
             </div>
@@ -332,14 +338,21 @@
             <div class="row align-items-center">
                 <div class="col-md-5">
                     <a class="nearby__venue__name">{{ $venue->company ?? "" }}</a>
-                    <img src="{{ asset($venue_images[0]->image)}}" class="img-fluid nearby__venue__vimage" alt="">
-                    <a href="javascript:;" class="btn bluebtn">Select Venue</a>
+                    <img src="{{ isset($venue_images[0]->image) ? asset($venue_images[0]->image) : '' }}" class="img-fluid nearby__venue__vimage" alt="">
+                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" value="{{ $venue->id }}" name="id">
+                        <input type="hidden" value="{{ $venue->company }}" name="name">
+                        <input type="hidden" value="{{ $venue->city }}" name="city">
+                        <input type="hidden" value="{{ $venue->state }}" name="state">
+
+
+                        <input type="hidden" value="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}"  name="image">
+                        <button style="background: #006ae1;color: #fff;" class="btn bluebtn">Select Venue</button>
+                    </form>
                 </div>
                 <div class="col-md-7">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462118.02491053584!2d67.15546194999999!3d25.193202399999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sKarachi%2C%20Karachi%20City%2C%20Sindh!5e0!3m2!1sen!2s!4v1701441028899!5m2!1sen!2s"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div id="map"></div>
                 </div>
             </div>
         </div>
@@ -355,12 +368,12 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="moredetails___content__right__box">
+                    {{-- <div class="moredetails___content__right__box">
                         <h4>Contact Us</h4>
                         <a href="javascript:;" class="btn whitebtn">Signup for access</a>
                         <p>Already have an account?</p>
                         <a href="{{ url('login') }}">Login</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -435,6 +448,29 @@
 
 
 @section('js')
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO1KMqg08gyZPAIWiIOY2hRtv2_EBuEB4&callback=initMap">
+</script>
+
+<script>
+function initMap() {
+    // Default location (you can replace this with dynamic lat/lng)
+    var defaultLatLng = { lat: 39.9892, lng: -75.2197 };
+
+    // Create a map centered at the default location
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: defaultLatLng,
+        zoom: 12
+    });
+
+    // Create a marker at the default location
+    var marker = new google.maps.Marker({
+        position: defaultLatLng,
+        map: map,
+        title: 'Default Location'
+    });
+}
+</script>
+
 <script>
     $('[data-fancybox]').fancybox({
         // Options will go here

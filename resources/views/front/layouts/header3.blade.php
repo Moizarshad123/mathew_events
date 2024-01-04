@@ -1,8 +1,10 @@
 <header class="desktopnav header-inner">
     <nav class="navbar fixed-top navbar-expand-lg">
         <div class="container-fluid px-4">
-            <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('front/img/logo.png')}}" class="img-fluid"
-                    alt=""></a>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                {{-- <img src="{{ asset('front/img/logo.png')}}" class="img-fluid"
+                    alt=""> --}}
+                </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -10,21 +12,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {{-- <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Venues</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('search-result') }}">Search Result</a>
+                    <a class="nav-link" href="javascript:;">Promotions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('single-venue') }}">Single Venue</a>
+                    <a class="nav-link" href="javascript:;">Destinations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('checkout') }}">Checkout</a>
+                    <a class="nav-link" href="javascript:;">Discover</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('submit-request') }}">Submit Request</a>
-                    </li> --}}
+                    <a class="nav-link" href="javascript:;">Luxury</a>
+                    </li>
 
                 </ul>
                 <div class="navbar-right-content">
@@ -125,7 +127,7 @@
                 </div>
             </div>
 
-            <a class="navbar-brand" href="#"><img src="assets/img/logo.png" class="img-fluid" alt=""></a>
+            <a class="navbar-brand" href="#"><img src="{{ asset('front/img/logo.png') }}" class="img-fluid" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">☰</span>
@@ -164,11 +166,11 @@
                                 <div class="dropdown">
                                     <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        Cvent picks
+                                        BestMeetingVenues picks
                                     </a>
 
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Cvent picks</a></li>
+                                        <li><a class="dropdown-item" href="#">BestMeetingVenues picks</a></li>
                                         <li><a class="dropdown-item" href="#">Alphabetical</a></li>
                                         <li><a class="dropdown-item" href="#">Distance</a></li>
                                         <li><a class="dropdown-item" href="#">Rating</a></li>
