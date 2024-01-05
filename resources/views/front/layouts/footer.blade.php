@@ -13,14 +13,14 @@
                 <ul>
                     <li><a href="javascrip:;">Event Management Software</a></li>
                     <li><a href="javascrip:;">Mobile Event Apps</a></li>
-                    <li><a href="javascrip:;">Cvent Supplier Network</a></li>
+                    <li><a href="javascrip:;">BestMeetingVenues Supplier Network</a></li>
                     <li><a href="javascrip:;">Strategic Meetings Management</a></li>
                     <li><a href="javascrip:;">Web Survey Software</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 col-sm-6">
                 <ul>
-                    <li><a href="javascrip:;">Cvent Home</a></li>
+                    <li><a href="javascrip:;">BestMeetingVenues Home</a></li>
                     <li><a href="javascrip:;">Contact Us</a></li>
                     <li><a href="javascrip:;">Customer Support</a></li>
                     <li><a href="javascrip:;">Your Privacy Choices</a></li>
@@ -38,7 +38,7 @@
     <div class="footer-bottom-text">
         <div class="container">
             <div class="footerbottom-text">
-                <p>Copyright © 2000-2023 Cvent, Inc. All rights reserved.</p>
+                <p>Copyright © {{date('Y')}} BestMeetingVenues, Inc. All rights reserved.</p>
             </div>
         </div>
     </div>

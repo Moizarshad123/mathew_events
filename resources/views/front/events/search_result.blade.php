@@ -14,14 +14,14 @@
                 <div class="col-lg-3 col-md-3 p-0">
                     <div class="left-side-bar">
                         <div class="left-side-bar-inner">
-                            <p class="address">
+                            {{-- <p class="address">
                                 21 Meeting & Event Venues in Karachi Cantt Railway Station, Doctor Daud Pota Road,
                                 Karachi Cantonment Karachi
                             </p>
                             <div class="map-box">
                                 <img src="assets/img/map-placeholder__1MRk3.png" class="img-fluid" alt="">
                                 <button type="button" class="btn bluebtn">View map</button>
-                            </div>
+                            </div> --}}
 
                             <!-- radius accordion -->
                             <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_one">
@@ -1518,7 +1518,7 @@
                             </ul> --}}
                             <div class="pagination-bottom-text">
                                 <p>Don't see a venue?</p>
-                                <p><a href="{{ url('supplier-request') }}">Send request</a> to add it to the Cvent Supplier Network.</p>
+                                <p><a href="{{ url('supplier-request') }}">Send request</a> to add it to the BestMeetingVenues Supplier Network.</p>
                             </div>
                         </div>
                     </div>
@@ -1694,8 +1694,12 @@
 @endsection
 
 @section('js')
+
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
+            $(document).on('slidechange','#slider-range',function(event, ui) {
+                alert(ui.value);
+            });
             $(document).on('click','#quickView', function() {
                 let _this = $(this);
 
@@ -1738,6 +1742,9 @@
                 $('#quickviewmodal').modal('show');
             });
         });
+    </script>
+    <script>
+
         $(function () {
             $("#rating-range").slider({
                 step: 1,
@@ -1747,6 +1754,9 @@
                 values: [0, 5],
                 slide: function (event, ui) {
                     $("#ratingRange").val(ui.values[0] + " - " + ui.values[1]);
+                },
+                change: function( event, ui ) {
+                    alert(ui.value);
                 }
             });
             $("#ratingRange").val($("#rating-range").slider("values", 0) + " - " + $("#rating-range").slider(

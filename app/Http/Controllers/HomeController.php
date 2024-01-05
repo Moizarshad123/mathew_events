@@ -33,7 +33,7 @@ class HomeController extends Controller
     }
 
     public function venue_detail($id) {
-        $venue = Venue::where('id', $id)->first();
+        $venue        = Venue::where('id', $id)->first();
         $venue_images = VenueImage::where('venue_id', $id)->get();
         return view('front.events.single-venue', compact('venue', 'venue_images'));
     }

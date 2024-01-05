@@ -721,7 +721,7 @@
                                         <div class="col-sm-10">
                                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required> 
                                             <label class="form-check-label mx-2" for="defaultCheck1">
-                                                By checking this box, I agree to Cvent's <a href="javascript:;">Privacy Policy</a> and <a href="javascript:;">Terms of Use</a>.
+                                                By checking this box, I agree to BestMeetingVenues's <a href="javascript:;">Privacy Policy</a> and <a href="javascript:;">Terms of Use</a>.
                                             </label>
                                         </div>
                                     </div> --}}
