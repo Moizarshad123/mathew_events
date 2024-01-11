@@ -12,13 +12,13 @@
     <div class="container">
         <div class="filter-bar">
             <form action="{{ url('search-venue') }}" method="GET">
-                @csrf
+                {{-- @csrf --}}
                 <ul>
                     <li class="filterone">
-                        <select name="venue_id" class="form-control event_filters" id="searchVenue" required>
-                            <option value="">Select Venue</option>
-                            @foreach ($venues as $item)
-                            <option value="{{ $item->id }}">{{ $item->company }}</option>
+                        <select name="city" class="form-control event_filters" id="searchVenue" required>
+                            <option value="">Select City</option>
+                            @foreach ($cities as $item)
+                            <option value="{{ $item->city }}">{{ $item->city }}</option>
                             @endforeach
                         </select>
                     </li>

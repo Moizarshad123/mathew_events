@@ -1694,6 +1694,14 @@
 @endsection
 
 @section('js')
+    <script>
+        function updateOrAddQueryParam(key, value) {
+            const urlObj = new URL(window.location.href);
+            urlObj.searchParams.set(key, value);
+            //console.log(urlObj.toString());
+            return urlObj.toString();
+        }
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -1756,7 +1764,8 @@
                     $("#ratingRange").val(ui.values[0] + " - " + ui.values[1]);
                 },
                 change: function( event, ui ) {
-                    alert(ui.value);
+                    window.location = updateOrAddQueryParam('rating', ui.values[0] + "-" + ui.values[1]);
+                    //alert(ui.values[0] + " - " + ui.values[1]);
                 }
             });
             $("#ratingRange").val($("#rating-range").slider("values", 0) + " - " + $("#rating-range").slider(
