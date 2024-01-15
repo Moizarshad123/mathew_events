@@ -1,5 +1,7 @@
 @extends('front.layouts.app')
 @section('css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 @endsection
 
 @section('content')
@@ -51,7 +53,7 @@
 
                             <!-- reset all filters -->
                             <div class="resetfiltests_cstelms_wrapper">
-                                <a href="javascript:;" class="restallfilters_cst_elms">Reset all filters</a>
+                                <a href="{{url('search-venue')}}" class="restallfilters_cst_elms">Reset all filters</a>
                             </div>
                             <!-- reset all filters -->
 
@@ -395,34 +397,42 @@
                                     <div id="collapseOne_cstelm5" class="accordion-collapse collapse"
                                         aria-labelledby="headingOne" data-bs-parent="#accordion_cstelem_five">
                                         <div class="accordion-body">
-                                            <input type="text" placeholder="Don’t see a city? Enter its name."
-                                                class="form-control">
-                                            <div class="chainbox-wrapper">
-                                                <h6>CITIES</h6>
-
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="LOIFGTFRE">
-                                                    <label class="form-check-label" for="LOIFGTFRE">
-                                                        Karachi
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="LOI746DE">
-                                                    <label class="form-check-label" for="LOI746DE">
-                                                        Lahore
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="LOIFXCVDE">
-                                                    <label class="form-check-label" for="LOIFXCVDE">
-                                                        Islamabad
-                                                    </label>
-                                                </div>
-
+{{--                                            <input type="text" placeholder="Don’t see a city? Enter its name."--}}
+{{--                                                class="form-control">--}}
+                                            <div class="filterone" style="width: 30%">
+                                                <select name="city" class="form-control event_filters" id="searchVenue" required>
+                                                    <option value="">Select City</option>
+                                                    @foreach ($cities as $item)
+                                                        <option value="{{ $item->city }}">{{ $item->city }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
+{{--                                            <div class="chainbox-wrapper">--}}
+{{--                                                <h6>CITIES</h6>--}}
+
+{{--                                                <div class="form-check">--}}
+{{--                                                    <input class="form-check-input" type="checkbox" value=""--}}
+{{--                                                        id="LOIFGTFRE">--}}
+{{--                                                    <label class="form-check-label" for="LOIFGTFRE">--}}
+{{--                                                        Karachi--}}
+{{--                                                    </label>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="form-check">--}}
+{{--                                                    <input class="form-check-input" type="checkbox" value=""--}}
+{{--                                                        id="LOI746DE">--}}
+{{--                                                    <label class="form-check-label" for="LOI746DE">--}}
+{{--                                                        Lahore--}}
+{{--                                                    </label>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="form-check">--}}
+{{--                                                    <input class="form-check-input" type="checkbox" value=""--}}
+{{--                                                        id="LOIFXCVDE">--}}
+{{--                                                    <label class="form-check-label" for="LOIFXCVDE">--}}
+{{--                                                        Islamabad--}}
+{{--                                                    </label>--}}
+{{--                                                </div>--}}
+
+{{--                                            </div>--}}
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
                                                 <li><button type="button" class="btn bluebtn">Apply</button></li>
@@ -566,7 +576,7 @@
                                             </div>
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
-                                                <li><button type="button" class="btn bluebtn">Apply</button></li>
+                                                <li><button type="button" class="btn bluebtn" id="largestRoomBtn">Apply</button></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -613,7 +623,7 @@
                                             </div>
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
-                                                <li><button type="button" class="btn bluebtn">Apply</button></li>
+                                                <li><button type="button" class="btn bluebtn" id="secondLargestRoomBtn">Apply</button></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -652,7 +662,7 @@
                                             </div>
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
-                                                <li><button type="button" class="btn bluebtn">Apply</button></li>
+                                                <li><button type="button" class="btn bluebtn" id="totalMeetingSpaceBtn">Apply</button></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -690,7 +700,7 @@
                                             </div>
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
-                                                <li><button type="button" class="btn bluebtn">Apply</button></li>
+                                                <li><button type="button" class="btn bluebtn" id="meetingRoomsBtn">Apply</button></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1412,11 +1422,11 @@
                                         <div class="accordion-body">
                                             <label>
                                                 Venues within
-                                                <input type="text" name="df_airport" class="form-control" placeholder="Enter mi."> <span
+                                                <input type="text" name="df_airport" id="df_airport" class="form-control" placeholder="Enter mi."> <span
                                                     class="unti_CHSYB13_w324">mi.</span>
                                             </label>
 
-                                            <button type="button" class="btn bluebtn searchBtn">Apply</button>
+                                            <button type="button" class="btn bluebtn" id="distanceAirportBtn">Apply</button>
 
                                         </div>
                                     </div>
@@ -1440,7 +1450,7 @@
                                         <div class="col-lg-4 col-md-12 col-sm-12">
                                             <div class="card-img-box">
                                                 <img style="height:180px; width:280px" src="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}" class="img-fluid" alt="">
-                                              
+
                                                     <ul class="image-front-btn">
                                                         <li>
                                                             <a href="javascript:;" data-image="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}" data-company='{{$venue->company}}' data-city='{{$venue->city}}' data-guest_rooms={{$venue->total_guest_rooms}} data-rating="{{ $venue->rating}}" data-meeting_rooms="{{ $venue->meeting_rooms}}" data-meeting_space="{{ $venue->total_meeting_space}}" data-largest_room="{{ $venue->largest_room}}" data-chain="{{ $venue->chain}}" data-brand="{{ $venue->brand }}" data-built="{{ $venue->built}}" data-distance_from_airport="{{ $venue->distance_from_airport }}" data-description="{{ $venue->description }}" data-facilities="{{ $venue->facilities}}" data-id="{{ $venue->id }}" data-venue_detail_url="{{ url('venue-detail/'.$venue->id) }}" class="btn whitebtn" id="quickView">Quick View</a>
@@ -1455,7 +1465,7 @@
                                                                     <input type="hidden" value="{{ $venue->state }}" name="state">
                                                                     <input type="hidden" value="{{ isset($venue["venue_images"][0]) ? asset($venue["venue_images"][0]->image ) : "" }}"  name="image">
                                                                     <button style="background: #006ae1;color: #fff;" class="btn bluebtn">Select Venue</button>
-                                                                </form>                                                            
+                                                                </form>
                                                             </li>
                                                         @endif
                                                     </ul>
@@ -1466,7 +1476,7 @@
                                                             </div>
                                                         </div>
                                                     @endif
-                                               
+
                                             </div>
                                         </div>
                                         <div class="col-lg-8 col-md-12 col-sm-12">
@@ -1694,6 +1704,11 @@
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        var $disabledResults = $(".event_filters");
+        $disabledResults.select2();
+    </script>
     <script>
         function updateOrAddQueryParam(key, value) {
             const urlObj = new URL(window.location.href);
@@ -1762,8 +1777,8 @@
         });
 
         $(function () {
-            var ratings = urlParams.get("ratings").split("-");
-            
+            var ratings = urlParams.has("ratings") ? urlParams.get("ratings").split("-") : [];
+
             var ratingValues = [0, 5];
             if(ratings.length == 2){
                 ratingValues = ratings;
@@ -1787,8 +1802,8 @@
         });
 
         $(function () {
-            var gRParams = urlParams.get("guest_rooms").split("-");
-            
+            var gRParams = urlParams.has("guest_rooms") ? urlParams.get("guest_rooms").split("-") : [];
+
             var gRValues = [0, 410];
             if(gRParams.length == 2){
                 gRValues = gRParams;
@@ -1812,14 +1827,24 @@
         });
 
         $(function () {
+            var largestRoom = urlParams.has("largest_room") ? urlParams.get("largest_room").split("-") : [];
+
+            var lrValues = [0, 14000];
+            if(largestRoom.length == 2){
+                lrValues = largestRoom;
+                $("#largestroom-range-min").val(lrValues[0]);
+                $("#largestroom-range-max").val(lrValues[1]);
+            }
             $("#largestroom-range").slider({
                 step: 100,
                 range: true,
                 min: 0,
                 max: 14000,
-                values: [0, 14000],
+                values: lrValues,
                 slide: function (event, ui) {
                     $("#largestroomRange").val(ui.values[0] + " - " + ui.values[1])
+                    $("#largestroom-range-min").val(ui.values[0]);
+                    $("#largestroom-range-max").val(ui.values[1]);
                 }
             });
             $("#largestroomRange").val($("#largestroom-range").slider("values", 0) + " - " + $(
@@ -1827,14 +1852,24 @@
         });
 
         $(function () {
+            var secLargestRoom = urlParams.has("second_largest_room") ? urlParams.get("second_largest_room").split("-") : [];
+
+            var slrValues = [0, 4000];
+            if(secLargestRoom.length == 2){
+                slrValues = secLargestRoom;
+                $("#secondlargestroom-range-min").val(slrValues[0]);
+                $("#secondlargestroom-range-max").val(slrValues[1]);
+            }
             $("#secondlargestroom-range").slider({
                 step: 100,
                 range: true,
                 min: 0,
                 max: 4000,
-                values: [0, 4000],
+                values: slrValues,
                 slide: function (event, ui) {
                     $("#secondlargestroomRange").val(ui.values[0] + " - " + ui.values[1])
+                    $("#secondlargestroom-range-min").val(ui.values[0]);
+                    $("#secondlargestroom-range-max").val(ui.values[1]);
                 }
             });
             $("#secondlargestroomRange").val($("#secondlargestroom-range").slider("values", 0) + " - " + $(
@@ -1842,14 +1877,24 @@
         });
 
         $(function () {
+            var totalMeetingSpace = urlParams.has("total_meeting_space") ? urlParams.get("total_meeting_space").split("-") : [];
+
+            var tmsValues = [0, 64000];
+            if(totalMeetingSpace.length == 2){
+                tmsValues = totalMeetingSpace;
+                $("#totalmeetingspace-range-min").val(tmsValues[0]);
+                $("#totalmeetingspace-range-max").val(tmsValues[1]);
+            }
             $("#totalmeetingspace-range").slider({
                 step: 1000,
                 range: true,
                 min: 0,
                 max: 64000,
-                values: [0, 64000],
+                values: tmsValues,
                 slide: function (event, ui) {
-                    $("#totalmeetingspaceRange").val(ui.values[0] + " - " + ui.values[1])
+                    $("#totalmeetingspaceRange").val(ui.values[0] + " - " + ui.values[1]);
+                    $("#totalmeetingspace-range-min").val(ui.values[0]);
+                    $("#totalmeetingspace-range-max").val(ui.values[1]);
                 }
             });
             $("#totalmeetingspaceRange").val($("#totalmeetingspace-range").slider("values", 0) + " - " + $(
@@ -1857,6 +1902,15 @@
         });
 
         $(function () {
+            var meetingRooms = urlParams.has("meeting_rooms") ? urlParams.get("meeting_rooms").split("-") : [];
+
+            var mrValues = [0, 64000];
+            if(meetingRooms.length == 2){
+                tmsValues = mrValues;
+                $("#meetingrooms-range-min").val(mrValues[0]);
+                $("#meetingrooms-range-max").val(mrValues[1]);
+            }
+
             $("#meetingrooms-range").slider({
                 step: 1,
                 range: true,
@@ -1864,7 +1918,9 @@
                 max: 19,
                 values: [0, 19],
                 slide: function (event, ui) {
-                    $("#meetingroomsRange").val(ui.values[0] + " - " + ui.values[1])
+                    $("#meetingroomsRange").val(ui.values[0] + " - " + ui.values[1]);
+                    $("#meetingrooms-range-min").val(ui.values[0]);
+                    $("#meetingrooms-range-max").val(ui.values[1]);
                 }
             });
             $("#meetingroomsRange").val($("#meetingrooms-range").slider("values", 0) + " - " + $(
@@ -1888,21 +1944,44 @@
 
         $("#unRatedVanues").on('change', function(){
             if($(this).is(':checked')){
-                window.location = updateOrAddQueryParam('un_rated', 1)  
+                window.location = updateOrAddQueryParam('un_rated', 1)
             }
         });
 
         $("#guestRoomBtn").on('click', function(){
-            var gRValues =  $("#guestroom-range-min").val()+'-'+$("#guestroom-range-max").val();
-            window.location = updateOrAddQueryParam('guest_rooms', gRValues)
-        });
-    </script>
-    {{-- <script>
-        $(".searchBtn").on('click', function(){
-            late searchkey = $(this).data('searchKey');
-            late value = $("#"+searchkey).val();
-            window.location = updateOrAddQueryParam(searchkey, value)
+            let minValue = $("#guestroom-range-min").val() != "" ? $("#guestroom-range-min").val() : 0;
+
+            window.location = updateOrAddQueryParam('guest_rooms', minValue + '-' +$("#guestroom-range-max").val());
         });
 
-    </script> --}}
+        $("#largestRoomBtn").on('click', function(){
+            let minValue = $("#largestroom-range-min").val() != "" ? $("#guestroom-range-min").val() : 0;
+            let maxValue = $("#largestroom-range-max").val();
+            window.location = updateOrAddQueryParam('largest_room', minValue + '-' + maxValue);
+        });
+
+        $("#secondLargestRoomBtn").on('click', function(){
+            let minValue = $("#secondlargestroom-range-min").val() != "" ? $("#secondlargestroom-range-min").val() : 0;
+            let maxValue = $("#secondlargestroom-range-max").val();
+            window.location = updateOrAddQueryParam('second_largest_room', minValue + '-' + maxValue);
+        });
+
+        $("#totalMeetingSpaceBtn").on('click', function(){
+            let minValue = $("#totalmeetingspace-range-min").val() != "" ? $("#totalmeetingspace-range-min").val() : 0;
+            let maxValue = $("#totalmeetingspace-range-max").val();
+            window.location = updateOrAddQueryParam('total_meeting_space', minValue + '-' + maxValue)
+        });
+
+        $("#meetingRoomsBtn").on('click', function(){
+            let minValue = $("#meetingrooms-range-min").val() != "" ? $("#meetingrooms-range-min").val() : 0;
+            let maxValue = $("#meetingrooms-range-max").val();
+            window.location = updateOrAddQueryParam('meeting_rooms', minValue + '-' + maxValue)
+        });
+
+        $("#distanceAirportBtn").on('click', function(){
+            window.location = updateOrAddQueryParam('df_airport', $("#df_airport").val())
+        });
+
+
+    </script>
 @endsection

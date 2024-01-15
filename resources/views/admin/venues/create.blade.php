@@ -210,8 +210,8 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -225,12 +225,12 @@
                     <button type="submit" class="btn btn-primary">Upload</button>
                 </div>
             </div>
-        
+
         </form>
     </div>
 @endsection
 
-@section('js')  
+@section('js')
 <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
 <script>
@@ -244,7 +244,7 @@
         $('.numericInput').on('input', function() {
             // Remove non-numeric characters except dot (.)
             $(this).val($(this).val().replace(/[^0-9.]/g, ''));
-    
+
             // Ensure there is at most one dot (decimal point)
             if ($(this).val().split('.').length > 2) {
                 // If more than one dot, keep only the first one
@@ -252,6 +252,6 @@
             }
         });
     });
-    </script>
+</script>
 @endsection
 

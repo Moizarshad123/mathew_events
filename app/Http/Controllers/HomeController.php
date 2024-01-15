@@ -28,6 +28,7 @@ class HomeController extends Controller
     public function search_venue(Request $request) {
 
         $cartItems = \Cart::getContent();
+        $cities = Venue::select('city')->distinct()->get();
         $venues    = Venue::with('venue_images');
         if($request->has('city') && $request->get('city') != null){
             $venues = $venues->where('city', 'LIKE', '%'.$request->city.'%');
@@ -35,46 +36,48 @@ class HomeController extends Controller
 
         if($request->has('ratings') && $request->get('ratings') != ""){
             $ratings = explode('-', $request->get('ratings'));
-            $venues = $venues->where('ratings', '>=', $ratings[0])->where('ratings', '<=', $ratings[1]);
+            $venues = $venues->where('ratings', '>=', $ratings[0])
+                ->where('ratings', '<=', $ratings[1]);
         }
 
         if($request->has('guest_rooms') && $request->get('guest_rooms') > 0){
             $grLimits = explode('-', $request->get('guest_rooms'));
-            $venues = $venues->where('guest_rooms', '>=', $grLimits[0])->where('guest_rooms', '<=', $grLimits[1]);
+            $venues = $venues->where('guest_rooms', '>=', $grLimits[0])
+                ->where('guest_rooms', '<=', $grLimits[1]);
         }
 
         if($request->has('largest_room') && $request->get('largest_room') > 0){
             $largestRoomLimits = explode('-', $request->get('largest_room'));
             $venues = $venues->where('largest_room', '>=', $largestRoomLimits[0])
-            ->where('largest_room', '<=', $largestRoomLimits[1]);
+                ->where('largest_room', '<=', $largestRoomLimits[1]);
         }
 
         if($request->has('second_largest_room') && $request->get('second_largest_room') > 0){
             $largestRoom2ndLimits = explode('-', $request->get('second_largest_room'));
             $venues = $venues->where('second_largest_room', '>=', $largestRoom2ndLimits[0])
-            ->where('second_largest_room', '<=', $largestRoom2ndLimits[1]);
+                ->where('second_largest_room', '<=', $largestRoom2ndLimits[1]);
         }
 
         if($request->has('total_meeting_space') && $request->get('total_meeting_space') > 0){
             $totalMSLimits = explode('-', $request->get('total_meeting_space'));
             $venues = $venues->where('total_meeting_space', '>=', $totalMSLimits[0])
-            ->where('total_meeting_space', '<=', $totalMSLimits[1]);
+                ->where('total_meeting_space', '<=', $totalMSLimits[1]);
         }
 
         if($request->has('meeting_rooms') && $request->get('meeting_rooms') > 0){
             $meetingRoomsLimits = explode('-', $request->get('meeting_rooms'));
             $venues = $venues->where('meeting_rooms', '>=', $meetingRoomsLimits[0])
-            ->where('meeting_rooms', '<=', $meetingRoomsLimits[1]);
+                ->where('meeting_rooms', '<=', $meetingRoomsLimits[1]);
         }
 
         if($request->has('df_airport') && $request->get('df_airport') > 0){
             $venues = $venues->where('distance_from_airport', '<=', $request->df_airport);
         }
-        
+
         $venues = $venues->paginate(20);
-        
-        return view('front.events.search_result', compact('venues', 'cartItems'));
-        // return redirect('search-result')->with('venue',$venue);        
+
+        return view('front.events.search_result', compact('venues', 'cartItems', 'cities'));
+        // return redirect('search-result')->with('venue',$venue);
     }
 
     public function filter_venue(Request $request){
