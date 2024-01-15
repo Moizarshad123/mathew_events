@@ -80,8 +80,8 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="">Airport Distance</label>
-                       <input type="text" name="distance_from_airport" class="form-control" placeholder="16 mi. from venue">
+                        <label for="">Airport Distance (miles)</label>
+                       <input type="text" name="distance_from_airport" class="form-control numericInput" placeholder="16 mi. from venue">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -107,20 +107,20 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="">Parking</label>
-                       <input type="text" name="parking" class="form-control" placeholder="$42.00 / day">
+                        <label for="">Parking (Per Day)</label>
+                       <input type="text" name="parking" class="form-control numericInput" placeholder="$42.00 / day">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="">Rating</label>
-                       <input type="text" name="ratings" class="form-control" placeholder="4 star">
+                        <label for="">Rating (0-5)</label>
+                       <input type="text" name="ratings" class="form-control numericInput" placeholder="4">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Guest Rooms</label>
-                       <input type="text" name="guest_rooms" class="form-control" placeholder="217">
+                       <input type="number" name="guest_rooms" class="form-control" placeholder="217">
                     </div>
                 </div>
             </div>
@@ -128,20 +128,20 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="">Total Meeting Space</label>
-                       <input type="text" name="total_meeting_space" class="form-control" placeholder="31,032 sq. ft.">
+                        <label for="">Total Meeting Space (sq.ft.)</label>
+                       <input type="number" name="total_meeting_space" class="form-control" placeholder="31,032 sq. ft.">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="">Largest Room</label>
-                       <input type="text" name="largest_room" class="form-control" placeholder="11,220 sq. ft.">
+                        <label for="">Largest Room (sq.ft.)</label>
+                       <input type="number" name="largest_room" class="form-control" placeholder="11,220 sq. ft.">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="">2nd Largest Room</label>
-                       <input type="text" name="second_largest_room" class="form-control" placeholder="7,548 sq. ft.">
+                        <label for="">2nd Largest Room (sq.ft.)</label>
+                       <input type="number" name="second_largest_room" class="form-control" placeholder="7,548 sq. ft.">
                     </div>
                 </div>
             </div>
@@ -150,19 +150,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Meeting Rooms</label>
-                       <input type="text" name="meeting_rooms" class="form-control" placeholder="15">
+                       <input type="number" name="meeting_rooms" class="form-control" placeholder="15">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Total Guest Rooms</label>
-                       <input type="text" name="total_guest_rooms" class="form-control" placeholder="200">
+                       <input type="number" name="total_guest_rooms" class="form-control" placeholder="200">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Suites</label>
-                       <input type="text" name="suites" class="form-control" placeholder="38">
+                       <input type="number" name="suites" class="form-control" placeholder="38">
                     </div>
                 </div>
             </div>
@@ -238,5 +238,20 @@
     CKEDITOR.replace('ckeditor');
 
 </script>
+
+<script>
+    $(document).ready(function() {
+        $('.numericInput').on('input', function() {
+            // Remove non-numeric characters except dot (.)
+            $(this).val($(this).val().replace(/[^0-9.]/g, ''));
+    
+            // Ensure there is at most one dot (decimal point)
+            if ($(this).val().split('.').length > 2) {
+                // If more than one dot, keep only the first one
+                $(this).val($(this).val().replace(/\.+$/, ''));
+            }
+        });
+    });
+    </script>
 @endsection
 

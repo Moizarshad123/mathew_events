@@ -33,8 +33,8 @@ class HomeController extends Controller
             $venues = $venues->where('city', 'LIKE', '%'.$request->city.'%');
         }
 
-        if($request->has('rating') && $request->get('rating') != ""){
-            $ratings = explode('-', $request->get('rating'));
+        if($request->has('ratings') && $request->get('ratings') != ""){
+            $ratings = explode('-', $request->get('ratings'));
             $venues = $venues->where('ratings', '>=', $ratings[0])->where('ratings', '<=', $ratings[1]);
         }
 

@@ -445,8 +445,8 @@
                                         </div>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="LOIFFRDE">
-                                        <label class="form-check-label" for="LOIFFRDE">
+                                        <input class="form-check-input" type="checkbox" value="0" id="unRatedVanues">
+                                        <label class="form-check-label" for="unRatedVanues">
                                             Include unrated venues
                                         </label>
                                     </div>
@@ -526,7 +526,7 @@
                                             </div>
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
-                                                <li><button type="button" class="btn bluebtn">Apply</button></li>
+                                                <li><button type="button" class="btn bluebtn" id="guestRoomBtn">Apply</button></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1412,11 +1412,11 @@
                                         <div class="accordion-body">
                                             <label>
                                                 Venues within
-                                                <input type="text" class="form-control" placeholder="Enter mi."> <span
+                                                <input type="text" name="df_airport" class="form-control" placeholder="Enter mi."> <span
                                                     class="unti_CHSYB13_w324">mi.</span>
                                             </label>
 
-                                            <button type="button" class="btn bluebtn">Apply</button>
+                                            <button type="button" class="btn bluebtn searchBtn">Apply</button>
 
                                         </div>
                                     </div>
@@ -1485,7 +1485,7 @@
                                                                 <p class="greytext__cstelm0187">Meeting rooms: {{ $venue->meeting_rooms ?? "0" }}</p>
                                                             </li>
                                                             <li>
-                                                                <p class="greytext__cstelm0187">Distance: {{ $venue->distance_from_airport ?? "0.0 km" }}</p>
+                                                                <p class="greytext__cstelm0187">Distance: {{ $venue->distance_from_airport ?? "0.0" }} mi</p>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -1495,8 +1495,8 @@
                                                                 <p>Independent / Other</p>
                                                             </li>
                                                             <li>
-                                                                <p class="greytext__cstelm0187">Total meeting space: {{ $venue->total_meeting_space ?? "0.0 sq ft" }}</p>
-                                                                <p class="greytext__cstelm0187">Largest Room: {{ $venue->largest_room ?? "0.0 sq ft" }}</p>
+                                                                <p class="greytext__cstelm0187">Total meeting space: {{ $venue->total_meeting_space ?? "0.0" }} sq ft</p>
+                                                                <p class="greytext__cstelm0187">Largest Room: {{ $venue->largest_room ?? "0.0" }} sq ft</p>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -1752,19 +1752,33 @@
         });
     </script>
     <script>
+        var urlParams = new URLSearchParams(window.location.href);
 
         $(function () {
+            var unRatedVanues = urlParams.get("un_rated");
+            if(unRatedVanues == 1){
+                $("#unRatedVanues").prop('checked', true);
+            }
+        });
+
+        $(function () {
+            var ratings = urlParams.get("ratings").split("-");
+            
+            var ratingValues = [0, 5];
+            if(ratings.length == 2){
+                ratingValues = ratings;
+            }
             $("#rating-range").slider({
                 step: 1,
                 range: true,
                 min: 0,
                 max: 5,
-                values: [0, 5],
+                values: ratingValues,
                 slide: function (event, ui) {
                     $("#ratingRange").val(ui.values[0] + " - " + ui.values[1]);
                 },
                 change: function( event, ui ) {
-                    window.location = updateOrAddQueryParam('rating', ui.values[0] + "-" + ui.values[1]);
+                    window.location = updateOrAddQueryParam('ratings', ui.values[0] + "-" + ui.values[1]);
                     //alert(ui.values[0] + " - " + ui.values[1]);
                 }
             });
@@ -1773,14 +1787,24 @@
         });
 
         $(function () {
+            var gRParams = urlParams.get("guest_rooms").split("-");
+            
+            var gRValues = [0, 410];
+            if(gRParams.length == 2){
+                gRValues = gRParams;
+                $("#guestroom-range-min").val(gRParams[0]);
+                $("#guestroom-range-max").val(gRParams[1]);
+            }
             $("#guestroom-range").slider({
                 step: 10,
                 range: true,
                 min: 0,
                 max: 410,
-                values: [0, 410],
+                values: gRValues,
                 slide: function (event, ui) {
-                    $("#guestroomRange").val(ui.values[0] + " - " + ui.values[1])
+                    $("#guestroomRange").val(ui.values[0] + " - " + ui.values[1]);
+                    $("#guestroom-range-min").val(ui.values[0]);
+                    $("#guestroom-range-max").val(ui.values[1]);
                 }
             });
             $("#guestroomRange").val($("#guestroom-range").slider("values", 0) + " - " + $("#guestroom-range")
@@ -1861,5 +1885,24 @@
             $("#ceilingheightRange").val($("#ceilingheight-range").slider("values", 0) + " - " + $(
                 "#ceilingheight-range").slider("values", 1));
         });
+
+        $("#unRatedVanues").on('change', function(){
+            if($(this).is(':checked')){
+                window.location = updateOrAddQueryParam('un_rated', 1)  
+            }
+        });
+
+        $("#guestRoomBtn").on('click', function(){
+            var gRValues =  $("#guestroom-range-min").val()+'-'+$("#guestroom-range-max").val();
+            window.location = updateOrAddQueryParam('guest_rooms', gRValues)
+        });
     </script>
+    {{-- <script>
+        $(".searchBtn").on('click', function(){
+            late searchkey = $(this).data('searchKey');
+            late value = $("#"+searchkey).val();
+            window.location = updateOrAddQueryParam(searchkey, value)
+        });
+
+    </script> --}}
 @endsection
