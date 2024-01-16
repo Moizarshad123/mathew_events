@@ -81,8 +81,8 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="">Airport Distance</label>
-                       <input type="text" name="distance_from_airport" class="form-control" value="{{ $content->distance_from_airport }}">
+                        <label for="">Airport Distance (Miles)</label>
+                       <input type="text" name="distance_from_airport" class="form-control numericInput" value="{{ $content->distance_from_airport }}">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -108,20 +108,20 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="">Parking</label>
-                       <input type="text" name="parking" class="form-control" value="{{ $content->parking }}">
+                        <label for="">Parking (Per Day)</label>
+                       <input type="text" name="parking" class="form-control numericInput" value="{{ $content->parking }}">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="">Rating</label>
-                       <input type="text" name="ratings" class="form-control" value="{{ $content->ratings }}">
+                        <label for="">Rating (0-5)</label>
+                       <input type="text" name="ratings" class="form-control numericInput" value="{{ $content->ratings }}">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Guest Rooms</label>
-                       <input type="text" name="guest_rooms" class="form-control" value="{{ $content->guest_rooms }}">
+                       <input type="number" name="guest_rooms" class="form-control" value="{{ $content->guest_rooms }}">
                     </div>
                 </div>
             </div>
@@ -129,20 +129,20 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="">Total Meeting Space</label>
-                       <input type="text" name="total_meeting_space" class="form-control" value="{{ $content->total_meeting_space }}">
+                        <label for="">Total Meeting Space (sq.ft.)</label>
+                       <input type="number" name="total_meeting_space" class="form-control" value="{{ $content->total_meeting_space }}">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="">Largest Room</label>
-                       <input type="text" name="largest_room" class="form-control" value="{{ $content->largest_room }}">
+                        <label for="">Largest Room (sq.ft.)</label>
+                       <input type="number" name="largest_room" class="form-control" value="{{ $content->largest_room }}">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="">2nd Largest Room</label>
-                       <input type="text" name="second_largest_room" class="form-control" value="{{ $content->second_largest_room }}">
+                        <label for="">2nd Largest Room (sq.ft.)</label>
+                       <input type="number" name="second_largest_room" class="form-control" value="{{ $content->second_largest_room }}">
                     </div>
                 </div>
             </div>
@@ -151,19 +151,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Meeting Rooms</label>
-                       <input type="text" name="meeting_rooms" class="form-control" value="{{ $content->meeting_rooms }}">
+                       <input type="number" name="meeting_rooms" class="form-control" value="{{ $content->meeting_rooms }}">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Total Guest Rooms</label>
-                       <input type="text" name="total_guest_rooms" class="form-control" value="{{ $content->total_guest_rooms }}">
+                       <input type="number" name="total_guest_rooms" class="form-control" value="{{ $content->total_guest_rooms }}">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Suites</label>
-                       <input type="text" name="suites" class="form-control" value="{{ $content->suites }}">
+                       <input type="number" name="suites" class="form-control" value="{{ $content->suites }}">
                     </div>
                 </div>
             </div>
@@ -211,8 +211,8 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -226,18 +226,32 @@
                     <button type="submit" class="btn btn-primary">Upload</button>
                 </div>
             </div>
-        
+
         </form>
     </div>
 @endsection
 
-@section('js')  
+@section('js')
 <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
 <script>
 
     CKEDITOR.replace('ckeditor');
 
+</script>
+<script>
+    $(document).ready(function() {
+        $('.numericInput').on('input', function() {
+            // Remove non-numeric characters except dot (.)
+            $(this).val($(this).val().replace(/[^0-9.]/g, ''));
+
+            // Ensure there is at most one dot (decimal point)
+            if ($(this).val().split('.').length > 2) {
+                // If more than one dot, keep only the first one
+                $(this).val($(this).val().replace(/\.+$/, ''));
+            }
+        });
+    });
 </script>
 @endsection
 
