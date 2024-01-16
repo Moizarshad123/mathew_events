@@ -399,8 +399,8 @@
                                         <div class="accordion-body">
 {{--                                            <input type="text" placeholder="Don’t see a city? Enter its name."--}}
 {{--                                                class="form-control">--}}
-                                            <div class="filterone" style="width: 30%">
-                                                <select name="city" class="form-control event_filters" id="searchVenue" required>
+                                            <div class="filterone">
+                                                <select name="city" class="form-control cityFilter" id="searchVenue">
                                                     <option value="">Select City</option>
                                                     @foreach ($cities as $item)
                                                         <option value="{{ $item->city }}">{{ $item->city }}</option>
@@ -435,7 +435,7 @@
 {{--                                            </div>--}}
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
-                                                <li><button type="button" class="btn bluebtn">Apply</button></li>
+                                                <li><button type="button" class="btn bluebtn" id="cityFilterBtn">Apply</button></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1706,8 +1706,8 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        var $disabledResults = $(".event_filters");
-        $disabledResults.select2();
+        var $cityFilter = $(".cityFilter");
+        $cityFilter.select2({dropdownAutoWidth: 'true', width: '100%'});
     </script>
     <script>
         function updateOrAddQueryParam(key, value) {
@@ -1982,6 +1982,8 @@
             window.location = updateOrAddQueryParam('df_airport', $("#df_airport").val())
         });
 
-
+        $("#cityFilterBtn").on('click', function (){
+            window.location = updateOrAddQueryParam('city', $cityFilter.val());
+        });
     </script>
 @endsection
