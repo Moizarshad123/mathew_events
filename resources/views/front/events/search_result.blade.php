@@ -26,7 +26,7 @@
                             </div> --}}
 
                             <!-- radius accordion -->
-                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_one">
+                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_one">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- radius accordion -->
 
 
@@ -59,7 +59,7 @@
 
 
                             <!-- event dates -->
-                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_two">
+                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_two">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -108,11 +108,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- event dates -->
 
                             <!-- venue types -->
-                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_three">
+                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_three">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -320,12 +320,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- venue types -->
 
 
                             <!-- Chains, brands, venues, or affiliates -->
-                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_four">
+                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_four">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -380,7 +380,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- Chains, brands, venues, or affiliates -->
 
 
@@ -442,10 +442,10 @@
                                 </div>
                             </div>
                             <!-- Chains, brands, venues, or affiliates -->
-                            <hr>
+                            {{-- <hr> --}}
 
                             <!-- rating filter -->
-                            <div class="ratingfilter_wrapper">
+                            <div class="ratingfilter_wrapper mt-2">
                                 <div class="filter-rating-box">
                                     <h4>Rating</h4>
                                     <div class="selector cstemlfilterrangeslider">
@@ -454,12 +454,12 @@
                                             <div id="rating-range" class="slider"></div>
                                         </div>
                                     </div>
-                                    <div class="form-check">
+                                    {{-- <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="0" id="unRatedVanues">
                                         <label class="form-check-label" for="unRatedVanues">
                                             Include unrated venues
                                         </label>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <!-- rating filter -->
@@ -467,7 +467,7 @@
                             <hr>
 
                             <!-- capabilities -->
-                            <div class="venuecapabilities_wrapper">
+                            {{-- <div class="venuecapabilities_wrapper">
                                 <div class="venue-capabilities-box">
                                     <p>Venue capabilities</p>
                                     <div class="form-check">
@@ -501,7 +501,7 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- capabilities -->
 
                             <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_six">
@@ -708,7 +708,7 @@
                             </div>
 
 
-                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_ten">
+                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_ten">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -743,10 +743,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
-                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_eleven">
+                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_eleven">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -1333,10 +1333,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
-                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_twelve">
+                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_twelve">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -1405,7 +1405,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                             <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_thirteen">
