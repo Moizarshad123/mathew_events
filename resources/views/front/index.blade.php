@@ -8,7 +8,7 @@
 @if(str_contains(url()->current(), '/'))
 @include('front.layouts.header')
 @endif
-<section class="banner-with-search">
+<section class="banner-with-search" style="background: {{ asset($cms->banner_image) }} !important;">
     <div class="container">
         <div class="filter-bar">
             <form action="{{ url('search-venue') }}" method="GET">
@@ -83,19 +83,17 @@
 <section class="discover-section">
     <div class="container">
         <div class="content_section">
-            <h2>Discover More</h2>
-            <p>The world's top chains, brands, and venues want your meetings! Find out what the top<br> chains and
-                brands are doing to make every meeting and event a unique experience.</p>
+            <h2>{{ $cms->section_one_heading }}</h2>
+            {!! $cms->section_one_content !!}
         </div>
         <div class="row">
             <div class="col-lg-6">
                 <div class="discover-left-box">
-                    <img src="{{ asset('front/img/i1.webp')}}" class="img-fluid" alt="">
+                    <img src="{{ asset($cms->section_two_image)}}" class="img-fluid" alt="">
                     <div class="abs-content-box">
-                        <h3>Put your Game face on at Graduate Hotels</h3>
-                        <p>With hotels and resorts throughout the US and meeting space for 10 to 1000, there is a
-                            distinctive venue to match any event style and size.</p>
-                        <a href="javascript:;">Learn more</a>
+                        <h3>{{ $cms->section_two_heading }}</h3>
+                        {!! $cms->section_two_content !!}
+                      
                     </div>
                 </div>
             </div>
@@ -103,39 +101,36 @@
                 <div class="discover-right-box">
                     <div class="custcard">
                         <div class="custcardimg">
-                            <img src="{{ asset('front/img/i2.webp')}}" class="img-fluid" alt="">
+                            <img src="{{ asset($cms->blog_one_image)}}" class="img-fluid" alt="">
                         </div>
                         <div class="custcardcontent">
-                            <h3>Put your Game face on at Graduate Hotels</h3>
-                            <p>From strategic meetings to team-building events, we are here to help you score
-                                success every time!</p>
-                            <a href="javascript:;">Learn more</a>
+                            <h3>{{ $cms->blog_one_heading }}</h3>
+                            {!! $cms->blog_one_content !!}
+                            {{-- <a href="javascript:;">Learn more</a> --}}
                         </div>
                     </div>
                 </div>
                 <div class="discover-right-box">
                     <div class="custcard">
                         <div class="custcardimg">
-                            <img src="{{ asset('front/img/i2.webp')}}" class="img-fluid" alt="">
+                            <img src="{{ asset($cms->blog_two_image)}}" class="img-fluid" alt="">
                         </div>
                         <div class="custcardcontent">
-                            <h3>Put your Game face on at Graduate Hotels</h3>
-                            <p>From strategic meetings to team-building events, we are here to help you score
-                                success every time!</p>
-                            <a href="javascript:;">Learn more</a>
+                            <h3>{{ $cms->blog_two_heading }}</h3>
+                            {!! $cms->blog_two_content !!}
+                            {{-- <a href="javascript:;">Learn more</a> --}}
                         </div>
                     </div>
                 </div>
                 <div class="discover-right-box">
                     <div class="custcard">
                         <div class="custcardimg">
-                            <img src="{{ asset('front/img/i2.webp')}}" class="img-fluid" alt="">
+                            <img src="{{ asset($cms->blog_three_image)}}" class="img-fluid" alt="">
                         </div>
                         <div class="custcardcontent">
-                            <h3>Put your Game face on at Graduate Hotels</h3>
-                            <p>From strategic meetings to team-building events, we are here to help you score
-                                success every time!</p>
-                            <a href="javascript:;">Learn more</a>
+                            <h3>{{ $cms->blog_three_heading }}</h3>
+                            {!! $cms->blog_three_content !!}
+                            {{-- <a href="javascript:;">Learn more</a> --}}
                         </div>
                     </div>
                 </div>

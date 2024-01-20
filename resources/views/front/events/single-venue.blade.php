@@ -452,9 +452,11 @@
 </script>
 
 <script>
+    var latitude  = {{ $venue->lat }};
+    var longitude = {{ $venue->lng }};
 function initMap() {
     // Default location (you can replace this with dynamic lat/lng)
-    var defaultLatLng = { lat: 39.9892, lng: -75.2197 };
+    var defaultLatLng = { lat: latitude, lng: longitude };
 
     // Create a map centered at the default location
     var map = new google.maps.Map(document.getElementById('map'), {
