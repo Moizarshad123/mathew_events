@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\VenueController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\HomeCMSController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
@@ -34,8 +35,6 @@ Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.up
 Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
 Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 
-
-
 Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
 Route::match(['get', 'post'], 'register', [AdminController::class, 'register'])->name('admin.register');
 
@@ -56,18 +55,15 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::get('supplier-request-detail/{id}', [EventController::class, 'supplier_request_detail']);
     Route::get('users', [AdminController::class, 'users'])->name('users');
     Route::get('contacts', [AdminController::class, 'contacts'])->name('contacts');
-
-
     
     Route::get('venue-requests', [EventController::class, 'venue_requests'])->name('venueRequests');
     Route::get('venue-request-detail/{id}', [EventController::class, 'venue_request_detail']);
-
-
-    
-
     
     Route::resource('venues', VenueController::class);
     Route::resource('blogs', BlogController::class);
+    Route::resource('cms', HomeCMSController::class);
+
+    
 
     // Route::match(['get', 'post'], '/setting', [AdminController::class, 'setting'])->name('setting');
     // Route::get('/change-password', [AdminController::class, 'changePassword'])->name('changePassword');
