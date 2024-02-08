@@ -9,6 +9,7 @@ use App\Models\Venue;
 use App\Models\VenueImage;
 
 use File; 
+use Config;
 
 class VenueController extends Controller
 {
@@ -30,7 +31,8 @@ class VenueController extends Controller
      */
     public function create()
     {
-        return view('admin.venues.create');  
+        $areas = Config::get('constants.areas');
+        return view('admin.venues.create', compact('areas'));  
     }
 
     public function store(Request $request)
@@ -74,7 +76,9 @@ class VenueController extends Controller
                 "venue_accessiblity" => $request->venue_accessiblity,
                 "facilities"  => $request->facilities,
                 "description" => $request->description,
-                "cancellation_policy" => $request->cancellation_policy
+                "cancellation_policy" => $request->cancellation_policy,
+                "area" => $request->area,
+                "ceiling_height" => $request->ceiling_height,
             ]);
     
             $dirPath  = "uploads/venues/".$request->company;
@@ -108,7 +112,8 @@ class VenueController extends Controller
     public function edit($id)
     {
         $content = Venue::find($id);
-        return view('admin.venues.edit', compact('content'));
+        $areas = Config::get('constants.areas');
+        return view('admin.venues.edit', compact('content', 'areas'));
     }
 
     public function update(Request $request, $id)
@@ -152,6 +157,8 @@ class VenueController extends Controller
             $venue->facilities              = $request->facilities;
             $venue->description             = $request->description;
             $venue->cancellation_policy     = $request->cancellation_policy;
+            $venue->area                    = $request->area;
+            $venue->ceiling_height          = $request->ceiling_height;
             $venue->save();            
 
             $dirPath  = "uploads/venues/".$request->company;

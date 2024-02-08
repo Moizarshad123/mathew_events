@@ -26,16 +26,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">City</label>
                        <input type="text" name="city" class="form-control" value="{{ $content->city }}">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">State</label>
                        <input type="text" name="state" class="form-control" value="{{ $content->state }}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">Area</label>
+                        <select name="area" class="form-control">
+                            <option value="">Select</option>
+                            @foreach($areas as $area)
+                                <option value="{{$area}}" @if($content->area == $area) selected @endif>{{$area}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -160,10 +171,21 @@
                        <input type="number" name="total_guest_rooms" class="form-control" value="{{ $content->total_guest_rooms }}">
                     </div>
                 </div>
+                
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="">Suites</label>
-                       <input type="number" name="suites" class="form-control" value="{{ $content->suites }}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Suites</label>
+                               <input type="number" name="suites" class="form-control" value="{{ $content->suites }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Ceiling Height (ft)</label>
+                               <input type="number" min="0" max="30" name="ceiling_height" class="form-control" value="{{ $content->ceiling_height }}">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
