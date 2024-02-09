@@ -40,6 +40,8 @@ class Venue extends Model
         "facilities",
         "description",
         "cancellation_policy",
+        "ceiling_height",
+        "area",
 
     ];
 

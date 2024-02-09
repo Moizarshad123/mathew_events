@@ -25,16 +25,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">City</label>
                        <input type="text" name="city" class="form-control" placeholder="Newyork">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">State</label>
                        <input type="text" name="state" class="form-control" placeholder="USA">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">Area</label>
+                        <select name="area" class="form-control">
+                            <option value="">Select</option>
+                            @foreach($areas as $area)
+                                <option value="{{$area}}">{{$area}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -160,9 +171,19 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="">Suites</label>
-                       <input type="number" name="suites" class="form-control" placeholder="38">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Suites</label>
+                               <input type="number" name="suites" class="form-control" placeholder="38">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Ceiling Height (ft)</label>
+                               <input type="number" min="0" max="30" name="ceiling_height" class="form-control" placeholder="30">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

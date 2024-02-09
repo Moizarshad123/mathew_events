@@ -8,7 +8,9 @@ use App\Models\VenueImage;
 use App\Models\Blog;
 use App\Models\SupplierRequest;
 use App\Models\Contact;
+use Config;
 use App\Models\HomeCms;
+
 
 
 class HomeController extends Controller
@@ -32,6 +34,10 @@ class HomeController extends Controller
         $cartItems = \Cart::getContent();
         $cities = Venue::select('city')->distinct()->get();
         $venues    = Venue::with('venue_images');
+        $areas  = Config::get('constants.areas');
+        $chainsAndAffiliates  = Config::get('constants.chains_and_affiliates');
+
+
         if($request->has('city') && $request->get('city') != null){
             $venues = $venues->where('city', 'LIKE', '%'.$request->city.'%');
         }
@@ -72,13 +78,35 @@ class HomeController extends Controller
                 ->where('meeting_rooms', '<=', $meetingRoomsLimits[1]);
         }
 
+        if($request->has('ceiling_height') && $request->get('ceiling_height') > 0){
+            $ceilingHeightLimits = explode('-', $request->get('ceiling_height'));
+            $venues = $venues->where('ceiling_height', '>=', $ceilingHeightLimits[0])
+                ->where('ceiling_height', '<=', $ceilingHeightLimits[1]);
+        }
+
+        if($request->has('area') && $request->get('area') != null){
+            $areaFilter = explode(",", $request->area);
+            $venues = $venues->whereIn('area', $areaFilter);
+        }
+
+        if($request->has('venue_type') && $request->get('venue_type') != null){
+            $typeFilter = explode(",", $request->venue_type);
+            $venues = $venues->whereIn('venue_type', $typeFilter);
+        }
+
+        if($request->has('chains') && $request->get('chains') != null){
+            $chainFilter = explode(",", $request->chains);
+            $venues = $venues->whereIn('chain', $chainFilter)
+                ->orWhereIn('brand', $chainFilter)->orWhereIn('company', $chainFilter);
+        }
+
         if($request->has('df_airport') && $request->get('df_airport') > 0){
             $venues = $venues->where('distance_from_airport', '<=', $request->df_airport);
         }
 
         $venues = $venues->paginate(20);
 
-        return view('front.events.search_result', compact('venues', 'cartItems', 'cities'));
+        return view('front.events.search_result', compact('venues', 'cartItems', 'cities', 'areas', 'chainsAndAffiliates'));
         // return redirect('search-result')->with('venue',$venue);
     }
 

@@ -26,7 +26,7 @@
                             </div> --}}
 
                             <!-- radius accordion -->
-                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_one">
+                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_one">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                             <!-- radius accordion -->
 
 
@@ -59,7 +59,7 @@
 
 
                             <!-- event dates -->
-                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_two">
+                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_two">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -108,20 +108,20 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                             <!-- event dates -->
 
                             <!-- venue types -->
-                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_three">
+                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_three">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button"
+                                        <button class="accordion-button {{request()->has('venue_type') ? '' : 'collapsed'}}" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseOne_cstelm3"
-                                            aria-expanded="false" aria-controls="collapseOne_cstelm3">
+                                            aria-expanded="{{request()->has('venue_type') ? true : false}}" aria-controls="collapseOne_cstelm3">
                                             Venue Types
                                         </button>
                                     </h2>
-                                    <div id="collapseOne_cstelm3" class="accordion-collapse collapse"
+                                    <div id="collapseOne_cstelm3" class="accordion-collapse collapse {{request()->has('venue_type') ? 'show' : ''}}"
                                         aria-labelledby="headingOne" data-bs-parent="#accordion_cstelem_three">
                                         <div class="accordion-body">
                                             <ul class="Promotionsorneeddates_wrapper">
@@ -131,62 +131,62 @@
                                                 <li class="second">
                                                     <p>Select</p>
                                                 </li>
-                                                <li class="second"><a href="javascript:;">All</a></li>
-                                                <li class="second"><a href="javascript:;">None</a></li>
+                                                <li class="second"><a href="javascript:;" id="venueTypeCheckAll">All</a></li>
+                                                <li class="second"><a href="javascript:;" id="venueTypeUnCheckAll">None</a></li>
                                             </ul>
 
 
                                             <div class="accordion" id="accordion_cstelem_four">
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header" id="headingcollapsethee_one">
-                                                        <button class="accordion-button collapsed" type="button"
+                                                        <button class="accordion-button  {{request()->has('venue_type') ? '' : 'collapsed'}}" type="button"
                                                             data-bs-toggle="collapse" data-bs-target="#collapsethee_one"
-                                                            aria-expanded="false" aria-controls="collapsethee_one">
+                                                            aria-expanded="{{request()->has('venue_type') ? true : false}}" aria-controls="collapsethee_one">
                                                             Hotels
                                                         </button>
                                                     </h2>
-                                                    <div id="collapsethee_one" class="accordion-collapse collapse"
+                                                    <div id="collapsethee_one" class="accordion-collapse collapse {{request()->has('venue_type') ? 'show' : ''}}"
                                                         aria-labelledby="headingcollapsethee_one"
                                                         data-bs-parent="#accordion_cstelem_four">
                                                         <div class="accordion-body">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FGBGWTB873">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Boutique hotels"
+                                                                    id="FGBGWTB873" @if(str_contains(request()->get('venue_type'), 'Boutique hotels')) checked @endif>
                                                                 <label class="form-check-label" for="FGBGWTB873">
                                                                     Boutique hotels
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FHBGWTR873">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Conference centers"
+                                                                    id="FHBGWTR873" @if(str_contains(request()->get('venue_type'), 'Conference centers')) checked @endif>
                                                                 <label class="form-check-label" for="FHBGWTR873">
                                                                     Conference centers
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FHBGWTR555">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Exposition centers"
+                                                                    id="FHBGWTR555" @if(str_contains(request()->get('venue_type'), 'Exposition centers')) checked @endif>
                                                                 <label class="form-check-label" for="FHBGWTR555">
                                                                     Exposition centers
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FHBGWER555">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Hotels"
+                                                                    id="FHBGWER555" @if(str_contains(request()->get('venue_type'), 'Hotels')) checked @endif>
                                                                 <label class="form-check-label" for="FHBGWER555">
                                                                     Hotels
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FHBBUMR555">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Luxury hotels"
+                                                                    id="FHBBUMR555" @if(str_contains(request()->get('venue_type'), 'Luxury hotels')) checked @endif>
                                                                 <label class="form-check-label" for="FHBBUMR555">
                                                                     Luxury hotels
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FHBBGMR555">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Resorts"
+                                                                    id="FHBBGMR555" @if(str_contains(request()->get('venue_type'), 'v')) checked @endif>
                                                                 <label class="form-check-label" for="FHBBGMR555">
                                                                     Resorts
                                                                 </label>
@@ -196,89 +196,89 @@
                                                 </div>
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header" id="headingcollapsethee_two">
-                                                        <button class="accordion-button collapsed" type="button"
+                                                        <button class="accordion-button  {{request()->has('venue_type') ? '' : 'collapsed'}}" type="button"
                                                             data-bs-toggle="collapse" data-bs-target="#collapsethee_two"
-                                                            aria-expanded="false" aria-controls="collapsethee_two">
+                                                            aria-expanded="{{request()->has('venue_type') ? true : false}}" aria-controls="collapsethee_two">
                                                             Special Event Venues
                                                         </button>
                                                     </h2>
-                                                    <div id="collapsethee_two" class="accordion-collapse collapse"
+                                                    <div id="collapsethee_two" class="accordion-collapse collapse {{request()->has('venue_type') ? 'show' : ''}}"
                                                         aria-labelledby="headingcollapsethee_two"
                                                         data-bs-parent="#accordion_cstelem_four">
                                                         <div class="accordion-body">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FGBGGBV873">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Aquariums or zoos"
+                                                                    id="FGBGGBV873" @if(str_contains(request()->get('venue_type'), 'Aquariums or zoos')) checked @endif>
                                                                 <label class="form-check-label" for="FGBGGBV873">
                                                                     Aquariums or zoos
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FGBGGBV871">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Arenas or stadiums"
+                                                                    id="FGBGGBV871" @if(str_contains(request()->get('venue_type'), 'Arenas or stadiums')) checked @endif>
                                                                 <label class="form-check-label" for="FGBGGBV871">
                                                                     Arenas or stadiums
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FGBGGBV752">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Banquet facilities"
+                                                                    id="FGBGGBV752" @if(str_contains(request()->get('venue_type'), 'Banquet facilities')) checked @endif>
                                                                 <label class="form-check-label" for="FGBGGBV752">
                                                                     Banquet facilities
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FHBGVFE555">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Bars or clubs"
+                                                                    id="FHBGVFE555" @if(str_contains(request()->get('venue_type'), 'Bars or clubs')) checked @endif>
                                                                 <label class="form-check-label" for="FHBGVFE555">
                                                                     Bars or clubs
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FHBYSTSJ82">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Corporate offices"
+                                                                    id="FHBYSTSJ82" @if(str_contains(request()->get('venue_type'), 'Corporate offices')) checked @endif>
                                                                 <label class="form-check-label" for="FHBYSTSJ82">
                                                                     Corporate offices
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="UJSAB655">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Educational facilities"
+                                                                    id="UJSAB655" @if(str_contains(request()->get('venue_type'), 'Educational facilities')) checked @endif>
                                                                 <label class="form-check-label" for="UJSAB655">
                                                                     Educational facilities
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="UJSA758S">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Entertainment venues"
+                                                                    id="UJSA758S" @if(str_contains(request()->get('venue_type'), 'Entertainment venues')) checked @endif>
                                                                 <label class="form-check-label" for="UJSA758S">
                                                                     Entertainment venues
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="F558MRVVV">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Galleries or museums"
+                                                                    id="F558MRVVV" @if(str_contains(request()->get('venue_type'), 'Galleries or museums')) checked @endif>
                                                                 <label class="form-check-label" for="F558MRVVV">
                                                                     Galleries or museums
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FRDBGMR555">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Golf courses"
+                                                                    id="FRDBGMR555" @if(str_contains(request()->get('venue_type'), 'Golf courses')) checked @endif>
                                                                 <label class="form-check-label" for="FRDBGMR555">
                                                                     Golf courses
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="FHYHSTS555">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Movie theaters"
+                                                                    id="FHYHSTS555" @if(str_contains(request()->get('venue_type'), 'Movie theaters')) checked @endif>
                                                                 <label class="form-check-label" for="FHYHSTS555">
                                                                     Movie theaters
                                                                 </label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="LOIKUJR555">
+                                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Special event venues"
+                                                                    id="LOIKUJR555" @if(str_contains(request()->get('venue_type'), 'Special event venues')) checked @endif>
                                                                 <label class="form-check-label" for="LOIKUJR555">
                                                                     Special event venues
                                                                 </label>
@@ -289,98 +289,85 @@
                                             </div>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="IKUASDG32">
+                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Convention centers" 
+                                                id="IKUASDG32" @if(str_contains(request()->get('venue_type'), 'Convention centers')) checked @endif>
                                                 <label class="form-check-label" for="IKUASDG32">
                                                     Convention centers
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="LOPPO00IK">
+                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="CVBs" 
+                                                id="LOPPO00IK" @if(str_contains(request()->get('venue_type'), 'CVBs')) checked @endif>
                                                 <label class="form-check-label" for="LOPPO00IK">
                                                     CVBs
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="LOIK753582">
+                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="DMCs"
+                                                    id="LOIK753582" @if(str_contains(request()->get('venue_type'), 'DMCs')) checked @endif>
                                                 <label class="form-check-label" for="LOIK753582">
                                                     DMCs
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="LOIFRDEDE">
+                                                <input class="form-check-input venuesTypeFilter" type="checkbox" value="Restaurants" 
+                                                id="LOIFRDEDE" @if(str_contains(request()->get('venue_type'), 'Restaurants')) checked @endif>
                                                 <label class="form-check-label" for="LOIFRDEDE">
                                                     Restaurants
                                                 </label>
                                             </div>
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
-                                                <li><button type="button" class="btn bluebtn">Apply</button></li>
+                                                <li><button type="button" class="btn bluebtn" id="venueTypeBtn">Apply</button></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                             <!-- venue types -->
 
 
                             <!-- Chains, brands, venues, or affiliates -->
-                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_four">
+                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_four">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button"
+                                        <button class="accordion-button {{request()->has('chains') ? '' : 'collapsed'}}" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseOne_cstelm4"
-                                            aria-expanded="false" aria-controls="collapseOne_cstelm4">
+                                            aria-expanded="{{request()->has('chains') ? true : false}}" aria-controls="collapseOne_cstelm4">
                                             Chains, brands, venues, or affiliates
                                         </button>
                                     </h2>
-                                    <div id="collapseOne_cstelm4" class="accordion-collapse collapse"
+                                    <div id="collapseOne_cstelm4" class="accordion-collapse collapse {{request()->has('chains') ? 'show' : ''}}"
                                         aria-labelledby="headingOne" data-bs-parent="#accordion_cstelem_four">
                                         <div class="accordion-body">
-                                            <input type="text"
+                                            <input type="text" id="chainsFilterTxt"
                                                 placeholder="Don’t see a chain, brand, venue, or affiliate? Enter its name."
                                                 class="form-control">
                                             <div class="chainbox-wrapper">
                                                 <h6>CHAINS AND AFFILIATES IN THIS AREA</h6>
 
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="LOIFRDEDE">
-                                                    <label class="form-check-label" for="LOIFRDEDE">
-                                                        Accor
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="LOIFRDEDE">
-                                                    <label class="form-check-label" for="LOIFRDEDE">
-                                                        Independent / Other
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="LOIFRDEDE">
-                                                    <label class="form-check-label" for="LOIFRDEDE">
-                                                        Marriott International Hotels
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="LOIFRDEDE">
-                                                    <label class="form-check-label" for="LOIFRDEDE">
-                                                        Wyndham Hotels & Resorts
-                                                    </label>
-                                                </div>
+                                                @foreach($chainsAndAffiliates as $ckey => $chain)
+                                                    <?php 
+                                                        $isChainChecked = str_contains(request()->get('chains'), $chain);
+                                                    ?>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input chainsFilter" type="checkbox" name="chains[{{$chain}}]"
+                                                            value="{{$chain}}" id="chain_{{$ckey}}" @if($isChainChecked) checked @endif>
+                                                        <label class="form-check-label" for="chain_{{$ckey}}">
+                                                            {{$chain}}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
 
                                             </div>
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
-                                                <li><button type="button" class="btn bluebtn">Apply</button></li>
+                                                <li><button type="button" class="btn bluebtn" id="chainsFilterBtn">Apply</button></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                             <!-- Chains, brands, venues, or affiliates -->
 
 
@@ -467,7 +454,7 @@
                             <hr>
 
                             <!-- capabilities -->
-                            {{-- <div class="venuecapabilities_wrapper">
+                            <div class="venuecapabilities_wrapper">
                                 <div class="venue-capabilities-box">
                                     <p>Venue capabilities</p>
                                     <div class="form-check">
@@ -501,7 +488,7 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                             <!-- capabilities -->
 
                             <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_six">
@@ -708,16 +695,16 @@
                             </div>
 
 
-                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_ten">
+                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_ten">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button"
+                                        <button class="accordion-button {{request()->has('ceiling_height') ? '' : 'collapsed'}}" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseOne_cstelm10"
-                                            aria-expanded="false" aria-controls="collapseOne_cstelm10">
+                                            aria-expanded="{{request()->has('ceiling_height') ? true : false}}" aria-controls="collapseOne_cstelm10">
                                             Ceiling height
                                         </button>
                                     </h2>
-                                    <div id="collapseOne_cstelm10" class="accordion-collapse collapse"
+                                    <div id="collapseOne_cstelm10" class="accordion-collapse collapse {{request()->has('ceiling_height') ? 'show' : ''}}"
                                         aria-labelledby="headingOne" data-bs-parent="#accordion_cstelem_ten">
                                         <div class="accordion-body">
                                             <div class="largestroom_wrapper">
@@ -738,15 +725,15 @@
                                             </div>
                                             <ul class="cancelandapplybtns">
                                                 <li><a href="javascript:;" class="btn">Cancel</a></li>
-                                                <li><button type="button" class="btn bluebtn">Apply</button></li>
+                                                <li><button type="button" class="btn bluebtn" id="ceilingHeightBtn">Apply</button></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
 
 
-                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_eleven">
+                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_eleven">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -1333,19 +1320,19 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
 
 
-                            {{-- <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_twelve">
+                            <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_twelve">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button"
+                                        <button class="accordion-button {{request()->has('area') ? '' : 'collapsed'}}" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseOne_cstelm12"
-                                            aria-expanded="false" aria-controls="collapseOne_cstelm12">
+                                            aria-expanded="{{request()->has('area') ? true : false}}" aria-controls="collapseOne_cstelm12">
                                             Areas
                                         </button>
                                     </h2>
-                                    <div id="collapseOne_cstelm12" class="accordion-collapse collapse"
+                                    <div id="collapseOne_cstelm12" class="accordion-collapse collapse {{request()->has('area') ? 'show' : ''}}"
                                         aria-labelledby="headingOne" data-bs-parent="#accordion_cstelem_twelve">
                                         <div class="accordion-body">
                                             <ul class="Promotionsorneeddates_wrapper">
@@ -1355,18 +1342,25 @@
                                                 <li class="second">
                                                     <p>Select</p>
                                                 </li>
-                                                <li class="second"><a href="javascript:;">All</a></li>
-                                                <li class="second"><a href="javascript:;">None</a></li>
+                                                <li class="second"><a href="javascript:;" id="checkAllAreas">All</a></li>
+                                                <li class="second"><a href="javascript:;" id="unCheckAllAreas">None</a></li>
                                             </ul>
 
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="PVVGGDEPPOO">
-                                                <label class="form-check-label" for="PVVGGDEPPOO">
-                                                    Airport
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
+                                            @foreach($areas as $key => $area)
+                                                <?php 
+                                                    $isChecked = str_contains(request()->get('area'), $area);
+                                                ?>
+                                                <div class="form-check">
+                                                    <input class="form-check-input areaFilter" type="checkbox" name="area[{{$area}}]"
+                                                        value="{{$area}}" id="area_{{$key}}" @if($isChecked) checked @endif>
+                                                    <label class="form-check-label" for="area_{{$key}}">
+                                                        {{$area}}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+
+                                            
+                                            {{-- <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
                                                     id="PVVGGDEFCDE">
                                                 <label class="form-check-label" for="PVVGGDEFCDE">
@@ -1400,12 +1394,12 @@
                                                 <label class="form-check-label" for="PVXLLIIK2FAS">
                                                     Urban
                                                 </label>
-                                            </div>
+                                            </div> --}}
 
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
 
 
                             <div class="accordion accordion_cstelem_oneclss" id="accordion_cstelem_thirteen">
@@ -1767,6 +1761,9 @@
         });
     </script>
     <script>
+        var selectedAreas = [];
+        var selectedVenueTypes = [];
+        var selectedChains = [];
         var urlParams = new URLSearchParams(window.location.href);
 
         $(function () {
@@ -1778,6 +1775,9 @@
 
         $(function () {
             var ratings = urlParams.has("ratings") ? urlParams.get("ratings").split("-") : [];
+            selectedAreas = urlParams.has("area") ? urlParams.get("area").split(",") : [];
+            selectedVenueTypes = urlParams.has("venue_type") ? urlParams.get("venue_type").split(",") : [];
+            selectedChains = urlParams.has("chains") ? urlParams.get("chains").split(",") : [];
 
             var ratingValues = [0, 5];
             if(ratings.length == 2){
@@ -1904,9 +1904,9 @@
         $(function () {
             var meetingRooms = urlParams.has("meeting_rooms") ? urlParams.get("meeting_rooms").split("-") : [];
 
-            var mrValues = [0, 64000];
+            var mrValues = [0, 19];
             if(meetingRooms.length == 2){
-                tmsValues = mrValues;
+                mrValues = meetingRooms;
                 $("#meetingrooms-range-min").val(mrValues[0]);
                 $("#meetingrooms-range-max").val(mrValues[1]);
             }
@@ -1916,7 +1916,7 @@
                 range: true,
                 min: 0,
                 max: 19,
-                values: [0, 19],
+                values: mrValues,
                 slide: function (event, ui) {
                     $("#meetingroomsRange").val(ui.values[0] + " - " + ui.values[1]);
                     $("#meetingrooms-range-min").val(ui.values[0]);
@@ -1928,14 +1928,24 @@
         });
 
         $(function () {
+            var ceilingHeights = urlParams.has("ceiling_height") ? urlParams.get("ceiling_height").split("-") : [];
+
+            var chValues = [0, 30];
+            if(ceilingHeights.length == 2){
+                chValues = ceilingHeights;
+                $("#ceilingheight-range-min").val(chValues[0]);
+                $("#ceilingheight-range-max").val(chValues[1]);
+            }
             $("#ceilingheight-range").slider({
                 step: 1,
                 range: true,
                 min: 0,
                 max: 30,
-                values: [0, 30],
+                values: chValues,
                 slide: function (event, ui) {
-                    $("#ceilingheightRange").val(ui.values[0] + " - " + ui.values[1])
+                    $("#ceilingheightRange").val(ui.values[0] + " - " + ui.values[1]);
+                    $("#ceilingheight-range-min").val(ui.values[0]);
+                    $("#ceilingheight-range-max").val(ui.values[1]);
                 }
             });
             $("#ceilingheightRange").val($("#ceilingheight-range").slider("values", 0) + " - " + $(
@@ -1978,12 +1988,75 @@
             window.location = updateOrAddQueryParam('meeting_rooms', minValue + '-' + maxValue)
         });
 
+        $("#ceilingHeightBtn").on('click', function(){
+            let minValue = $("#ceilingheight-range-min").val() != "" ? $("#ceilingheight-range-min").val() : 0;
+            let maxValue = $("#ceilingheight-range-max").val();
+            window.location = updateOrAddQueryParam('ceiling_height', minValue + '-' + maxValue)
+        });
+
         $("#distanceAirportBtn").on('click', function(){
             window.location = updateOrAddQueryParam('df_airport', $("#df_airport").val())
         });
 
         $("#cityFilterBtn").on('click', function (){
             window.location = updateOrAddQueryParam('city', $cityFilter.val());
+        });
+
+        $(".areaFilter").on('click', function(){
+            if($(this).is(':checked')){
+                selectedAreas.push($(this).val());
+            }else{
+                selectedAreas.pop($(this).val());
+            }
+            console.table(selectedAreas.toString());
+            window.location = updateOrAddQueryParam('area', selectedAreas.toString());
+        });
+
+        $("#venueTypeBtn").on('click', function(){
+            $('.venuesTypeFilter:checked').each(function() {
+                selectedVenueTypes.push($(this).val());
+            });
+            console.table(selectedVenueTypes.toString());
+            window.location = updateOrAddQueryParam('venue_type', selectedVenueTypes.toString());
+        });
+
+        $("#chainsFilterBtn").on('click', function(){
+            $('.chainsFilter:checked').each(function() {
+                selectedChains.push($(this).val());
+            });
+
+            if($("#chainsFilterTxt").val() != ''){
+                selectedChains.push($("#chainsFilterTxt").val());
+            }
+            console.table(selectedChains.toString());
+            window.location = updateOrAddQueryParam('chains', selectedChains.toString());
+        });
+
+        function checkOrUnCheckAllChecboxes(elemClass, status){
+            $(elemClass).prop('checked', status);
+        }
+
+        $("#venueTypeCheckAll").on('click', function(){
+            checkOrUnCheckAllChecboxes('.venuesTypeFilter', true);
+        });
+
+        $("#venueTypeUnCheckAll").on('click', function(){
+            checkOrUnCheckAllChecboxes('.venuesTypeFilter', false);
+        });
+
+        $("#checkAllAreas").on('click', function(){
+            checkOrUnCheckAllChecboxes('.areaFilter', true);
+            
+            $('.areaFilter:checked').each(function() {
+                selectedAreas.push($(this).val());
+            });
+            window.location = updateOrAddQueryParam('area', selectedAreas.toString());
+        });
+
+        $("#unCheckAllAreas").on('click', function(){
+            checkOrUnCheckAllChecboxes('.areaFilter', false);
+            window.location = updateOrAddQueryParam('area', '');
+
         });
     </script>
 @endsection
