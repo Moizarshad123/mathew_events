@@ -1,4 +1,4 @@
-
+@php $cms    = App\Models\HomeCms::find(1); @endphp
 <header class="desktopnav">
     <nav class="navbar fixed-top navbar-expand-lg">
         <div class="container-fluid px-4">
@@ -88,11 +88,12 @@
             </div>
         </div>
     </nav>
+   
     <div class="bottom-bar">
         <div class="container-fluid">
             <div class="content">
-                <h1>Find Meeting Venues, Request Quotes, and Book Event Space</h1>
-                <p>No commission, no charges, no fees.</p>
+                <h1>{{ $cms->heading ?? ""}}</h1>
+                <p>{{ $cms->sub_heading }}</p>
             </div>
         </div>
     </div>
@@ -152,8 +153,8 @@
     <div class="bottom-bar">
         <div class="container-fluid">
             <div class="content">
-                <h1>Find Meeting Venues, Request Quotes, and Book Event Space</h1>
-                <p>No commission, no charges, no fees.</p>
+                <h1>{{ $cms->heading ?? ""}}</h1>
+                <p>{{ $cms->sub_heading ?? "" }}</p>
             </div>
         </div>
     </div>

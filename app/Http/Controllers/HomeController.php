@@ -9,6 +9,8 @@ use App\Models\Blog;
 use App\Models\SupplierRequest;
 use App\Models\Contact;
 use Config;
+use App\Models\HomeCms;
+
 
 
 class HomeController extends Controller
@@ -19,7 +21,8 @@ class HomeController extends Controller
         $blogs  = Blog::orderByDESC('id')->skip(3)->take(4)->get();
         $venues = Venue::all();
         $cities = Venue::select('city')->distinct()->get();
-        return view('front.index', compact('venues', 'top3', 'blogs', 'cities'));
+        $cms    = HomeCms::find(1);
+        return view('front.index', compact('venues', 'top3', 'blogs', 'cities', 'cms'));
     }
 
     public function new_supplier_request() {

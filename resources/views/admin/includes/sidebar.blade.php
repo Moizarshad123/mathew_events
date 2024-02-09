@@ -114,6 +114,13 @@
               <div data-i18n="Analytics">Contacts</div>
             </a>
           </li>
+
+          <li class="menu-item {{ str_contains(url()->current(), 'admin/cms/1/edit') ? 'active' : '' }}">
+            <a href="{{ url('admin/cms/1/edit') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Analytics">Venue CMS</div>
+            </a>
+          </li>
           
           
 
